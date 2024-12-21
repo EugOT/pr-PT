@@ -17,3 +17,5 @@ notebooks/site_libs
 *.rds
 *.tar
 *.gz
+
+/.quarto/

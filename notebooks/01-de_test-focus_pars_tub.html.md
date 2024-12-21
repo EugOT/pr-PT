@@ -1,7 +1,7 @@
 ---
 title: "Differential expression analysis of Hypothalamus datasets from Kim DW et al., 2020 and Romanov et al., 2020 with focus on Pars Tuberalis"
 author: "Evgenii O. Tretiakov"
-date: "2024-12-20"
+date: "2024-12-21"
 format:
   html:
     toc: true
@@ -32,7 +32,48 @@ knitr:
 ---
 
 
+::: {.cell .hidden layout-align="center"}
 
+```{.r .cell-code .hidden}
+#| label: setup
+#| include: false
+DOCNAME <- "pars-tuberalis-analysis"
+NOW <- Sys.time()
+
+# Time chunks during knitting
+knitr::knit_hooks$set(timeit = function(before) {
+  if (before) {
+    print(paste("Start:", Sys.time()))
+    NOW <<- Sys.time()
+  } else {
+    print(paste("Stop:", Sys.time()))
+    print(Sys.time() - NOW)
+  }
+})
+
+knitr::knit_hooks$set(debug = function(before, options, envir) {
+  if (!before) {
+    message(
+      paste(names(envir), as.list(envir),
+        sep = " = ", collapse = "\n"
+      )
+    )
+  }
+})
+
+knitr::opts_chunk$set(
+  cache          = FALSE,
+  dev            = c("png", "pdf"),
+  timeit         = TRUE
+)
+
+# Sys.setenv(RETICULATE_PYTHON = "/home/etretiakov/micromamba/envs/r-reticulate/bin/python")
+# reticulate::use_condaenv("/home/etretiakov/micromamba/envs/r-reticulate/bin/python")
+#
+Sys.setenv(RETICULATE_PYTHON = "/opt/conda/bin/python")
+reticulate::use_condaenv("/opt/conda/bin/python")
+```
+:::
 
 
 
@@ -44,7 +85,9 @@ knitr:
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: libraries
+#| cache: false
 # Load tidyverse infrastructure packages
 suppressPackageStartupMessages({
   library(future)
@@ -81,7 +124,8 @@ suppressPackageStartupMessages({
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: paths
 src_dir <- here("code")
 data_dir <- here("data")
 output_dir <- here("output")
@@ -100,7 +144,9 @@ tables_dir <- here(output_dir, "tables/")
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: source
+#| cache: false
 source(here(src_dir, "genes.R"))
 source(here(src_dir, "functions.R"))
 ```
@@ -116,13 +162,15 @@ source(here(src_dir, "functions.R"))
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: params-computation
+#| cache: false
 # set seed
 reseed <- 42
 set.seed(seed = reseed)
 
 # Parameters for parallel execution
-n_cores <- parallelly::availableCores()/2 - 1
+n_cores <- parallelly::availableCores() / 2 - 1
 plan("multisession", workers = n_cores)
 options(
   future.globals.maxSize = 100000 * 1024^2,
@@ -143,7 +191,9 @@ multisession:
 
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: params-computation
+#| cache: false
 # ggplot2 theme
 theme_set(ggmin::theme_powerpoint())
 ```
@@ -151,7 +201,8 @@ theme_set(ggmin::theme_powerpoint())
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: params
 bioproject <- "PRJNA547712"
 project <- "kim2020_Hypoth-dev"
 cb_fpr <- 0.001
@@ -183,29 +234,44 @@ signature <- 100
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-srt <-  schard::h5ad2seurat(here(
+```{.r .cell-code .hidden}
+#| label: convert-to-seurat
+srt <- schard::h5ad2seurat(here(
   data_dir,
   "kim2020_combined.h5ad"
-),use.raw = TRUE)
+), use.raw = TRUE)
 
-X_umap <- srt@meta.data |> select(X, Y, Z) |> as.matrix()
+X_umap <- srt@meta.data |>
+  select(X, Y, Z) |>
+  as.matrix()
 colnames(X_umap) <- c("UMAP_1", "UMAP_2", "UMAP_3")
 rownames(X_umap) <- colnames(srt)
 srt[["umap"]] <- CreateDimReducObject(embeddings = X_umap, key = "umap_", assay = DefaultAssay(srt))
 srt$Age %<>% forcats::fct(levels = c(
-  "E10", "E11", "E12", "E13", "E14", 
-  "E15", "E16", "E17", "E18", "P0", 
-  "P2", "P4", "P8", "P10", "P14", "P23", "P45"))
+  "E10", "E11", "E12", "E13", "E14",
+  "E15", "E16", "E17", "E18", "P0",
+  "P2", "P4", "P8", "P10", "P14", "P23", "P45"
+))
 
 Idents(srt) <- "Age"
 srt <- Store_Palette_Seurat(seurat_object = srt, palette = rev(brewer.pal(n = 11, name = "Spectral")), palette_name = "expr_Colour_Pal")
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Seurat Object now contains the following items in @misc slot:
+ℹ 'expr_Colour_Pal'
+```
+
+
+:::
 :::
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: load-seurat
 print(srt)
 ```
 
@@ -222,20 +288,233 @@ Active assay: RNA (27998 features, 0 variable features)
 
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: load-seurat
 nature2020 <- readRDS("/data/1_heteroAstrocytes/PRJNA548917/old/oldCCA_nae_srt.rds")
 nature2020 <- UpdateSeuratObject(nature2020)
-nature2020$Age <- 
+```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Validating object structure
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Updating object slots
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Ensuring keys are in the proper structure
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Updating matrix keys for DimReduc 'pca'
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Updating matrix keys for DimReduc 'tsne'
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Updating matrix keys for DimReduc 'umap'
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: Assay RNA changing from Assay to Assay
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: DimReduc pca changing from DimReduc to DimReduc
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: DimReduc tsne changing from DimReduc to DimReduc
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: DimReduc umap changing from DimReduc to DimReduc
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Ensuring keys are in the proper structure
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Ensuring feature names don't have underscores or pipes
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Updating slots in RNA
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Updating slots in pca
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Updating slots in tsne
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Setting tsne DimReduc to global
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Updating slots in umap
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Setting umap DimReduc to global
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Validating object structure for Assay 'RNA'
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Validating object structure for DimReduc 'pca'
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Validating object structure for DimReduc 'tsne'
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Validating object structure for DimReduc 'umap'
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Object representation is consistent with the most current Seurat version
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: load-seurat
+nature2020$Age <-
   Cells(nature2020) |>
   str_split(pattern = ":", simplify = T) %>%
-  .[,1] %>%
+  .[, 1] %>%
   str_split_fixed(pattern = "_", n = 3) %>%
-  .[,3]
+  .[, 3]
 nature2020$Age %<>% forcats::fct(levels = c(
   "E10", "E11", "E12", "E13", "E14",
-  "E15", "E16", "E17", "E18", "P0", 
-  "P2", "3P2", "P4", "P8", "1P10", 
-  "P10", "P14", "P23", "P45"))
+  "E15", "E16", "E17", "E18", "P0",
+  "P2", "3P2", "P4", "P8", "1P10",
+  "P10", "P14", "P23", "P45"
+))
 nature2020$Age %<>% fct_collapse(
   P2 = c("P2", "3P2"),
   P10 = c("1P10", "P10")
@@ -256,7 +535,8 @@ Active assay: RNA (24340 features, 3500 variable features)
 
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: load-seurat
 glimpse(nature2020@meta.data)
 ```
 
@@ -290,7 +570,8 @@ $ Age              <fct> P23, P2, P2, P2, P2, P2, P2, P2, P2, P2, P2, P2, P2, �
 
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: load-seurat
 table(Idents(nature2020))
 ```
 
@@ -311,7 +592,8 @@ table(Idents(nature2020))
 
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: load-seurat
 pt_subset_nature2020 <- subset(nature2020, idents = c("38", "42", "45"))
 print(pt_subset_nature2020)
 ```
@@ -332,7 +614,10 @@ Active assay: RNA (24340 features, 3500 variable features)
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-romanov2020
+#| fig-width: 24
+#| fig-height: 36
 FeaturePlot(
   nature2020,
   features = c(
@@ -340,7 +625,8 @@ FeaturePlot(
     "Eya1", "Eya2", "Eya3", "Eya4",
     "Sox2", "Hlf", "Tshr",
     "Cckar", "Cckbr", "Gpr173",
-    "Foxl2", "Lhx3", "Lhx4", "Pit1", "Gata2"),
+    "Foxl2", "Lhx3", "Lhx4", "Pit1", "Gata2"
+  ),
   label = F,
   blend = F,
   order = TRUE,
@@ -351,6 +637,45 @@ FeaturePlot(
 )
 ```
 
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: The following requested variables were not found: Pit1
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+All cells have the same value (0) of "Foxl2"
+All cells have the same value (0) of "Foxl2"
+All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-romanov2020-1.png){fig-align='center' width=7200}
 :::
@@ -358,7 +683,10 @@ FeaturePlot(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-pt-romanov2020
+#| fig-width: 24
+#| fig-height: 36
 FeaturePlot(
   pt_subset_nature2020,
   features = c(
@@ -366,7 +694,8 @@ FeaturePlot(
     "Eya1", "Eya2", "Eya3", "Eya4",
     "Sox2", "Hlf", "Tshr",
     "Cckar", "Cckbr", "Gpr173",
-    "Foxl2", "Lhx3", "Lhx4", "Pit1", "Gata2"),
+    "Foxl2", "Lhx3", "Lhx4", "Pit1", "Gata2"
+  ),
   label = T,
   blend = F,
   order = TRUE,
@@ -377,6 +706,384 @@ FeaturePlot(
 )
 ```
 
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: The following requested variables were not found: Pit1
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cck"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Eya1"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Eya3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Hlf"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckar"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Gpr173"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Gata2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cck"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Eya1"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Eya2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Eya3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Eya4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Sox2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckar"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Gpr173"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Gata2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckar"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Eya2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Eya3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckar"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-pt-romanov2020-1.png){fig-align='center' width=7200}
 :::
@@ -384,21 +1091,105 @@ FeaturePlot(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: norm-scale-matrix
 srt <- NormalizeData(srt)
 srt <- FindVariableFeatures(srt, selection.method = "vst", nfeatures = 3000)
 # all.genes <- rownames(srt)
 # srt <- ScaleData(srt, features = all.genes)
 srt <- ScaleData(srt)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Centering and scaling data matrix
+```
+
+
+:::
 :::
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-hypoth.anchors <- FindTransferAnchors(reference = nature2020, query = srt, dims = 1:30,
-    reference.reduction = "pca")
+```{.r .cell-code .hidden}
+#| label: transfer-annotations
+hypoth.anchors <- FindTransferAnchors(
+  reference = nature2020, query = srt, dims = 1:30,
+  reference.reduction = "pca"
+)
+```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Projecting cell embeddings
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Finding neighborhoods
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Finding anchors
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+	Found 5001 anchors
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: transfer-annotations
 predictions <- TransferData(anchorset = hypoth.anchors, refdata = nature2020$wtree, dims = 1:30)
+```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Finding integration vectors
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Finding integration vector weights
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Predicting cell labels
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: transfer-annotations
 srt <- AddMetaData(srt, metadata = predictions)
 table(srt$predicted.id)
 ```
@@ -421,27 +1212,274 @@ table(srt$predicted.id)
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: transfer-umap
 nature2020 <- RunUMAP(nature2020, dims = 1:30, reduction = "pca", return.model = TRUE)
-srt <- IntegrateEmbeddings(anchorset = hypoth.anchors, reference = nature2020, query = srt,
-    new.reduction.name = "ref.pca")
-srt <- ProjectUMAP(query = srt, query.reduction = "ref.pca", reference = nature2020,
-    reference.reduction = "pca", reduction.model = "umap")
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric
+To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'
+This message will be shown once per session
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+UMAP will return its model
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+14:17:58 UMAP embedding parameters a = 0.9922 b = 1.112
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+14:17:58 Read 51199 rows and found 30 numeric columns
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+14:17:58 Using Annoy for neighbor search, n_neighbors = 30
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+14:17:58 Building Annoy index with metric = cosine, n_trees = 50
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+0%   10   20   30   40   50   60   70   80   90   100%
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+[----|----|----|----|----|----|----|----|----|----|
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+**************************************************|
+14:18:06 Writing NN index file to temp file /tmp/RtmpfLNFhr/file2d054c4cfc5b
+14:18:06 Searching Annoy index using 11 threads, search_k = 3000
+14:18:09 Annoy recall = 100%
+14:18:10 Commencing smooth kNN distance calibration using 11 threads with target n_neighbors = 30
+14:18:12 Initializing from normalized Laplacian + noise (using RSpectra)
+14:18:13 Commencing optimization for 200 epochs, with 2530018 positive edges
+14:18:36 Optimization finished
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: transfer-umap
+srt <- IntegrateEmbeddings(
+  anchorset = hypoth.anchors, reference = nature2020, query = srt,
+  new.reduction.name = "ref.pca"
+)
+```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Requested to reuse weights matrix, but no weights found. Computing new weights.
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: Layer counts isn't present in the assay object; returning NULL
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: Layer counts isn't present in the assay object; returning NULL
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+
+Integrating dataset 2 with reference dataset
+Finding integration vectors
+Finding integration vector weights
+Integrating data
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: transfer-umap
+srt <- ProjectUMAP(
+  query = srt, query.reduction = "ref.pca", reference = nature2020,
+  reference.reduction = "pca", reduction.model = "umap"
+)
+```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Computing nearest neighbors
+Running UMAP projection
+14:21:32 Read 128006 rows
+14:21:32 Processing block 1 of 1
+14:21:32 Commencing smooth kNN distance calibration using 11 threads with target n_neighbors = 30
+14:21:33 Initializing by weighted average of neighbor coordinates using 11 threads
+14:21:33 Commencing optimization for 67 epochs, with 3840180 positive edges
+14:22:03 Finished
+```
+
+
+:::
 :::
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-p1 <- DimPlot(nature2020, reduction = "umap", group.by = "wtree", label = TRUE, label.size = 3,
-    repel = TRUE) + NoLegend() + ggtitle("Reference annotations")
-p2 <- DimPlot(srt, reduction = "ref.umap", group.by = "predicted.id", label = TRUE,
-    label.size = 3, repel = TRUE) + NoLegend() + ggtitle("Query transferred labels")
+```{.r .cell-code .hidden}
+#| label: plot-reference-umap-transfered
+p1 <- DimPlot(nature2020,
+  reduction = "umap", group.by = "wtree", label = TRUE, label.size = 3,
+  repel = TRUE
+) + NoLegend() + ggtitle("Reference annotations")
+p2 <- DimPlot(srt,
+  reduction = "ref.umap", group.by = "predicted.id", label = TRUE,
+  label.size = 3, repel = TRUE
+) + NoLegend() + ggtitle("Query transferred labels")
+```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: plot-reference-umap-transfered
 p1 + p2
 ```
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-reference-umap-transfered-1.png){fig-align='center' width=4200}
+:::
+:::
+
+::: {.cell layout-align="center"}
+
+```{.r .cell-code .hidden}
+#| label: plot-feature-romanov2020-integrated
+#| fig-width: 24
+#| fig-height: 36
+FeaturePlot(
+  nature2020,
+  features = c(
+    "Tshb", "Cck", "Pitx1",
+    "Eya1", "Eya2", "Eya3", "Eya4",
+    "Sox2", "Hlf", "Tshr",
+    "Cckar", "Cckbr", "Gpr173",
+    "Foxl2", "Lhx3", "Lhx4", "Pit1", "Gata2"
+  ),
+  label = F,
+  blend = F,
+  order = TRUE,
+  pt.size = 1.2,
+  raster.dpi = c(1024, 1024),
+  alpha = 0.5,
+  split.by = "Age"
+)
+```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: The following requested variables were not found: Pit1
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+All cells have the same value (0) of "Foxl2"
+All cells have the same value (0) of "Foxl2"
+All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output-display}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-romanov2020-integrated-1.png){fig-align='center' width=7200}
 :::
 :::
 
@@ -455,7 +1493,8 @@ p1 + p2
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: get-goi-sox2-tshr
 sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Sox2", "Tshr"), ] %>%
   as.data.frame() %>%
   t() %>%
@@ -463,8 +1502,10 @@ sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Sox2",
   select(Sox2, Tshr) %>%
   dplyr::bind_cols(srt@meta.data) %>%
   select(Age, Sox2, Tshr) %>%
-  mutate(Sox2_pos = Sox2 > 0,
-         Tshr_pos  = Tshr  > 0)
+  mutate(
+    Sox2_pos = Sox2 > 0,
+    Tshr_pos = Tshr > 0
+  )
 
 sbs_mtx %>% skimr::skim()
 ```
@@ -515,7 +1556,10 @@ Table: Data summary
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: sox2-tshr-stats
+#| fig-width: 8
+#| fig-height: 24
 write_csv(sbs_mtx, here(tables_dir, "Sox2-Tshr-expression-status-between-Ages-on-evaluation-datasets.csv"))
 
 
@@ -551,7 +1595,7 @@ grouped_ggpiestats(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
 srt
 ```
 
@@ -571,13 +1615,13 @@ Active assay: RNA (27998 features, 3000 variable features)
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
 library(hexbin)
 # Extract UMAP coordinates
 umap_coords <- Embeddings(srt, reduction = "ref.umap")
 
 # Create hexbin object
-hb <- hexbin(umap_coords[,1], umap_coords[,2], xbins = 64)
+hb <- hexbin(umap_coords[, 1], umap_coords[, 2], xbins = 64)
 
 # Create a data frame for plotting
 hex_data <- data.frame(
@@ -596,13 +1640,16 @@ ggplot(hex_data, aes(x = x, y = y, fill = count)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/unnamed-chunk-18-1.png){fig-align='center' width=4200}
+![](01-de_test-focus_pars_tub_files/figure-html/unnamed-chunk-19-1.png){fig-align='center' width=4200}
 :::
 :::
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-kim2020
+#| fig-width: 32
+#| fig-height: 36
 FeaturePlot(
   srt,
   features = c(
@@ -610,7 +1657,8 @@ FeaturePlot(
     "Eya1", "Eya2", "Eya3", "Eya4",
     "Sox2", "Hlf", "Tshr",
     "Cckar", "Cckbr", "Gpr173",
-    "Foxl2", "Lhx3", "Lhx4", "Pit1", "Gata2"),
+    "Foxl2", "Lhx3", "Lhx4", "Pit1", "Gata2"
+  ),
   reduction = "ref.umap",
   label = F,
   blend = F,
@@ -619,8 +1667,332 @@ FeaturePlot(
   raster.dpi = c(1024, 1024),
   alpha = 0.5,
   split.by = "Age"
-  )
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: The following requested variables were not found: Pit1
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cck"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckar"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshr"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx3"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Foxl2"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Lhx4"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-kim2020-1.png){fig-align='center' width=9600}
@@ -629,14 +2001,18 @@ FeaturePlot(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-prediction-scores-kim2020
+#| fig-width: 21
+#| fig-height: 5
 Idents(srt) <- "predicted.id"
 FeaturePlot(
   srt,
-  features = c("prediction.score.38",
-               "prediction.score.42",
-               "prediction.score.45"
-               ),
+  features = c(
+    "prediction.score.38",
+    "prediction.score.42",
+    "prediction.score.45"
+  ),
   reduction = "ref.umap",
   label = T,
   repel = T,
@@ -647,8 +2023,39 @@ FeaturePlot(
   alpha = 0.8,
   max.cutoff = "q90",
   ncol = 3
-  )
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "prediction.score.42"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-scores-kim2020-1.png){fig-align='center' width=6300}
@@ -657,13 +2064,17 @@ FeaturePlot(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-prediction-scores-split-kim2020
+#| fig-width: 32
+#| fig-height: 6.353
 FeaturePlot(
   srt,
-  features = c("prediction.score.38",
-               "prediction.score.42",
-               "prediction.score.45"
-               ),
+  features = c(
+    "prediction.score.38",
+    "prediction.score.42",
+    "prediction.score.45"
+  ),
   reduction = "ref.umap",
   label = F,
   blend = F,
@@ -673,8 +2084,28 @@ FeaturePlot(
   alpha = 0.8,
   max.cutoff = "q90",
   split.by = "Age"
-  )
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+All cells have the same value (0) of "prediction.score.42"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-scores-split-kim2020-1.png){fig-align='center' width=9600}
@@ -683,7 +2114,10 @@ FeaturePlot(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-prediction-id-kim2020
+#| fig-width: 7
+#| fig-height: 5
 DimPlot(
   srt,
   group.by = c("predicted.id"),
@@ -693,8 +2127,18 @@ DimPlot(
   pt.size = 4,
   raster.dpi = c(1024, 1024),
   alpha = 0.5
-  )
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-id-kim2020-1.png){fig-align='center' width=2100}
@@ -703,7 +2147,10 @@ DimPlot(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-prediction-split-kim2020
+#| fig-width: 32
+#| fig-height: 2.12
 DimPlot(
   srt,
   group.by = c("predicted.id"),
@@ -714,8 +2161,18 @@ DimPlot(
   raster.dpi = c(1024, 1024),
   alpha = 0.5,
   split.by = "Age"
-  ) + NoLegend()
+) + NoLegend()
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-split-kim2020-1.png){fig-align='center' width=9600}
@@ -734,10 +2191,24 @@ DimPlot(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-e10
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e10-1.png){fig-align='center' width=3600}
@@ -746,10 +2217,24 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-e11
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e11-1.png){fig-align='center' width=3600}
@@ -758,13 +2243,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -779,13 +2268,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -800,15 +2293,18 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-e14
+#| fig-width: 24
+#| fig-height: 6
 FeaturePlot(
   srt |> subset(Age == "E14"),
   features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", 
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -823,10 +2319,24 @@ FeaturePlot(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-e15
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e15-1.png){fig-align='center' width=3600}
@@ -835,13 +2345,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -856,13 +2370,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -877,13 +2395,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -898,13 +2420,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshb", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Eya3-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Tshb", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -927,10 +2453,24 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshb", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-e10
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e10-1.png){fig-align='center' width=3600}
@@ -939,10 +2479,24 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-e11
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e11-1.png){fig-align='center' width=3600}
@@ -951,10 +2505,24 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-e12
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e12-1.png){fig-align='center' width=3600}
@@ -963,13 +2531,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -984,13 +2556,17 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-e14
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1005,10 +2581,33 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-e15
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshb"
+```
+
+
+:::
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e15-1.png){fig-align='center' width=3600}
@@ -1017,10 +2616,24 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-e16
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e16-1.png){fig-align='center' width=3600}
@@ -1029,10 +2642,24 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-e18
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e18-1.png){fig-align='center' width=3600}
@@ -1041,13 +2668,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1062,13 +2693,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshb", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshb-Pitx1-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Tshb", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1091,10 +2726,13 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-e10
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E10"), features = c("Cck", "Eya3"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Cck
 ```
@@ -1102,13 +2740,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshb", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-e11
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1123,13 +2765,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1144,13 +2790,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1165,13 +2815,17 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-e14
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1186,13 +2840,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1207,13 +2865,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1228,13 +2890,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1249,13 +2915,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1270,13 +2940,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Cck", "Eya3"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Eya3-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Cck", "Eya3"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1299,10 +2973,24 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Cck", "Eya3"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Cck", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-e10
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Cck", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cck"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e10-1.png){fig-align='center' width=3600}
@@ -1311,9 +2999,14 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Cck", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-e11
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Cck", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
 
 ::: {.cell-output-display}
@@ -1323,10 +3016,24 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Cck", "Pitx1"),
-  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-e12
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Cck", "Pitx1"),
+  reduction = "ref.umap", blend = F, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Pitx1"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e12-1.png){fig-align='center' width=3600}
@@ -1335,13 +3042,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Cck", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Cck", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1356,13 +3067,17 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Cck", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-e14
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Cck", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1377,10 +3092,13 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-e15
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E15"), features = c("Cck", "Pitx1"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Pitx1
 ```
@@ -1388,10 +3106,13 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-e16
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E16"), features = c("Cck", "Pitx1"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Pitx1
 ```
@@ -1399,10 +3120,13 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-e18
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E18"), features = c("Cck", "Pitx1"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Pitx1
 ```
@@ -1410,13 +3134,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Cck", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Cck", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1431,13 +3159,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Cck", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cck-Pitx1-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Cck", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1460,10 +3192,13 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-e10
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Tshb"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Tshb
 ```
@@ -1471,10 +3206,13 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-e11
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Tshb"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Tshb
 ```
@@ -1482,13 +3220,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Cck", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Tshb"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Sox2", "Tshb"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1503,13 +3245,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Tshb"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Sox2", "Tshb"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1524,9 +3270,14 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Tshb"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-e14
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Sox2", "Tshb"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
 
 ::: {.cell-output-display}
@@ -1536,10 +3287,13 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-e15
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Tshb"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Tshb
 ```
@@ -1547,13 +3301,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Tshb"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Sox2", "Tshb"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1568,13 +3326,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Tshb"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Sox2", "Tshb"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1589,13 +3351,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Tshb"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Sox2", "Tshb"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1610,13 +3376,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Tshb"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Tshb-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Sox2", "Tshb"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1639,10 +3409,13 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-e10
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Cck"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Cck
 ```
@@ -1650,13 +3423,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Tshb"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-e11
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1671,13 +3448,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1692,13 +3473,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1713,9 +3498,14 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-e14
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
 
 ::: {.cell-output-display}
@@ -1725,13 +3515,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1746,13 +3540,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1767,13 +3565,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1788,13 +3590,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1809,13 +3615,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Cck"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cck-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Sox2", "Cck"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1838,13 +3648,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Cck"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-e10
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Sox2", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1859,13 +3673,17 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-e11
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Sox2", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1880,10 +3698,13 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-e12
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Pitx1"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Pitx1
 ```
@@ -1891,13 +3712,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Sox2", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1912,9 +3737,14 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Pitx1"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-e14
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Sox2", "Pitx1"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
 
 ::: {.cell-output-display}
@@ -1924,10 +3754,13 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-e15
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Pitx1"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Pitx1
 ```
@@ -1935,10 +3768,13 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-e16
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Pitx1"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Pitx1
 ```
@@ -1946,10 +3782,13 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-e18
+#| fig-width: 24
+#| fig-height: 6
 # FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Pitx1"),
 #   reduction = "ref.umap", blend = TRUE, blend.threshold = 0.3, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
-# 
+#
 # Error in `FeaturePlot()`:
 # ! The following features have no value: Pitx1
 ```
@@ -1957,13 +3796,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Sox2", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -1978,13 +3821,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Pitx1"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Pitx1-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Sox2", "Pitx1"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2007,13 +3854,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Pitx1"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-e10
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2028,13 +3879,17 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-e11
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2049,13 +3904,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2070,13 +3929,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2091,13 +3954,17 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-e14
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2112,13 +3979,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2133,13 +4004,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2154,13 +4029,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2175,13 +4054,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2196,13 +4079,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Eya3", "Hlf"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Hlf-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Eya3", "Hlf"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2225,13 +4112,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Eya3", "Hlf"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-e10
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2246,13 +4137,17 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-e11
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2267,13 +4162,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2288,13 +4187,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2309,13 +4212,17 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-e14
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2330,13 +4237,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2351,13 +4262,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2372,13 +4287,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2393,13 +4312,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2414,13 +4337,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Eya3", "Igfbp5"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Eya3-Igfbp5-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Eya3", "Igfbp5"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2443,13 +4370,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Eya3", "Igfbp5"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-e10
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2464,13 +4395,17 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-e11
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2485,13 +4420,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2506,13 +4445,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2527,10 +4470,24 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-e14
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e14-1.png){fig-align='center' width=3600}
@@ -2539,13 +4496,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2560,13 +4521,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2581,13 +4546,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2602,13 +4571,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2623,13 +4596,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Tshr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-tshr-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Sox2", "Tshr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2652,13 +4629,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Tshr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-e10
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2673,13 +4654,17 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-e11
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2694,13 +4679,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2715,13 +4704,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2736,13 +4729,17 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-e14
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2757,13 +4754,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2778,13 +4779,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2799,13 +4804,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2820,13 +4829,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2841,13 +4854,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Gpr173-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Sox2", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2870,10 +4887,24 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-e10
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e10-1.png){fig-align='center' width=3600}
@@ -2882,10 +4913,24 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-e11
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e11-1.png){fig-align='center' width=3600}
@@ -2894,13 +4939,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2915,10 +4964,24 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-e13
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e13-1.png){fig-align='center' width=3600}
@@ -2927,13 +4990,17 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-e14
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2948,13 +5015,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2969,13 +5040,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -2990,13 +5065,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3011,13 +5090,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3032,13 +5115,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-sox2-Cckbr-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Sox2", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3061,13 +5148,17 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Sox2", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-e10
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3082,13 +5173,17 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-e11
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3103,13 +5198,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3124,13 +5223,17 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-e13
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3145,10 +5248,24 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-e14
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e14-1.png){fig-align='center' width=3600}
@@ -3157,13 +5274,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3178,13 +5299,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3199,13 +5324,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3220,13 +5349,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3241,13 +5374,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Gpr173-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Tshr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3270,10 +5407,24 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-e10
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e10-1.png){fig-align='center' width=3600}
@@ -3282,10 +5433,24 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-e11
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e11-1.png){fig-align='center' width=3600}
@@ -3294,13 +5459,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3315,10 +5484,24 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-e13
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e13-1.png){fig-align='center' width=3600}
@@ -3327,10 +5510,24 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-e14
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Tshr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e14-1.png){fig-align='center' width=3600}
@@ -3339,13 +5536,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3360,13 +5561,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3381,13 +5586,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3402,13 +5611,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3423,13 +5636,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshr", "Cckbr"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Tshr-Cckbr-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Tshr", "Cckbr"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3452,10 +5669,24 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Tshr", "Cckbr"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E10"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-e10
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E10"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e10-1.png){fig-align='center' width=3600}
@@ -3464,10 +5695,24 @@ FeaturePlot(srt |> subset(Age == "E10"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E11"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-e11
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E11"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e11-1.png){fig-align='center' width=3600}
@@ -3476,13 +5721,17 @@ FeaturePlot(srt |> subset(Age == "E11"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E12"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-e12
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E12"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3497,10 +5746,24 @@ FeaturePlot(srt |> subset(Age == "E12"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E13"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5)
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-e13
+#| fig-width: 12
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E13"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap", blend = F, label = TRUE, order = TRUE, pt.size = 2, raster.dpi = c(1024, 1024), alpha = 0.5
+)
 ```
+
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+Warning: All cells have the same value (0) of "Cckbr"
+```
+
+
+:::
 
 ::: {.cell-output-display}
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e13-1.png){fig-align='center' width=3600}
@@ -3509,13 +5772,17 @@ FeaturePlot(srt |> subset(Age == "E13"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E14"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-e14
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E14"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3530,13 +5797,17 @@ FeaturePlot(srt |> subset(Age == "E14"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E15"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-e15
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E15"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3551,13 +5822,17 @@ FeaturePlot(srt |> subset(Age == "E15"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E16"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-e16
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E16"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3572,13 +5847,17 @@ FeaturePlot(srt |> subset(Age == "E16"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "E18"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-e18
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "E18"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3593,13 +5872,17 @@ FeaturePlot(srt |> subset(Age == "E18"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P8"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-p8
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P8"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3614,13 +5897,17 @@ FeaturePlot(srt |> subset(Age == "P8"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
-FeaturePlot(srt |> subset(Age == "P45"), features = c("Cckbr", "Gpr173"),
-  reduction = "ref.umap", 
+```{.r .cell-code .hidden}
+#| label: plot-feature-Cckbr-Gpr173-p45
+#| fig-width: 24
+#| fig-height: 6
+FeaturePlot(srt |> subset(Age == "P45"),
+  features = c("Cckbr", "Gpr173"),
+  reduction = "ref.umap",
   blend = TRUE,
   blend.threshold = 0.4,
   max.cutoff = "q95",
-  pt.size = 1.5, 
+  pt.size = 1.5,
   cols = c("grey98", "red", "blue"),
   order = T,
   alpha = 0.35,
@@ -3643,7 +5930,10 @@ FeaturePlot(srt |> subset(Age == "P45"), features = c("Cckbr", "Gpr173"),
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Create a new variable that combines Sox2_pos and Tshr_pos
 df <- sbs_mtx %>%
   mutate(Age = factor(Age, levels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"), ordered = TRUE), VarComb = case_when(
@@ -3658,7 +5948,22 @@ df_counts <- df %>%
   group_by(Age, VarComb) %>%
   summarise(n = n()) %>%
   mutate(prop = n / sum(n))
+```
 
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+`summarise()` has grouped output by 'Age'. You can override using the `.groups`
+argument.
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: plot-sox2-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Calculate the total counts for each category
 df_total_counts <- df %>%
   group_by(Age) %>%
@@ -3690,7 +5995,10 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-1.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Sox2+/Tshr-" = "red3", "Sox2+/Tshr+" = "purple", "Sox2-/Tshr+" = "royalblue", "Sox2-/Tshr-" = "grey50")) +
@@ -3703,7 +6011,10 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-2.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Tshr-", "Sox2+/Tshr-")), aes(x = Age, y = n, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black") +
   scale_fill_manual(values = c("Sox2+/Tshr+" = "purple", "Sox2+/Tshr-" = "red3", "Sox2-/Tshr+" = "royalblue", "Sox2-/Tshr-" = "grey50")) +
@@ -3716,7 +6027,10 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Tshr-", "Sox2+/Tshr-")), aes(x
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-3.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Tshr-", "Sox2+/Tshr-")), aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Sox2+/Tshr-" = "red3", "Sox2+/Tshr+" = "purple", "Sox2-/Tshr+" = "royalblue", "Sox2-/Tshr-" = "grey50")) +
@@ -3740,7 +6054,8 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Tshr-", "Sox2+/Tshr-")), aes(x
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: get-goi-sox2-Cckbr
 sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Sox2", "Cckbr"), ] %>%
   as.data.frame() %>%
   t() %>%
@@ -3748,8 +6063,10 @@ sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Sox2",
   select(Sox2, Cckbr) %>%
   dplyr::bind_cols(srt@meta.data) %>%
   select(Age, Sox2, Cckbr) %>%
-  mutate(Sox2_pos = Sox2 > 0,
-         Cckbr_pos  = Cckbr  > 0)
+  mutate(
+    Sox2_pos = Sox2 > 0,
+    Cckbr_pos = Cckbr > 0
+  )
 
 sbs_mtx %>% skimr::skim()
 ```
@@ -3800,7 +6117,10 @@ Table: Data summary
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: sox2-Cckbr-stats
+#| fig-width: 8
+#| fig-height: 24
 write_csv(sbs_mtx, here(tables_dir, "Sox2-Cckbr-expression-status-between-Ages-on-evaluation-datasets.csv"))
 
 
@@ -3836,7 +6156,10 @@ grouped_ggpiestats(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Cckbr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Create a new variable that combines Sox2_pos and Cckbr_pos
 df <- sbs_mtx %>%
   mutate(Age = factor(Age, levels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"), ordered = TRUE), VarComb = case_when(
@@ -3851,7 +6174,22 @@ df_counts <- df %>%
   group_by(Age, VarComb) %>%
   summarise(n = n()) %>%
   mutate(prop = n / sum(n))
+```
 
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+`summarise()` has grouped output by 'Age'. You can override using the `.groups`
+argument.
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Cckbr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Calculate the total counts for each category
 df_total_counts <- df %>%
   group_by(Age) %>%
@@ -3883,7 +6221,10 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-1.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Cckbr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Sox2+/Cckbr-" = "red3", "Sox2+/Cckbr+" = "yellow", "Sox2-/Cckbr+" = "green", "Sox2-/Cckbr-" = "grey50")) +
@@ -3896,7 +6237,10 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-2.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Cckbr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Cckbr-", "Sox2+/Cckbr-")), aes(x = Age, y = n, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black") +
   scale_fill_manual(values = c("Sox2+/Cckbr+" = "yellow", "Sox2+/Cckbr-" = "red3", "Sox2-/Cckbr+" = "green", "Sox2-/Cckbr-" = "grey50")) +
@@ -3909,7 +6253,10 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Cckbr-", "Sox2+/Cckbr-")), aes
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-3.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Cckbr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Cckbr-", "Sox2+/Cckbr-")), aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Sox2+/Cckbr-" = "red3", "Sox2+/Cckbr+" = "yellow", "Sox2-/Cckbr+" = "green", "Sox2-/Cckbr-" = "grey50")) +
@@ -3933,7 +6280,8 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Cckbr-", "Sox2+/Cckbr-")), aes
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: get-goi-Cckbr-tshr
 sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Cckbr", "Tshr"), ] %>%
   as.data.frame() %>%
   t() %>%
@@ -3941,8 +6289,10 @@ sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Cckbr"
   select(Cckbr, Tshr) %>%
   dplyr::bind_cols(srt@meta.data) %>%
   select(Age, Cckbr, Tshr) %>%
-  mutate(Cckbr_pos = Cckbr > 0,
-         Tshr_pos  = Tshr  > 0)
+  mutate(
+    Cckbr_pos = Cckbr > 0,
+    Tshr_pos = Tshr > 0
+  )
 
 sbs_mtx %>% skimr::skim()
 ```
@@ -3993,7 +6343,10 @@ Table: Data summary
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: Cckbr-tshr-stats
+#| fig-width: 8
+#| fig-height: 24
 write_csv(sbs_mtx, here(tables_dir, "Cckbr-Tshr-expression-status-between-Ages-on-evaluation-datasets.csv"))
 
 
@@ -4029,7 +6382,10 @@ grouped_ggpiestats(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-Cckbr-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Create a new variable that combines Cckbr_pos and Tshr_pos
 df <- sbs_mtx %>%
   mutate(Age = factor(Age, levels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"), ordered = TRUE), VarComb = case_when(
@@ -4044,7 +6400,22 @@ df_counts <- df %>%
   group_by(Age, VarComb) %>%
   summarise(n = n()) %>%
   mutate(prop = n / sum(n))
+```
 
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+`summarise()` has grouped output by 'Age'. You can override using the `.groups`
+argument.
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: plot-Cckbr-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Calculate the total counts for each category
 df_total_counts <- df %>%
   group_by(Age) %>%
@@ -4076,7 +6447,10 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-1.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-Cckbr-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Cckbr+/Tshr-" = "green", "Cckbr+/Tshr+" = "cyan", "Cckbr-/Tshr+" = "royalblue", "Cckbr-/Tshr-" = "grey50")) +
@@ -4089,7 +6463,10 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-2.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-Cckbr-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Cckbr-/Tshr-", "Cckbr+/Tshr-")), aes(x = Age, y = n, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black") +
   scale_fill_manual(values = c("Cckbr+/Tshr+" = "cyan", "Cckbr+/Tshr-" = "green", "Cckbr-/Tshr+" = "royalblue", "Cckbr-/Tshr-" = "grey50")) +
@@ -4102,7 +6479,10 @@ ggplot(df_counts |> filter(!VarComb %in% c("Cckbr-/Tshr-", "Cckbr+/Tshr-")), aes
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-3.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-Cckbr-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Cckbr-/Tshr-", "Cckbr+/Tshr-")), aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Cckbr+/Tshr-" = "green", "Cckbr+/Tshr+" = "cyan", "Cckbr-/Tshr+" = "royalblue", "Cckbr-/Tshr-" = "grey50")) +
@@ -4126,7 +6506,8 @@ ggplot(df_counts |> filter(!VarComb %in% c("Cckbr-/Tshr-", "Cckbr+/Tshr-")), aes
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: get-goi-sox2-Gpr173
 sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Sox2", "Gpr173"), ] %>%
   as.data.frame() %>%
   t() %>%
@@ -4134,8 +6515,10 @@ sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Sox2",
   select(Sox2, Gpr173) %>%
   dplyr::bind_cols(srt@meta.data) %>%
   select(Age, Sox2, Gpr173) %>%
-  mutate(Sox2_pos = Sox2 > 0,
-         Gpr173_pos  = Gpr173  > 0)
+  mutate(
+    Sox2_pos = Sox2 > 0,
+    Gpr173_pos = Gpr173 > 0
+  )
 
 sbs_mtx %>% skimr::skim()
 ```
@@ -4186,7 +6569,10 @@ Table: Data summary
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: sox2-Gpr173-stats
+#| fig-width: 8
+#| fig-height: 24
 write_csv(sbs_mtx, here(tables_dir, "Sox2-Gpr173-expression-status-between-Ages-on-evaluation-datasets.csv"))
 
 
@@ -4222,7 +6608,10 @@ grouped_ggpiestats(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Gpr173-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Create a new variable that combines Sox2_pos and Gpr173_pos
 df <- sbs_mtx %>%
   mutate(Age = factor(Age, levels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"), ordered = TRUE), VarComb = case_when(
@@ -4237,7 +6626,22 @@ df_counts <- df %>%
   group_by(Age, VarComb) %>%
   summarise(n = n()) %>%
   mutate(prop = n / sum(n))
+```
 
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+`summarise()` has grouped output by 'Age'. You can override using the `.groups`
+argument.
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Gpr173-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Calculate the total counts for each category
 df_total_counts <- df %>%
   group_by(Age) %>%
@@ -4269,7 +6673,10 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-1.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Gpr173-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Sox2+/Gpr173-" = "red3", "Sox2+/Gpr173+" = "deeppink", "Sox2-/Gpr173+" = "orchid", "Sox2-/Gpr173-" = "grey50")) +
@@ -4282,7 +6689,10 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-2.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Gpr173-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Gpr173-", "Sox2+/Gpr173-")), aes(x = Age, y = n, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black") +
   scale_fill_manual(values = c("Sox2+/Gpr173+" = "deeppink", "Sox2+/Gpr173-" = "red3", "Sox2-/Gpr173+" = "orchid", "Sox2-/Gpr173-" = "grey50")) +
@@ -4295,7 +6705,10 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Gpr173-", "Sox2+/Gpr173-")), a
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-3.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-sox2-Gpr173-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Gpr173-", "Sox2+/Gpr173-")), aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Sox2+/Gpr173-" = "red3", "Sox2+/Gpr173+" = "deeppink", "Sox2-/Gpr173+" = "orchid", "Sox2-/Gpr173-" = "grey50")) +
@@ -4319,7 +6732,8 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Gpr173-", "Sox2+/Gpr173-")), a
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: get-goi-Gpr173-tshr
 sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Gpr173", "Tshr"), ] %>%
   as.data.frame() %>%
   t() %>%
@@ -4327,8 +6741,10 @@ sbs_mtx <- GetAssayData(object = srt, layer = "counts", assay = "RNA")[c("Gpr173
   select(Gpr173, Tshr) %>%
   dplyr::bind_cols(srt@meta.data) %>%
   select(Age, Gpr173, Tshr) %>%
-  mutate(Gpr173_pos = Gpr173 > 0,
-         Tshr_pos  = Tshr  > 0)
+  mutate(
+    Gpr173_pos = Gpr173 > 0,
+    Tshr_pos = Tshr > 0
+  )
 
 sbs_mtx %>% skimr::skim()
 ```
@@ -4379,7 +6795,10 @@ Table: Data summary
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: Gpr173-tshr-stats
+#| fig-width: 8
+#| fig-height: 24
 write_csv(sbs_mtx, here(tables_dir, "Gpr173-Tshr-expression-status-between-Ages-on-evaluation-datasets.csv"))
 
 
@@ -4415,7 +6834,10 @@ grouped_ggpiestats(
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-Gpr173-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Create a new variable that combines Gpr173_pos and Tshr_pos
 df <- sbs_mtx %>%
   mutate(Age = factor(Age, levels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"), ordered = TRUE), VarComb = case_when(
@@ -4430,7 +6852,22 @@ df_counts <- df %>%
   group_by(Age, VarComb) %>%
   summarise(n = n()) %>%
   mutate(prop = n / sum(n))
+```
 
+::: {.cell-output .cell-output-stderr .hidden}
+
+```
+`summarise()` has grouped output by 'Age'. You can override using the `.groups`
+argument.
+```
+
+
+:::
+
+```{.r .cell-code .hidden}
+#| label: plot-Gpr173-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 # Calculate the total counts for each category
 df_total_counts <- df %>%
   group_by(Age) %>%
@@ -4462,7 +6899,10 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-1.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-Gpr173-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Gpr173+/Tshr-" = "orchid", "Gpr173+/Tshr+" = "magenta4", "Gpr173-/Tshr+" = "royalblue", "Gpr173-/Tshr-" = "grey50")) +
@@ -4475,7 +6915,10 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-2.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-Gpr173-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Gpr173-/Tshr-", "Gpr173+/Tshr-")), aes(x = Age, y = n, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black") +
   scale_fill_manual(values = c("Gpr173+/Tshr+" = "magenta4", "Gpr173+/Tshr-" = "orchid", "Gpr173-/Tshr+" = "royalblue", "Gpr173-/Tshr-" = "grey50")) +
@@ -4488,7 +6931,10 @@ ggplot(df_counts |> filter(!VarComb %in% c("Gpr173-/Tshr-", "Gpr173+/Tshr-")), a
 ![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-3.png){fig-align='center' width=2100}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plot-Gpr173-tshr-bargraph
+#| fig-width: 7
+#| fig-height: 6
 ggplot(df_counts |> filter(!VarComb %in% c("Gpr173-/Tshr-", "Gpr173+/Tshr-")), aes(x = Age, y = prop, fill = VarComb)) +
   geom_bar(stat = "identity", color = "black", position = "fill") +
   scale_fill_manual(values = c("Gpr173+/Tshr-" = "orchid", "Gpr173+/Tshr+" = "magenta4", "Gpr173-/Tshr+" = "royalblue", "Gpr173-/Tshr-" = "grey50")) +
@@ -4512,7 +6958,10 @@ ggplot(df_counts |> filter(!VarComb %in% c("Gpr173-/Tshr-", "Gpr173+/Tshr-")), a
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plt-dotplot-dendrogram-genes-npr
+#| fig-width: 6
+#| fig-height: 6
 goi <- c("Tshb", "Cck", "Pitx1", "Eya3", "Sox2", "Hlf", "Igfbp5", "Tshr", "Cckar", "Cckbr", "Gpr173")
 Idents(srt) <- "Age"
 
@@ -4523,7 +6972,10 @@ DotPlot_scCustom(seurat_object = srt, colors_use = viridis(n = 30, alpha = .75, 
 ![](01-de_test-focus_pars_tub_files/figure-html/plt-dotplot-dendrogram-genes-npr-1.png){fig-align='center' width=1800}
 :::
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
+#| label: plt-dotplot-dendrogram-genes-npr
+#| fig-width: 6
+#| fig-height: 6
 DotPlot(srt, features = goi[goi %in% rownames(srt)], dot.scale = 15)
 ```
 
@@ -4534,7 +6986,7 @@ DotPlot(srt, features = goi[goi %in% rownames(srt)], dot.scale = 15)
 
 ::: {.cell layout-align="center"}
 
-```{.r .cell-code}
+```{.r .cell-code .hidden}
 sessioninfo::session_info()
 ```
 
@@ -4551,7 +7003,7 @@ sessioninfo::session_info()
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       Etc/UTC
- date     2024-12-20
+ date     2024-12-21
  pandoc   3.1.11.1 @ /home/etretiakov/micromamba/bin/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
