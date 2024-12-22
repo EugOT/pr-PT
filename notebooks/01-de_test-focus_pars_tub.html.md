@@ -11,7 +11,7 @@ format:
     fig-height: 12
     fig-format: retina
     fig-responsive: true
-    fig-dpi: 300
+    fig-dpi: 120
   pdf:
     colorlinks: true
     fontsize: 12pt
@@ -30,7 +30,6 @@ knitr:
     fig.width: 14
     fig.height: 12
 ---
-
 
 ::: {.cell .hidden layout-align="center"}
 
@@ -677,7 +676,7 @@ All cells have the same value (0) of "Foxl2"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-romanov2020-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-romanov2020-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -1085,7 +1084,7 @@ Warning: All cells have the same value (0) of "Lhx4"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-pt-romanov2020-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-pt-romanov2020-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -1240,7 +1239,7 @@ UMAP will return its model
 ::: {.cell-output .cell-output-stderr .hidden}
 
 ```
-14:17:58 UMAP embedding parameters a = 0.9922 b = 1.112
+17:01:58 UMAP embedding parameters a = 0.9922 b = 1.112
 ```
 
 
@@ -1249,7 +1248,7 @@ UMAP will return its model
 ::: {.cell-output .cell-output-stderr .hidden}
 
 ```
-14:17:58 Read 51199 rows and found 30 numeric columns
+17:01:58 Read 51199 rows and found 30 numeric columns
 ```
 
 
@@ -1258,7 +1257,7 @@ UMAP will return its model
 ::: {.cell-output .cell-output-stderr .hidden}
 
 ```
-14:17:58 Using Annoy for neighbor search, n_neighbors = 30
+17:01:58 Using Annoy for neighbor search, n_neighbors = 30
 ```
 
 
@@ -1267,7 +1266,7 @@ UMAP will return its model
 ::: {.cell-output .cell-output-stderr .hidden}
 
 ```
-14:17:58 Building Annoy index with metric = cosine, n_trees = 50
+17:01:58 Building Annoy index with metric = cosine, n_trees = 50
 ```
 
 
@@ -1295,13 +1294,13 @@ UMAP will return its model
 
 ```
 **************************************************|
-14:18:06 Writing NN index file to temp file /tmp/RtmpfLNFhr/file2d054c4cfc5b
-14:18:06 Searching Annoy index using 11 threads, search_k = 3000
-14:18:09 Annoy recall = 100%
-14:18:10 Commencing smooth kNN distance calibration using 11 threads with target n_neighbors = 30
-14:18:12 Initializing from normalized Laplacian + noise (using RSpectra)
-14:18:13 Commencing optimization for 200 epochs, with 2530018 positive edges
-14:18:36 Optimization finished
+17:02:07 Writing NN index file to temp file /tmp/RtmptROoo0/file25cdc17b3c97b
+17:02:07 Searching Annoy index using 11 threads, search_k = 3000
+17:02:09 Annoy recall = 100%
+17:02:11 Commencing smooth kNN distance calibration using 11 threads with target n_neighbors = 30
+17:02:12 Initializing from normalized Laplacian + noise (using RSpectra)
+17:02:13 Commencing optimization for 200 epochs, with 2530018 positive edges
+17:02:36 Optimization finished
 ```
 
 
@@ -1368,12 +1367,12 @@ srt <- ProjectUMAP(
 ```
 Computing nearest neighbors
 Running UMAP projection
-14:21:32 Read 128006 rows
-14:21:32 Processing block 1 of 1
-14:21:32 Commencing smooth kNN distance calibration using 11 threads with target n_neighbors = 30
-14:21:33 Initializing by weighted average of neighbor coordinates using 11 threads
-14:21:33 Commencing optimization for 67 epochs, with 3840180 positive edges
-14:22:03 Finished
+17:05:37 Read 128006 rows
+17:05:37 Processing block 1 of 1
+17:05:37 Commencing smooth kNN distance calibration using 11 threads with target n_neighbors = 30
+17:05:37 Initializing by weighted average of neighbor coordinates using 11 threads
+17:05:38 Commencing optimization for 67 epochs, with 3840180 positive edges
+17:06:07 Finished
 ```
 
 
@@ -1410,7 +1409,7 @@ p1 + p2
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-reference-umap-transfered-1.png){fig-align='center' width=4200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-reference-umap-transfered-1.png){fig-align='center' width=1680}
 :::
 :::
 
@@ -1479,7 +1478,7 @@ All cells have the same value (0) of "Foxl2"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-romanov2020-integrated-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-romanov2020-integrated-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -1581,7 +1580,7 @@ grouped_ggpiestats(
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/sox2-tshr-stats-1.png){fig-align='center' width=2400}
+![](01-de_test-focus_pars_tub_files/figure-html/sox2-tshr-stats-1.png){fig-align='center' width=960}
 :::
 :::
 
@@ -1640,7 +1639,7 @@ ggplot(hex_data, aes(x = x, y = y, fill = count)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/unnamed-chunk-19-1.png){fig-align='center' width=4200}
+![](01-de_test-focus_pars_tub_files/figure-html/unnamed-chunk-19-1.png){fig-align='center' width=1680}
 :::
 :::
 
@@ -1995,7 +1994,7 @@ Warning: All cells have the same value (0) of "Lhx4"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-kim2020-1.png){fig-align='center' width=9600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-kim2020-1.png){fig-align='center' width=3840}
 :::
 :::
 
@@ -2058,7 +2057,7 @@ To disable this behavior set `raster=FALSE`
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-scores-kim2020-1.png){fig-align='center' width=6300}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-scores-kim2020-1.png){fig-align='center' width=2520}
 :::
 :::
 
@@ -2108,7 +2107,7 @@ All cells have the same value (0) of "prediction.score.42"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-scores-split-kim2020-1.png){fig-align='center' width=9600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-scores-split-kim2020-1.png){fig-align='center' width=3840}
 :::
 :::
 
@@ -2141,7 +2140,7 @@ To disable this behavior set `raster=FALSE`
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-id-kim2020-1.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-id-kim2020-1.png){fig-align='center' width=840}
 :::
 :::
 
@@ -2175,7 +2174,7 @@ To disable this behavior set `raster=FALSE`
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-split-kim2020-1.png){fig-align='center' width=9600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-prediction-split-kim2020-1.png){fig-align='center' width=3840}
 :::
 :::
 
@@ -2211,7 +2210,7 @@ Warning: All cells have the same value (0) of "Tshb"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e10-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e10-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2237,7 +2236,7 @@ Warning: All cells have the same value (0) of "Tshb"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e11-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e11-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2262,7 +2261,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2287,7 +2286,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2313,7 +2312,7 @@ FeaturePlot(
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2339,7 +2338,7 @@ Warning: All cells have the same value (0) of "Tshb"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e15-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e15-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2364,7 +2363,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2389,7 +2388,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2414,7 +2413,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2439,7 +2438,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Eya3-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2473,7 +2472,7 @@ Warning: All cells have the same value (0) of "Tshb"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e10-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e10-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2499,7 +2498,7 @@ Warning: All cells have the same value (0) of "Tshb"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e11-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e11-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2525,7 +2524,7 @@ Warning: All cells have the same value (0) of "Pitx1"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e12-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e12-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2550,7 +2549,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2575,7 +2574,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2610,7 +2609,7 @@ Warning: All cells have the same value (0) of "Pitx1"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e15-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e15-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2636,7 +2635,7 @@ Warning: All cells have the same value (0) of "Pitx1"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e16-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e16-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2662,7 +2661,7 @@ Warning: All cells have the same value (0) of "Pitx1"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e18-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-e18-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -2687,7 +2686,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2712,7 +2711,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshb-Pitx1-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2759,7 +2758,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e11-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e11-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2784,7 +2783,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2809,7 +2808,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2834,7 +2833,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2859,7 +2858,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2884,7 +2883,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2909,7 +2908,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2934,7 +2933,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2959,7 +2958,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Eya3-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -2993,7 +2992,7 @@ Warning: All cells have the same value (0) of "Cck"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e10-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e10-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -3010,7 +3009,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e11-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e11-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -3036,7 +3035,7 @@ Warning: All cells have the same value (0) of "Pitx1"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e12-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e12-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -3061,7 +3060,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3086,7 +3085,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3153,7 +3152,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3178,7 +3177,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cck-Pitx1-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3239,7 +3238,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3264,7 +3263,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3281,7 +3280,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e14-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e14-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -3320,7 +3319,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3345,7 +3344,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3370,7 +3369,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3395,7 +3394,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Tshb-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3442,7 +3441,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e11-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e11-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3467,7 +3466,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3492,7 +3491,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3509,7 +3508,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e14-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e14-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -3534,7 +3533,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3559,7 +3558,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3584,7 +3583,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3609,7 +3608,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3634,7 +3633,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cck-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3667,7 +3666,7 @@ FeaturePlot(srt |> subset(Age == "E10"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-e10-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-e10-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3692,7 +3691,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-e11-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-e11-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3731,7 +3730,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3748,7 +3747,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-e14-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-e14-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -3815,7 +3814,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3840,7 +3839,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Pitx1-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3873,7 +3872,7 @@ FeaturePlot(srt |> subset(Age == "E10"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e10-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e10-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3898,7 +3897,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e11-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e11-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3923,7 +3922,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3948,7 +3947,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3973,7 +3972,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -3998,7 +3997,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4023,7 +4022,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4048,7 +4047,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4073,7 +4072,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4098,7 +4097,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Hlf-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4131,7 +4130,7 @@ FeaturePlot(srt |> subset(Age == "E10"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e10-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e10-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4156,7 +4155,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e11-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e11-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4181,7 +4180,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4206,7 +4205,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4231,7 +4230,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4256,7 +4255,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4281,7 +4280,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4306,7 +4305,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4331,7 +4330,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4356,7 +4355,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Eya3-Igfbp5-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4389,7 +4388,7 @@ FeaturePlot(srt |> subset(Age == "E10"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e10-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e10-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4414,7 +4413,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e11-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e11-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4439,7 +4438,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4464,7 +4463,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4490,7 +4489,7 @@ Warning: All cells have the same value (0) of "Tshr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e14-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e14-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -4515,7 +4514,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4540,7 +4539,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4565,7 +4564,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4590,7 +4589,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4615,7 +4614,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-tshr-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4648,7 +4647,7 @@ FeaturePlot(srt |> subset(Age == "E10"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e10-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e10-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4673,7 +4672,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e11-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e11-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4698,7 +4697,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4723,7 +4722,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4748,7 +4747,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4773,7 +4772,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4798,7 +4797,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4823,7 +4822,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4848,7 +4847,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4873,7 +4872,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Gpr173-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4907,7 +4906,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e10-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e10-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -4933,7 +4932,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e11-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e11-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -4958,7 +4957,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -4984,7 +4983,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e13-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e13-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5009,7 +5008,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5034,7 +5033,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5059,7 +5058,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5084,7 +5083,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5109,7 +5108,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5134,7 +5133,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-sox2-Cckbr-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5167,7 +5166,7 @@ FeaturePlot(srt |> subset(Age == "E10"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e10-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e10-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5192,7 +5191,7 @@ FeaturePlot(srt |> subset(Age == "E11"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e11-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e11-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5217,7 +5216,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5242,7 +5241,7 @@ FeaturePlot(srt |> subset(Age == "E13"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e13-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e13-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5268,7 +5267,7 @@ Warning: All cells have the same value (0) of "Tshr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e14-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e14-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5293,7 +5292,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5318,7 +5317,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5343,7 +5342,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5368,7 +5367,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5393,7 +5392,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Gpr173-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5427,7 +5426,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e10-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e10-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5453,7 +5452,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e11-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e11-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5478,7 +5477,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5504,7 +5503,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e13-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e13-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5530,7 +5529,7 @@ Warning: All cells have the same value (0) of "Tshr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e14-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e14-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5555,7 +5554,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5580,7 +5579,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5605,7 +5604,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5630,7 +5629,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5655,7 +5654,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Tshr-Cckbr-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5689,7 +5688,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e10-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e10-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5715,7 +5714,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e11-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e11-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5740,7 +5739,7 @@ FeaturePlot(srt |> subset(Age == "E12"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e12-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e12-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5766,7 +5765,7 @@ Warning: All cells have the same value (0) of "Cckbr"
 :::
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e13-1.png){fig-align='center' width=3600}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e13-1.png){fig-align='center' width=1440}
 :::
 :::
 
@@ -5791,7 +5790,7 @@ FeaturePlot(srt |> subset(Age == "E14"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e14-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e14-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5816,7 +5815,7 @@ FeaturePlot(srt |> subset(Age == "E15"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e15-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e15-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5841,7 +5840,7 @@ FeaturePlot(srt |> subset(Age == "E16"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e16-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e16-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5866,7 +5865,7 @@ FeaturePlot(srt |> subset(Age == "E18"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e18-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-e18-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5891,7 +5890,7 @@ FeaturePlot(srt |> subset(Age == "P8"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-p8-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-p8-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5916,7 +5915,7 @@ FeaturePlot(srt |> subset(Age == "P45"),
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-p45-1.png){fig-align='center' width=7200}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-feature-Cckbr-Gpr173-p45-1.png){fig-align='center' width=2880}
 :::
 :::
 
@@ -5992,7 +5991,7 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-1.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-1.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6008,7 +6007,7 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-2.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-2.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6024,7 +6023,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Tshr-", "Sox2+/Tshr-")), aes(x
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-3.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-3.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6040,7 +6039,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Tshr-", "Sox2+/Tshr-")), aes(x
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-4.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-tshr-bargraph-4.png){fig-align='center' width=840}
 :::
 :::
 
@@ -6142,7 +6141,7 @@ grouped_ggpiestats(
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/sox2-Cckbr-stats-1.png){fig-align='center' width=2400}
+![](01-de_test-focus_pars_tub_files/figure-html/sox2-Cckbr-stats-1.png){fig-align='center' width=960}
 :::
 :::
 
@@ -6218,7 +6217,7 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-1.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-1.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6234,7 +6233,7 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-2.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-2.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6250,7 +6249,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Cckbr-", "Sox2+/Cckbr-")), aes
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-3.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-3.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6266,7 +6265,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Cckbr-", "Sox2+/Cckbr-")), aes
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-4.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Cckbr-bargraph-4.png){fig-align='center' width=840}
 :::
 :::
 
@@ -6368,7 +6367,7 @@ grouped_ggpiestats(
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/Cckbr-tshr-stats-1.png){fig-align='center' width=2400}
+![](01-de_test-focus_pars_tub_files/figure-html/Cckbr-tshr-stats-1.png){fig-align='center' width=960}
 :::
 :::
 
@@ -6444,7 +6443,7 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-1.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-1.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6460,7 +6459,7 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-2.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-2.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6476,7 +6475,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Cckbr-/Tshr-", "Cckbr+/Tshr-")), aes
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-3.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-3.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6492,7 +6491,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Cckbr-/Tshr-", "Cckbr+/Tshr-")), aes
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-4.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-Cckbr-tshr-bargraph-4.png){fig-align='center' width=840}
 :::
 :::
 
@@ -6594,7 +6593,7 @@ grouped_ggpiestats(
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/sox2-Gpr173-stats-1.png){fig-align='center' width=2400}
+![](01-de_test-focus_pars_tub_files/figure-html/sox2-Gpr173-stats-1.png){fig-align='center' width=960}
 :::
 :::
 
@@ -6670,7 +6669,7 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-1.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-1.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6686,7 +6685,7 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-2.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-2.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6702,7 +6701,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Gpr173-", "Sox2+/Gpr173-")), a
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-3.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-3.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6718,7 +6717,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Gpr173-", "Sox2+/Gpr173-")), a
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-4.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-sox2-Gpr173-bargraph-4.png){fig-align='center' width=840}
 :::
 :::
 
@@ -6820,7 +6819,7 @@ grouped_ggpiestats(
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/Gpr173-tshr-stats-1.png){fig-align='center' width=2400}
+![](01-de_test-focus_pars_tub_files/figure-html/Gpr173-tshr-stats-1.png){fig-align='center' width=960}
 :::
 :::
 
@@ -6896,7 +6895,7 @@ ggplot(df_counts, aes(x = Age, y = n, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-1.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-1.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6912,7 +6911,7 @@ ggplot(df_counts, aes(x = Age, y = prop, fill = VarComb)) +
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-2.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-2.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6928,7 +6927,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Gpr173-/Tshr-", "Gpr173+/Tshr-")), a
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-3.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-3.png){fig-align='center' width=840}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6944,7 +6943,7 @@ ggplot(df_counts |> filter(!VarComb %in% c("Gpr173-/Tshr-", "Gpr173+/Tshr-")), a
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-4.png){fig-align='center' width=2100}
+![](01-de_test-focus_pars_tub_files/figure-html/plot-Gpr173-tshr-bargraph-4.png){fig-align='center' width=840}
 :::
 :::
 
@@ -6969,7 +6968,7 @@ DotPlot_scCustom(seurat_object = srt, colors_use = viridis(n = 30, alpha = .75, 
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plt-dotplot-dendrogram-genes-npr-1.png){fig-align='center' width=1800}
+![](01-de_test-focus_pars_tub_files/figure-html/plt-dotplot-dendrogram-genes-npr-1.png){fig-align='center' width=720}
 :::
 
 ```{.r .cell-code .hidden}
@@ -6980,7 +6979,7 @@ DotPlot(srt, features = goi[goi %in% rownames(srt)], dot.scale = 15)
 ```
 
 ::: {.cell-output-display}
-![](01-de_test-focus_pars_tub_files/figure-html/plt-dotplot-dendrogram-genes-npr-2.png){fig-align='center' width=1800}
+![](01-de_test-focus_pars_tub_files/figure-html/plt-dotplot-dendrogram-genes-npr-2.png){fig-align='center' width=720}
 :::
 :::
 

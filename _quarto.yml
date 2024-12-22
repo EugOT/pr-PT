@@ -24,4 +24,4 @@ format:
       cite-style: number
 
 execute:
-  freeze: true
+  freeze: auto
