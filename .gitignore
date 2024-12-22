@@ -19,3 +19,4 @@ notebooks/site_libs
 *.gz
 
 /.quarto/
+/_site/
