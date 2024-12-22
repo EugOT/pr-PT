@@ -13,6 +13,9 @@ format:
     comments:
       hypothesis: true
     theme: zephyr
+    citations-hover: true
+    crossrefs-hover: true
+    title-block-style: manuscript
   docx: default
   jats: default
   elsevier-pdf:
