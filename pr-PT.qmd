@@ -60,22 +60,11 @@ author:
     affiliations:
         - ref: meduniwien
 funding:
-  - source: "Swedish Research Council (Grant #: 2023-03058)"
-    investigator:
-      - ref: th
-  - source: "Novo Nordisk Foundation (Grant #: NNF23OC0084476)"
-    investigator:
-      - ref: th
-  - source: "Hjärnfonden (Grant #: FO2022-0300)"
-    investigator:
-      - ref: th
-  - source: "European Research Council (FOODFORLIFE, 2020-AdG-101021016)"
-    investigator:
-      - ref: th
-  - source: "intramural funds of the Medical Neuroscience Cluster of the Medical University of Vienna (Grant #: 2021/1)"
-    investigator:
-      - ref: th
-      - ref: et
+  - "Swedish Research Council (Grant #: 2023-03058, THa)"
+  - "Novo Nordisk Foundation (Grant #: NNF23OC0084476, THa)"
+  - "Hjärnfonden (Grant #: FO2022-0300, THa)"
+  - "European Research Council (FOODFORLIFE, 2020-AdG-101021016 THa)"
+  - "intramural funds of the Medical Neuroscience Cluster of the Medical University of Vienna (Grant #: 2021/1, ET and THa)"
 abstract: |
   This is the abstract. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum augue turpis, dictum non malesuada a, volutpat eget velit. Nam placerat turpis purus, eu tristique ex tincidunt et. Mauris sed augue eget turpis ultrices tincidunt. Sed et mi in leo porta egestas. Aliquam non laoreet velit. Nunc quis ex vitae eros aliquet auctor nec ac libero. Duis laoreet sapien eu mi luctus, in bibendum leo molestie. Sed hendrerit diam diam, ac dapibus nisl volutpat vitae. Aliquam bibendum varius libero, eu efficitur justo rutrum at. Sed at tempus elit.
 keywords:
