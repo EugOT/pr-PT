@@ -1,0 +1,27 @@
+project:
+  type: manuscript
+
+manuscript:
+  article: pr-PT.qmd
+  notebooks:
+    - notebook: notebooks/01-de_test-focus_pars_tub.qmd
+      title: Differential expression analysis of Developmental Hypothalamus datasets from Kim DW et al., 2020 and Romanov et al., 2020 with focus on Pars Tuberalis
+
+format:
+  html:
+    code-fold: true
+    comments:
+      hypothesis: true
+    theme: zephyr
+  docx: default
+  jats: default
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: Developmental Cell
+      formatting: preprint
+      # model: 3p # Don't set a model with preprint
+      cite-style: number
+
+execute:
+  freeze: auto

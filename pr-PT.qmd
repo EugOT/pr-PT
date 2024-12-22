@@ -1,0 +1,211 @@
+---
+title: Short Paper
+subtitle: A Short Subtitle
+author:
+  - name: Evgenii O. Tretiakov, PhD
+    email: evgenii.tretiakov@meduniwien.ac.at
+    id: et
+    affiliations:
+        - id: meduniwien
+          name: Medical University of Vienna
+          department: Department of Molecular Neurosciences, Center for Brain Research
+          address: Spitalgasse 4
+          city: Vienna
+          country: Austria
+          postal-code: A-1090
+          isni: 0000000092598492
+          ror: 05n3x4p02
+    orcid: 0000-0001-5920-2190
+    attributes:
+        equal-contributor: true
+    roles:
+      - conceptualization: supporting
+      - data curation: lead
+      - formal analysis: lead
+      - investigation: lead
+      - methodology: lead
+      - resources: supporting
+      - software: lead
+      - visualization: lead
+      - writing: supporting
+      - editing: supporting
+  - name: Tibor Harkany, PhD
+    email: tibor.harkany@meduniwien.ac.at
+    id: th
+    affiliations:
+        - ref: meduniwien
+        - id: karolinska
+          name: Karolinska Institutet
+          department: Department of Neuroscience, Biomedicum 7D
+          group: Division of Molecular and Cellular Neuroendocrinology
+          city: Solna
+          country: Sweden
+          postal-code: SE-17165
+          isni: 0000000419370626
+          ror: 056d84691
+    orcid: 0000-0002-6637-5900
+    attributes:
+        corresponding: true
+    roles:
+      - conceptualization: lead
+      - investigation: lead
+      - methodology: lead
+      - project administration: lead
+      - resources: lead
+      - supervision: lead
+      - writing: lead
+      - editing: lead
+  - name: Amina Telalovic
+    email: amina.telalovic@meduniwien.ac.at
+    affiliations:
+        - ref: meduniwien
+funding:
+  - "Swedish Research Council (Grant #: 2023-03058, THa)"
+  - "Novo Nordisk Foundation (Grant #: NNF23OC0084476, THa)"
+  - "Hjärnfonden (Grant #: FO2022-0300, THa)"
+  - "European Research Council (FOODFORLIFE, 2020-AdG-101021016 THa)"
+  - "intramural funds of the Medical Neuroscience Cluster of the Medical University of Vienna (Grant #: 2021/1, ET and THa)"
+abstract: |
+  This is the abstract. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum augue turpis, dictum non malesuada a, volutpat eget velit. Nam placerat turpis purus, eu tristique ex tincidunt et. Mauris sed augue eget turpis ultrices tincidunt. Sed et mi in leo porta egestas. Aliquam non laoreet velit. Nunc quis ex vitae eros aliquet auctor nec ac libero. Duis laoreet sapien eu mi luctus, in bibendum leo molestie. Sed hendrerit diam diam, ac dapibus nisl volutpat vitae. Aliquam bibendum varius libero, eu efficitur justo rutrum at. Sed at tempus elit.
+keywords:
+  - keyword1
+  - keyword2
+date: last-modified
+bibliography: bibliography.bib
+format:
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: Developmental Cell
+      formatting: preprint
+      # model: 3p # Don't set a model with preprint
+      cite-style: number
+---
+
+# Results
+
+## **Single-cell RNA sequencing reveals three distinct groups of pars tuberalis cells with unique transcriptional profiles**
+
+To thoroughly investigate the cellular diversity of the pars tuberalis (PT) during embryonic development, we analyzed single-cell RNA sequencing (scRNA-seq) data from two comprehensive studies: Romanov et al.[@romanovMolecularDesignHypothalamus2020] and Kim et al.[@kim2020].
+These datasets encompass a broad range of developmental stages, from embryonic day 10 (E10) to postnatal day 45 (P45), allowing us to capture the dynamic changes in gene expression throughout PT development.
+
+In the dataset from Romanov et al., we identified a distinct cluster of PT cells within the hypothalamic scRNA-seq data (Fig. 1a).
+This cluster was characterized by the expression of key developmental genes, including *Pitx1*, a transcription factor crucial for anterior pituitary gland formation[@szetoPOTXPIT1interactingHomeodomain1996], and *Gata2*, which is essential for the early stages of Rathke's pouch detachment and PT formation[@dasenReciprocalInteractionsPit11999].
+
+To enhance the resolution of our analysis and validate these findings, we integrated scRNA-seq data from Kim et al., which provided a rich temporal landscape of hypothalamic development.
+By aligning the datasets, we ensured accurate identification and mapping of PT cell populations across different developmental stages (Fig. 1b).
+
+Clustering of the integrated dataset revealed three distinct groups of PT cells, each defined by unique transcriptional profiles:
+
+### **Group One: Eya3^high^/Tshb^+^/Cck^+^ Cells**
+
+Group one cells exhibited high expression of the transcriptional coactivator *Eya3* and co-expressed the peptide hormones *Tshb* (thyroid-stimulating hormone beta subunit) and *Cck* (cholecystokinin).
+These cells were consistently present from E12 onward and remained prominent throughout embryonic development (Fig. 2a).
+Visualization using UMAP (Uniform Manifold Approximation and Projection) showed that *Eya3*, *Tshb*, and *Cck* were co-expressed within the same cell clusters.
+
+Spearman's correlation analysis across developmental stages confirmed strong positive correlations between *Eya3* and *Tshb* (ρ \> 0.85, p \< 0.001) and between *Eya3* and *Cck* (ρ \> 0.80, p \< 0.001).
+This co-expression suggests a coordinated regulatory mechanism driving hormone production in these PT cells.
+
+### **Group Two: Eya1^+^/Eya4^+^ Cells**
+
+Cells in group two were characterized by the expression of *Eya1* and *Eya4*.
+These transcriptional coactivators were expressed at lower levels compared to *Eya3* and were more spatially and temporally restricted (Fig. 2b).
+Group two cells became more apparent at later developmental stages (after E14.5), indicating a potential role in the maturation or specialization of certain PT cell types.
+
+Unlike group one, group two cells exhibited minimal expression of *Tshb* and *Cck*, suggesting they may serve functions distinct from hormone secretion, possibly in structural or regulatory roles within the PT.
+
+### **Group Three: Eya2^+^ Cells**
+
+Group three cells predominantly expressed *Eya2*.
+This expression was low during early stages (E10–E12) but significantly increased from E14.5 onward (Fig. 2c).
+These cells were mainly located at the periphery of the PT, forming distinct clusters separate from groups one and two.
+
+The temporal increase in *Eya2* expression and the spatial distribution of group three cells imply they may represent a later phase of PT cell differentiation or a unique lineage with specialized functions yet to be fully understood.
+
+To further elucidate the characteristics of these groups, we examined additional genes implicated in PT development and function:
+
+-   **Pitx1 Co-expression**: *Pitx1*, essential for pituitary development, was co-expressed with *Eya3* in group one cells (Fig. 3a). This co-localization reinforces the idea that group one cells are actively involved in hormone production and early PT development.
+-   **Sox2 Expression**: *Sox2*, a marker of neural stem and progenitor cells, was expressed across all PT cell groups (Fig. 3b). The presence of *Sox2* suggests that PT cells may share common progenitor characteristics or that neural stem cell pathways influence PT cell differentiation.
+
+We also explored the potential interactions between PT-derived hormones and the developing brain:
+
+-   **Hormone Receptor Expression**: The receptors for *Tshb* (*Tshr*) and *Cck* (*Cckbr*) were expressed in regions of the developing hypothalamus rich in neural progenitor cells, such as the ventricular zones (Fig. 4a, 4b). Co-expression of *Tshr* and *Cckbr* with *Sox2* indicates that PT-derived hormones could influence neural development by acting on these progenitor cells.
+-   **Gpr173 Expression**: We observed expression of *Gpr173*, a G protein-coupled receptor involved in neuroendocrine signaling, in neural progenitor zones overlapping with *Sox2* expression (Fig. 4c). This suggests a potential role for *Gpr173* in mediating hormonal signals from the PT to the developing brain.
+
+To visualize gene expression dynamics across developmental stages, we generated DotPlots for key genes (Fig. 5).
+This analysis highlighted:
+
+-   **Early Onset and Persistence of Group One Genes**: *Eya3*, *Tshb*, and *Cck* expression began as early as E12 and continued throughout embryonic development, indicating a sustained role in PT function.
+-   **Temporal Emergence of Group Two and Three Genes**: *Eya1*, *Eya2*, and *Eya4* displayed increased expression at later stages, suggesting these genes are involved in the maturation and specialization processes within the PT.
+
+Our integrated analysis, combining data from multiple developmental stages and employing rigorous statistical correlations, provides compelling evidence for the existence of three distinct PT cell groups during embryogenesis.
+Each group exhibits unique transcriptional signatures, indicating specialized roles:
+
+-   **Group One** is likely responsible for early hormone production, directly influencing both PT development and possibly exerting effects on the hypothalamus through hormone secretion.
+-   **Group Two** may be involved in structural formation or regulation within the PT, given their distinct gene expression profile and later emergence.
+-   **Group Three** could represent a specialized lineage that plays a role in the maturation of the PT or has unique endocrine functions.
+
+# Methods
+
+## Data Acquisition and Preprocessing
+
+Single-cell RNA sequencing (scRNA-seq) data from the mouse hypothalamus were obtained from the study by Kim et al.[@kim2020], available under BioProject accession PRJNA547712 (https://github.com/EugOT/PRJNA547712).
+The dataset, comprising expression profiles of 128,006 cells across 27,998 genes, was acquired in the AnnData format (kim2020_combined.h5ad).
+This dataset spans various developmental stages, including embryonic days (E)10 to E18 and postnatal days (P)4 to P45.
+To facilitate analysis in R, the AnnData object was converted into a Seurat object[@haoDictionaryLearningIntegrative2023; @stuartComprehensiveIntegrationSingleCell2019].
+The expression matrix was transposed to align genes as rows and cells as columns.
+Cell metadata, including identifiers and developmental stages, were incorporated.
+Dimensionality reduction was performed using Uniform Manifold Approximation and Projection (UMAP)[@mcinnes2018; @kobakInitializationCriticalPreserving2021], and the resulting embeddings were added to the Seurat object for visualization purposes.
+
+## Integration with Reference Dataset
+
+To annotate cell types within the pars tuberalis (PT), we integrated query dataset[@kim2020] with a reference scRNA-seq dataset (https://github.com/EugOT/PRJNA548917), which provides detailed annotations of hypothalamic cell populations[@romanovMolecularDesignHypothalamus2020].
+The reference dataset was updated to ensure compatibility and included 51,199 cells with expression profiles for 24,340 genes.
+
+Anchors between the query dataset[@kim2020] and the reference dataset[@romanovMolecularDesignHypothalamus2020] were identified using the FindTransferAnchors function in Seurat[@haoDictionaryLearningIntegrative2023; @stuartComprehensiveIntegrationSingleCell2019], employing principal component analysis (PCA) for dimensionality reduction over 30 dimensions.
+Cell type labels were transferred from the reference to the query dataset using the TransferData function, allowing for the prediction of cell identities within the PT[@haoDictionaryLearningIntegrative2023].
+The integration facilitated the identification of specific cell clusters corresponding to the PT, marked by the expression of genes such as Tshb, Cck, and Eya3.
+
+## Normalization and Feature Selection
+
+The integrated Seurat object was normalized using the NormalizeData function, applying global-scaling normalization to account for differences in sequencing depth.
+Variable features were identified using the FindVariableFeatures function with the 'vst' method[@hafemeister2019], selecting the top 3,000 genes exhibiting high variability across cells.
+The data were then scaled using the ScaleData function, regressing out unwanted sources of variation and centering and scaling the data for downstream analyses.
+
+## Dimensionality Reduction and Visualization
+
+Principal component analysis was conducted on the scaled data, and the first 30 principal components were used for further analysis.
+UMAP was performed using the RunUMAP function to visualize the data in two-dimensional space, capturing the global structure and potential trajectories of cellular differentiation.
+
+Feature plots were generated using the FeaturePlot function to visualize the expression patterns of key genes across developmental stages.
+Genes of interest included Tshb, Cck, Pitx1, Eya1, Eya2, Eya3, Sox2, Hlf, Tshr, Cckar, Cckbr, and Gpr173.
+Blended feature plots were employed to examine co-expression patterns, with parameters adjusted for optimal visualization (e.g., blend thresholds, point sizes, alpha levels, and color schemes).
+
+## Statistical Analysis
+
+To assess the association between the expression of specific genes across developmental stages, chi-squared tests of independence were conducted.
+Binary expression matrices were created by thresholding gene expression counts (e.g., considering a gene as expressed using gene-specific quantile thresholding).
+Contingency tables were constructed for pairs of genes (*Tshb*, *Cck*, *Pitx1*, *Eya1*, *Eya2*, *Eya3*, *Eya4*, *Sox2*, *Hlf*, *Tshr*, *Cckar*, *Cckbr*, and *Gpr173*), such as *Sox2* and *Tshr*, across different developmental stages.
+
+The ggpiestats function from the ggstatsplot package[@patil2021] was utilized to generate grouped pie charts, displaying the proportion of cells expressing combinations of genes and the results of chi-squared tests.
+The analyses provided insights into potential regulatory relationships and developmental dynamics within the PT.
+
+UpSet plots[@conwayUpSetRPackageVisualization2017] were created to visualize the counts and proportions of cells expressing various combinations of genes across developmental stages.
+These plots illustrated the temporal changes in gene expression and the prevalence of specific cell populations during development.
+
+## Gene Expression Correlation Analysis
+
+To investigate potential co-regulation and interactions between genes, correlation analyses were performed.
+Spearman’s rank correlation coefficients were calculated for pairs of genes across cells at each developmental stage.
+Hexbin plots were generated using the hexbin package to visualize the density and correlation of gene expression in a two-dimensional space, aiding in the identification of spatial expression patterns and clusters.
+
+Dot plots were generated using the DotPlot function to summarize the expression of genes of interest across developmental stages.
+The genes included *Tshb*, *Cck*, *Pitx1*, *Eya3*, *Sox2*, *Hlf*, *Igfbp5*, *Tshr*, *Cckar*, *Cckbr*, and *Gpr173*.
+The dot plots represented both the proportion of cells expressing each gene and the average expression levels, providing a comprehensive overview of gene expression dynamics during development.
+
+## Data Availability
+
+The code (<https://github.com/EugOT/pr-PT>) and datasets used in this study are publicly available.
+The Kim[@kim2020] dataset can be accessed under BioProject accession PRJNA547712, and the Romanov[@romanovMolecularDesignHypothalamus2020] dataset is available under BioProject accession PRJNA548917 including repository with reprocessing code: <https://github.com/EugOT/PRJNA547712> and <https://github.com/EugOT/PRJNA548917>.
+
+# References {.unnumbered}
