@@ -20,6 +20,8 @@ format:
   jats: default
   elsevier-pdf:
     keep-tex: true
+    fig-dpi: 300
+    colorlinks: true
     journal:
       name: Developmental Cell
       formatting: preprint

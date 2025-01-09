@@ -2,9 +2,8 @@
 title: Short Paper
 subtitle: A Short Subtitle
 author:
-  - name: Evgenii O. Tretiakov, PhD
-    email: evgenii.tretiakov@meduniwien.ac.at
-    id: et
+  - name: Amina Telalovic
+    email: amina.telalovic@meduniwien.ac.at
     affiliations:
         - id: meduniwien
           name: Medical University of Vienna
@@ -15,6 +14,11 @@ author:
           postal-code: A-1090
           isni: 0000000092598492
           ror: 05n3x4p02
+  - name: Evgenii O. Tretiakov, PhD
+    email: evgenii.tretiakov@meduniwien.ac.at
+    id: et
+    affiliations:
+        - ref: meduniwien
     orcid: 0000-0001-5920-2190
     attributes:
         equal-contributor: true
@@ -55,10 +59,6 @@ author:
       - supervision: lead
       - writing: lead
       - editing: lead
-  - name: Amina Telalovic
-    email: amina.telalovic@meduniwien.ac.at
-    affiliations:
-        - ref: meduniwien
 funding:
   - "Swedish Research Council (Grant #: 2023-03058, THa)"
   - "Novo Nordisk Foundation (Grant #: NNF23OC0084476, THa)"

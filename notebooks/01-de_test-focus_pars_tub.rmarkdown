@@ -65,7 +65,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+
+
 ## Load data and setup parameters
+
+
+
 
 ```{r}
 #| label: libraries
@@ -95,7 +101,13 @@ suppressPackageStartupMessages({
 })
 ```
 
+
+
+
 ### Set paths
+
+
+
 
 ```{r}
 #| label: paths
@@ -106,7 +118,13 @@ plots_dir <- here(output_dir, "figures/")
 tables_dir <- here(output_dir, "tables/")
 ```
 
+
+
+
 ### Load helper functions and gene-sets
+
+
+
 
 ```{r}
 #| label: source
@@ -115,7 +133,13 @@ source(here(src_dir, "genes.R"))
 source(here(src_dir, "functions.R"))
 ```
 
+
+
+
 ### Set fixed variables
+
+
+
 
 ```{r}
 #| label: params-computation
@@ -160,7 +184,13 @@ metric <- "euclidean"
 signature <- 100
 ```
 
+
+
+
 ## Load data from Kim DW et al 2020 (bioproject PRJNA547712)
+
+
+
 
 ```{r}
 #| label: convert-to-seurat
@@ -371,7 +401,13 @@ FeaturePlot(
 )
 ```
 
+
+
+
 # Calculate and plot chi2 test of independence between Sox2 and Tshr expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: get-goi-sox2-tshr
@@ -413,7 +449,13 @@ grouped_ggpiestats(
 )
 ```
 
+
+
+
 ## Calculate and plot hexagonal cells representation in hypothalamus across different developmental stages with meta information
+
+
+
 
 ```{r}
 srt.kim
@@ -579,9 +621,15 @@ p45kim <- Cluster_Highlight_Plot(
 p38kim | p45kim
 ```
 
+
+
+
 ## Quantify and plot representation of gene interactions with feature expression Spearman’s correlation
 
 ### Kim DW et al. 2020 dataset
+
+
+
 
 ```{r}
 #| label: fig-violin-gene-interactions-kim2020
@@ -745,7 +793,13 @@ nbformat.write(nb, 'gene_correlation_plots_kim2020.qmd')
 #| child: "gene_correlation_plots_kim2020.qmd"
 ```
 
+
+
+
 #### Dotplots
+
+
+
 
 ```{r}
 #| label: fig-dotplot-dendrogram-genes-kim2020
@@ -757,7 +811,13 @@ Idents(srt.kim) <- "Age"
 DotPlot_scCustom(seurat_object = subset(srt.kim, cells = cells_to_check), colors_use = viridis(n = 30, alpha = .75, direction = -1, option = "E"), features = genes_to_check, flip_axes = T, x_lab_rotate = TRUE, dot.scale = 15)
 ```
 
+
+
+
 ### Romanov et al. 2020 dataset
+
+
+
 
 ```{r}
 #| label: fig-violin-gene-interactions-romanov2020
@@ -858,7 +918,13 @@ nbformat.write(nb, 'gene_correlation_plots_romanov2020.qmd')
 #| child: "gene_correlation_plots_romanov2020.qmd"
 ```
 
+
+
+
 #### Dotplots
+
+
+
 
 ```{r}
 #| label: fig-dotplot-dendrogram-genes-romanov2020
@@ -870,7 +936,13 @@ Idents(srt.kim) <- "Age"
 DotPlot_scCustom(seurat_object = subset(srt.romanov.pub, cells = cells_to_check), colors_use = viridis(n = 30, alpha = .75, direction = -1, option = "E"), features = genes_to_check, flip_axes = T, x_lab_rotate = TRUE, dot.scale = 15)
 ```
 
+
+
+
 ## Barplot of Sox2 and Tshr expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: fig-sox2-tshr-bargraph
@@ -935,7 +1007,13 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Tshr-", "Sox2+/Tshr-")), aes(x
   scale_x_discrete(labels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"))
 ```
 
+
+
+
 # Calculate and plot chi2 test of independence between Sox2 and Cckbr expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: get-goi-sox2-Cckbr
@@ -976,7 +1054,13 @@ grouped_ggpiestats(
 )
 ```
 
+
+
+
 ## Barplot of Sox2 and Cckbr expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: fig-sox2-Cckbr-bargraph
@@ -1041,7 +1125,13 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Cckbr-", "Sox2+/Cckbr-")), aes
   scale_x_discrete(labels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"))
 ```
 
+
+
+
 # Calculate and plot chi2 test of independence between Cckbr and Tshr expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: get-goi-Cckbr-tshr
@@ -1082,7 +1172,13 @@ grouped_ggpiestats(
 )
 ```
 
+
+
+
 ## Barplot of Cckbr and Tshr expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: fig-Cckbr-tshr-bargraph
@@ -1147,7 +1243,13 @@ ggplot(df_counts |> filter(!VarComb %in% c("Cckbr-/Tshr-", "Cckbr+/Tshr-")), aes
   scale_x_discrete(labels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"))
 ```
 
+
+
+
 # Calculate and plot chi2 test of independence between Sox2 and Gpr173 expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: get-goi-sox2-Gpr173
@@ -1188,7 +1290,13 @@ grouped_ggpiestats(
 )
 ```
 
+
+
+
 ## Barplot of Sox2 and Gpr173 expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: fig-sox2-Gpr173-bargraph
@@ -1253,7 +1361,13 @@ ggplot(df_counts |> filter(!VarComb %in% c("Sox2-/Gpr173-", "Sox2+/Gpr173-")), a
   scale_x_discrete(labels = c("E10", "E11", "E12", "E13", "E14", "E15", "E16", "E18", "P4", "P8", "P14", "P45"))
 ```
 
+
+
+
 # Calculate and plot chi2 test of independence between Gpr173 and Tshr expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: get-goi-Gpr173-tshr
@@ -1294,7 +1408,13 @@ grouped_ggpiestats(
 )
 ```
 
+
+
+
 ## Barplot of Gpr173 and Tshr expression in hypothalamus across different developmental stages
+
+
+
 
 ```{r}
 #| label: fig-Gpr173-tshr-bargraph
@@ -1362,3 +1482,4 @@ ggplot(df_counts |> filter(!VarComb %in% c("Gpr173-/Tshr-", "Gpr173+/Tshr-")), a
 ```{r}
 sessioninfo::session_info()
 ```
+
