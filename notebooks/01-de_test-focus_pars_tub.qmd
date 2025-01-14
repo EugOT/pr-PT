@@ -3,7 +3,7 @@ title: "Differential expression analysis of Hypothalamus datasets from Kim DW et
 author: "Evgenii O. Tretiakov"
 date: "`r Sys.Date()`"
 format:
-  html:
+  elsevier-html:
     toc: true
     df-print: paged
     code-fold: true
@@ -12,7 +12,7 @@ format:
     fig-format: retina
     fig-responsive: true
     fig-dpi: 120
-  pdf:
+  elsevier-pdf:
     colorlinks: true
     fontsize: 12pt
 execute:
@@ -25,10 +25,6 @@ execute:
 knitr:
   opts_chunk:
     autodep: true
-    fig.align: center
-    fig.retina: 2
-    fig.width: 14
-    fig.height: 12
 ---
 
 ```{r}
@@ -223,6 +219,7 @@ print(srt.romanov.pt)
 #| fig-cap: "Feature plot of selected genes in hypothalamus across different developmental stages in the Romanov et al. (2020) dataset (original UMAP embedding). Cells are colored by expression level.  Note the distinct localization patterns of each gene."
 #| fig-width: 24
 #| fig-height: 36
+#| fig-dpi: 90
 FeaturePlot(
   srt.romanov.pub,
   features = c(
@@ -352,6 +349,7 @@ p1 + p2
 #| fig.cap: "Feature plot of selected genes in hypothalamus across different developmental stages in the Romanov et al. (2020) dataset (new integrated UMAP embedding). Cells are colored by expression level.  Note the distinct localization patterns of each gene."
 #| fig-width: 24
 #| fig-height: 36
+#| fig-dpi: 90
 FeaturePlot(
   srt.romanov.pub,
   features = c(

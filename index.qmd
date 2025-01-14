@@ -80,6 +80,15 @@ format:
       formatting: preprint
       # model: 3p # Don't set a model with preprint
       cite-style: number
+  elsevier-html:
+    toc: true
+    df-print: paged
+    code-fold: true
+    fig-width: 9
+    fig-height: 12
+    fig-format: retina
+    fig-responsive: true
+    fig-dpi: 120
 ---
 
 # Results
@@ -102,8 +111,6 @@ Clustering of the integrated dataset revealed three distinct groups of PT cells,
 Group one cells exhibited high expression of the transcriptional coactivator *Eya3* and co-expressed the peptide hormones *Tshb* (thyroid-stimulating hormone beta subunit) and *Cck* (cholecystokinin).
 These cells were consistently present from E12 onward and remained prominent throughout embryonic development (Fig. 2a).
 Visualization using UMAP (Uniform Manifold Approximation and Projection) showed that *Eya3*, *Tshb*, and *Cck* were co-expressed within the same cell clusters.
-
-Spearman's correlation analysis across developmental stages confirmed strong positive correlations between *Eya3* and *Tshb* (ρ \> 0.85, p \< 0.001) and between *Eya3* and *Cck* (ρ \> 0.80, p \< 0.001).
 This co-expression suggests a coordinated regulatory mechanism driving hormone production in these PT cells.
 
 ### **Group Two: Eya1^+^/Eya4^+^ Cells**
@@ -209,3 +216,4 @@ The code (<https://github.com/EugOT/pr-PT>) and datasets used in this study are 
 The Kim[@kim2020] dataset can be accessed under BioProject accession PRJNA547712, and the Romanov[@romanovMolecularDesignHypothalamus2020] dataset is available under BioProject accession PRJNA548917 including repository with reprocessing code: <https://github.com/EugOT/PRJNA547712> and <https://github.com/EugOT/PRJNA548917>.
 
 # References {.unnumbered}
+
