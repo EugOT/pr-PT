@@ -267,9 +267,9 @@ FeaturePlot(
 #| label: norm-scale-matrix
 # Using gene name patterns
 srt.kim <- Add_Mito_Ribo(object = srt.kim, species = "Mouse", ensembl_ids = FALSE)
-srt.kim$umi_per_gene <- 
+srt.kim$umi_per_gene <-
   (srt.kim$nCount_RNA/srt.kim$nFeature_RNA)
-srt.kim$log_umi_per_gene <- 
+srt.kim$log_umi_per_gene <-
   log10(srt.kim$umi_per_gene)
 srt.kim <- NormalizeData(srt.kim)
 srt.kim <- FindVariableFeatures(srt.kim, selection.method = "vst", nfeatures = 5000)
@@ -633,27 +633,27 @@ Stacked_VlnPlot(subset(srt.kim, cells = cells_to_check), features = genes_to_che
 # Helper functions
 calculate_correlations <- function(seurat_obj, gene_pairs, group_var, cells) {
   map_dfr(gene_pairs, function(genes) {
-    data <- seurat_obj |> 
-      subset(cells = cells) |> 
-      GetAssayData(layer = "data") |> 
-      t() |> 
-      as.data.frame() |> 
+    data <- seurat_obj |>
+      subset(cells = cells) |>
+      GetAssayData(layer = "data") |>
+      t() |>
+      as.data.frame() |>
       select(all_of(genes))
-    
+
     groups <- seurat_obj[[group_var]][cells, , drop = FALSE]
-    
+
     # Calculate correlations for each group
     map_dfr(unique(groups[[1]]), function(group) {
       group_cells <- groups[[1]] == group
       group_data <- data[group_cells, ]
-      
+
       # Spearman correlation test
       test_result <- pspearman::spearman.test(
-        group_data[[genes[1]]], 
+        group_data[[genes[1]]],
         group_data[[genes[2]]]
-      ) |> 
+      ) |>
         broom::tidy()
-      
+
       tibble(
         group = group,
         gene1 = genes[1],
@@ -667,19 +667,19 @@ calculate_correlations <- function(seurat_obj, gene_pairs, group_var, cells) {
 }
 
 generate_correlation_plots <- function(seurat_obj, genes, group_var, cells, age = NULL) {
-  plot_data <- seurat_obj |> 
-    subset(cells = cells) |> 
-    GetAssayData(layer = "data") |> 
-    t() |> 
-    as.data.frame() |> 
+  plot_data <- seurat_obj |>
+    subset(cells = cells) |>
+    GetAssayData(layer = "data") |>
+    t() |>
+    as.data.frame() |>
     mutate(group = seurat_obj[[group_var]][cells, 1])
-  
+
   if (!is.null(age)) {
     title <- paste("Gene correlation at", age)
   } else {
     title <- "Gene correlation"
   }
-  
+
   grouped_ggscatterstats(
     data = plot_data,
     x = genes[1],
@@ -694,48 +694,48 @@ generate_correlation_plots <- function(seurat_obj, genes, group_var, cells, age 
 ```
 
 ```{python}
-#| label: generate-kim2020-correlation-plots
-#| output: false
-#| echo: false
+# | label: generate-kim2020-correlation-plots
+# | output: false
+# | echo: false
 
-import nbformat
-from nbformat.v4 import new_notebook, new_markdown_cell, new_code_cell
-import pandas as pd 
+import pandas as pd
 
 # Access R variables in Python using py$
-gene_pairs = r.gene_pairs 
-ages = r.ages 
+gene_pairs = r.gene_pairs
+ages = r.ages
 
 # Convert gene_pairs to a Pandas DataFrame
 gene_pairs = pd.DataFrame(gene_pairs).T
 
+
 def generate_plot_chunk(genes, age):
-    chunk_text = f'''#| label: fig-kim2020-correlation-{genes[0]}-{genes[1]}-{age}
+    chunk_text = f"""```{{r}}
+#| label: fig-kim2020-correlation-{genes[0]}-{genes[1]}-{age}
 #| fig-cap: "Correlation between {genes[0]} and {genes[1]} expression at {age} in Kim et al. 2020 dataset"
 #| fig-width: 12
 #| fig-height: 8
 
 generate_correlation_plots(
-  srt.kim |> subset(Age == "{age}"),
-  c("{genes[0]}", "{genes[1]}"),
-  "predicted.id",
-  cells_to_check,
-  age = "{age}"
-)'''
+    srt.kim |> subset(Age == "{age}"),
+    c("{genes[0]}", "{genes[1]}"),
+    "predicted.id",
+    cells_to_check,
+    age = "{age}"
+)
+```"""
     return chunk_text
 
-# Generate chunks for each gene pair and age combination
-cells = [new_markdown_cell("#### Gene Correlation Plots\n")]
+
+# Generate the Quarto markdown content
+qmd_content = "#### Gene Correlation Plots\n\n"
 
 for _, row in gene_pairs.iterrows():
     for age in ages:
-        cells.append(new_code_cell(
-            generate_plot_chunk([row[0], row[1]], age)
-        ))
+        qmd_content += generate_plot_chunk([row[0], row[1]], age) + "\n"
 
-# Create notebook
-nb = new_notebook(cells=cells)
-nbformat.write(nb, 'gene_correlation_plots_kim2020.qmd')
+# Write the content to a .qmd file
+with open("gene_correlation_plots_kim2020.qmd", "w") as f:
+    f.write(qmd_content)
 ```
 
 ```{r}
@@ -807,48 +807,48 @@ Stacked_VlnPlot(subset(srt.romanov.pub, cells = cells_to_check), features = gene
 ```
 
 ```{python}
-#| label: generate-romanov2020-correlation-plots
-#| output: false
-#| echo: false
+# | label: generate-romanov2020-correlation-plots
+# | output: false
+# | echo: false
 
-import nbformat
-from nbformat.v4 import new_notebook, new_markdown_cell, new_code_cell
-import pandas as pd 
+import pandas as pd
 
 # Access R variables in Python using py$
-gene_pairs = r.gene_pairs 
-ages = r.ages 
+gene_pairs = r.gene_pairs
+ages = r.ages
 
 # Convert gene_pairs to a Pandas DataFrame
 gene_pairs = pd.DataFrame(gene_pairs).T
 
+
 def generate_plot_chunk(genes, age):
-    chunk_text = f'''#| label: fig-romanov2020-correlation-{genes[0]}-{genes[1]}-{age}
+    chunk_text = f"""```{{r}}
+#| label: fig-romanov2020-correlation-{genes[0]}-{genes[1]}-{age}
 #| fig-cap: "Correlation between {genes[0]} and {genes[1]} expression at {age} in Romanov et al. 2020 dataset"
 #| fig-width: 12
 #| fig-height: 8
 
 generate_correlation_plots(
-  srt.romanov.pub |> subset(Age == "{age}"),
-  c("{genes[0]}", "{genes[1]}"),
-  "predicted.id",
-  cells_to_check,
-  age = "{age}"
-)'''
+    srt.romanov.pub |> subset(Age == "{age}"),
+    c("{genes[0]}", "{genes[1]}"),
+    "predicted.id",
+    cells_to_check,
+    age = "{age}"
+)
+```"""
     return chunk_text
 
-# Generate chunks for each gene pair and age combination
-cells = [new_markdown_cell("#### Gene Correlation Plots\n")]
+
+# Generate the Quarto markdown content
+qmd_content = "#### Gene Correlation Plots\n\n"
 
 for _, row in gene_pairs.iterrows():
     for age in ages:
-        cells.append(new_code_cell(
-            generate_plot_chunk([row[0], row[1]], age)
-        ))
+        qmd_content += generate_plot_chunk([row[0], row[1]], age) + "\n"
 
-# Create notebook
-nb = new_notebook(cells=cells)
-nbformat.write(nb, 'gene_correlation_plots_romanov2020.qmd')
+# Write the content to a .qmd file
+with open("gene_correlation_plots_romanov2020.qmd", "w") as f:
+    f.write(qmd_content)
 ```
 
 ```{r}

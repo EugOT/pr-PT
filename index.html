@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.7.5" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<meta name="author" content="Amina Telalovic" />
+<meta name="author" content="Evgenii O. Tretiakov, PhD" />
+<meta name="author" content="Tibor Harkany, PhD" />
+<meta name="keywords" content="keyword1, keyword2" />
+
+<title>Short Paper</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<!-- htmldependencies:E3FAD763 -->
+<script async src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <div id="quarto-toc-target"></div>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default toc-left">
+  <div class="quarto-title-banner">
+    <div class="quarto-title column-body">
+      <h1 class="title">Short Paper</h1>
+            <p class="subtitle lead">A Short Subtitle</p>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliations</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Amina Telalovic <a href="mailto:amina.telalovic@meduniwien.ac.at" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Medical University of Vienna
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Evgenii O. Tretiakov, PhD <a href="mailto:evgenii.tretiakov@meduniwien.ac.at" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-5920-2190" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Medical University of Vienna
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Tibor Harkany, PhD <a href="mailto:tibor.harkany@meduniwien.ac.at" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-6637-5900" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Medical University of Vienna
+                      </p>
+                    <p class="affiliation">
+                        Karolinska Institutet
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">Monday, January 27, 2025</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+    <div>
+      <div class="abstract">
+        <div class="block-title">Abstract</div>
+        <p>This is the abstract. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum augue turpis, dictum non malesuada a, volutpat eget velit. Nam placerat turpis purus, eu tristique ex tincidunt et. Mauris sed augue eget turpis ultrices tincidunt. Sed et mi in leo porta egestas. Aliquam non laoreet velit. Nunc quis ex vitae eros aliquet auctor nec ac libero. Duis laoreet sapien eu mi luctus, in bibendum leo molestie. Sed hendrerit diam diam, ac dapibus nisl volutpat vitae. Aliquam bibendum varius libero, eu efficitur justo rutrum at. Sed at tempus elit.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="keywords">
+        <div class="block-title">Keywords</div>
+        <p>keyword1, keyword2</p>
+      </div>
+    </div>
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header>
+
+  
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#results" id="toc-results">Results</a>
+  <ul>
+  <li><a href="#single-cell-rna-sequencing-reveals-three-distinct-groups-of-pars-tuberalis-cells-with-unique-transcriptional-profiles" id="toc-single-cell-rna-sequencing-reveals-three-distinct-groups-of-pars-tuberalis-cells-with-unique-transcriptional-profiles"><strong>Single-cell RNA sequencing reveals three distinct groups of pars tuberalis cells with unique transcriptional profiles</strong></a>
+  <ul>
+  <li><a href="#group-one-eya3hightshbcck-cells" id="toc-group-one-eya3hightshbcck-cells"><strong>Group One: Eya3<sup>high</sup>/Tshb<sup>+</sup>/Cck<sup>+</sup> Cells</strong></a></li>
+  <li><a href="#group-two-eya1eya4-cells" id="toc-group-two-eya1eya4-cells"><strong>Group Two: Eya1<sup>+</sup>/Eya4<sup>+</sup> Cells</strong></a></li>
+  <li><a href="#group-three-eya2-cells" id="toc-group-three-eya2-cells"><strong>Group Three: Eya2<sup>+</sup> Cells</strong></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#methods" id="toc-methods">Methods</a>
+  <ul>
+  <li><a href="#data-acquisition-and-preprocessing" id="toc-data-acquisition-and-preprocessing">Data Acquisition and Preprocessing</a></li>
+  <li><a href="#integration-with-reference-dataset" id="toc-integration-with-reference-dataset">Integration with Reference Dataset</a></li>
+  <li><a href="#normalization-and-feature-selection" id="toc-normalization-and-feature-selection">Normalization and Feature Selection</a></li>
+  <li><a href="#dimensionality-reduction-and-visualization" id="toc-dimensionality-reduction-and-visualization">Dimensionality Reduction and Visualization</a></li>
+  <li><a href="#statistical-analysis" id="toc-statistical-analysis">Statistical Analysis</a></li>
+  <li><a href="#gene-expression-correlation-analysis" id="toc-gene-expression-correlation-analysis">Gene Expression Correlation Analysis</a></li>
+  <li><a href="#data-availability" id="toc-data-availability">Data Availability</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references">References</a></li>
+  </ul>
+</nav>
+<section id="results" class="level1">
+<h1>Results</h1>
+<section id="single-cell-rna-sequencing-reveals-three-distinct-groups-of-pars-tuberalis-cells-with-unique-transcriptional-profiles" class="level2">
+<h2><strong>Single-cell RNA sequencing reveals three distinct groups of pars tuberalis cells with unique transcriptional profiles</strong></h2>
+<p>To thoroughly investigate the cellular diversity of the pars tuberalis (PT) during embryonic development, we analyzed single-cell RNA sequencing (scRNA-seq) data from two comprehensive studies: Romanov et al.<span class="citation" data-cites="romanovMolecularDesignHypothalamus2020">(<a href="#ref-romanovMolecularDesignHypothalamus2020" role="doc-biblioref">Romanov et al., 2020</a>)</span> and Kim et al.<span class="citation" data-cites="kim2020">(<a href="#ref-kim2020" role="doc-biblioref">Kim et al., 2020</a>)</span>. These datasets encompass a broad range of developmental stages, from embryonic day 10 (E10) to postnatal day 45 (P45), allowing us to capture the dynamic changes in gene expression throughout PT development.</p>
+<p>In the dataset from Romanov et al., we identified a distinct cluster of PT cells within the hypothalamic scRNA-seq data (Fig. 1a). This cluster was characterized by the expression of key developmental genes, including <em>Pitx1</em>, a transcription factor crucial for anterior pituitary gland formation<span class="citation" data-cites="szetoPOTXPIT1interactingHomeodomain1996">(<a href="#ref-szetoPOTXPIT1interactingHomeodomain1996" role="doc-biblioref">Szeto et al., 1996</a>)</span>, and <em>Gata2</em>, which is essential for the early stages of Rathke’s pouch detachment and PT formation<span class="citation" data-cites="dasenReciprocalInteractionsPit11999">(<a href="#ref-dasenReciprocalInteractionsPit11999" role="doc-biblioref">Dasen et al., 1999</a>)</span>.</p>
+<p>To enhance the resolution of our analysis and validate these findings, we integrated scRNA-seq data from Kim et al., which provided a rich temporal landscape of hypothalamic development. By aligning the datasets, we ensured accurate identification and mapping of PT cell populations across different developmental stages (Fig. 1b).</p>
+<p>Clustering of the integrated dataset revealed three distinct groups of PT cells, each defined by unique transcriptional profiles:</p>
+<section id="group-one-eya3hightshbcck-cells" class="level3">
+<h3><strong>Group One: Eya3<sup>high</sup>/Tshb<sup>+</sup>/Cck<sup>+</sup> Cells</strong></h3>
+<p>Group one cells exhibited high expression of the transcriptional coactivator <em>Eya3</em> and co-expressed the peptide hormones <em>Tshb</em> (thyroid-stimulating hormone beta subunit) and <em>Cck</em> (cholecystokinin). These cells were consistently present from E12 onward and remained prominent throughout embryonic development (Fig. 2a). Visualization using UMAP (Uniform Manifold Approximation and Projection) showed that <em>Eya3</em>, <em>Tshb</em>, and <em>Cck</em> were co-expressed within the same cell clusters. This co-expression suggests a coordinated regulatory mechanism driving hormone production in these PT cells.</p>
+</section>
+<section id="group-two-eya1eya4-cells" class="level3">
+<h3><strong>Group Two: Eya1<sup>+</sup>/Eya4<sup>+</sup> Cells</strong></h3>
+<p>Cells in group two were characterized by the expression of <em>Eya1</em> and <em>Eya4</em>. These transcriptional coactivators were expressed at lower levels compared to <em>Eya3</em> and were more spatially and temporally restricted (Fig. 2b). Group two cells became more apparent at later developmental stages (after E14.5), indicating a potential role in the maturation or specialization of certain PT cell types.</p>
+<p>Unlike group one, group two cells exhibited minimal expression of <em>Tshb</em> and <em>Cck</em>, suggesting they may serve functions distinct from hormone secretion, possibly in structural or regulatory roles within the PT.</p>
+</section>
+<section id="group-three-eya2-cells" class="level3">
+<h3><strong>Group Three: Eya2<sup>+</sup> Cells</strong></h3>
+<p>Group three cells predominantly expressed <em>Eya2</em>. This expression was low during early stages (E10–E12) but significantly increased from E14.5 onward (Fig. 2c). These cells were mainly located at the periphery of the PT, forming distinct clusters separate from groups one and two.</p>
+<p>The temporal increase in <em>Eya2</em> expression and the spatial distribution of group three cells imply they may represent a later phase of PT cell differentiation or a unique lineage with specialized functions yet to be fully understood.</p>
+<p>To further elucidate the characteristics of these groups, we examined additional genes implicated in PT development and function:</p>
+<ul>
+<li><strong>Pitx1 Co-expression</strong>: <em>Pitx1</em>, essential for pituitary development, was co-expressed with <em>Eya3</em> in group one cells (Fig. 3a). This co-localization reinforces the idea that group one cells are actively involved in hormone production and early PT development.</li>
+<li><strong>Sox2 Expression</strong>: <em>Sox2</em>, a marker of neural stem and progenitor cells, was expressed across all PT cell groups (Fig. 3b). The presence of <em>Sox2</em> suggests that PT cells may share common progenitor characteristics or that neural stem cell pathways influence PT cell differentiation.</li>
+</ul>
+<p>We also explored the potential interactions between PT-derived hormones and the developing brain:</p>
+<ul>
+<li><strong>Hormone Receptor Expression</strong>: The receptors for <em>Tshb</em> (<em>Tshr</em>) and <em>Cck</em> (<em>Cckbr</em>) were expressed in regions of the developing hypothalamus rich in neural progenitor cells, such as the ventricular zones (Fig. 4a, 4b). Co-expression of <em>Tshr</em> and <em>Cckbr</em> with <em>Sox2</em> indicates that PT-derived hormones could influence neural development by acting on these progenitor cells.</li>
+<li><strong>Gpr173 Expression</strong>: We observed expression of <em>Gpr173</em>, a G protein-coupled receptor involved in neuroendocrine signaling, in neural progenitor zones overlapping with <em>Sox2</em> expression (Fig. 4c). This suggests a potential role for <em>Gpr173</em> in mediating hormonal signals from the PT to the developing brain.</li>
+</ul>
+<p>To visualize gene expression dynamics across developmental stages, we generated DotPlots for key genes (Fig. 5). This analysis highlighted:</p>
+<ul>
+<li><strong>Early Onset and Persistence of Group One Genes</strong>: <em>Eya3</em>, <em>Tshb</em>, and <em>Cck</em> expression began as early as E12 and continued throughout embryonic development, indicating a sustained role in PT function.</li>
+<li><strong>Temporal Emergence of Group Two and Three Genes</strong>: <em>Eya1</em>, <em>Eya2</em>, and <em>Eya4</em> displayed increased expression at later stages, suggesting these genes are involved in the maturation and specialization processes within the PT.</li>
+</ul>
+<p>Our integrated analysis, combining data from multiple developmental stages and employing rigorous statistical correlations, provides compelling evidence for the existence of three distinct PT cell groups during embryogenesis. Each group exhibits unique transcriptional signatures, indicating specialized roles:</p>
+<ul>
+<li><strong>Group One</strong> is likely responsible for early hormone production, directly influencing both PT development and possibly exerting effects on the hypothalamus through hormone secretion.</li>
+<li><strong>Group Two</strong> may be involved in structural formation or regulation within the PT, given their distinct gene expression profile and later emergence.</li>
+<li><strong>Group Three</strong> could represent a specialized lineage that plays a role in the maturation of the PT or has unique endocrine functions.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<section id="data-acquisition-and-preprocessing" class="level2">
+<h2>Data Acquisition and Preprocessing</h2>
+<p>Single-cell RNA sequencing (scRNA-seq) data from the mouse hypothalamus were obtained from the study by Kim et al.<span class="citation" data-cites="kim2020">(<a href="#ref-kim2020" role="doc-biblioref">Kim et al., 2020</a>)</span>, available under BioProject accession PRJNA547712 (https://github.com/EugOT/PRJNA547712). The dataset, comprising expression profiles of 128,006 cells across 27,998 genes, was acquired in the AnnData format (kim2020_combined.h5ad). This dataset spans various developmental stages, including embryonic days (E)10 to E18 and postnatal days (P)4 to P45. To facilitate analysis in R, the AnnData object was converted into a Seurat object<span class="citation" data-cites="haoDictionaryLearningIntegrative2023 stuartComprehensiveIntegrationSingleCell2019">(<a href="#ref-haoDictionaryLearningIntegrative2023" role="doc-biblioref">Hao et al., 2023</a>; <a href="#ref-stuartComprehensiveIntegrationSingleCell2019" role="doc-biblioref">Stuart et al., 2019</a>)</span>. The expression matrix was transposed to align genes as rows and cells as columns. Cell metadata, including identifiers and developmental stages, were incorporated. Dimensionality reduction was performed using Uniform Manifold Approximation and Projection (UMAP)<span class="citation" data-cites="mcinnes2018 kobakInitializationCriticalPreserving2021">(<a href="#ref-kobakInitializationCriticalPreserving2021" role="doc-biblioref">Kobak and Linderman, 2021</a>; <a href="#ref-mcinnes2018" role="doc-biblioref">McInnes et al., 2018</a>)</span>, and the resulting embeddings were added to the Seurat object for visualization purposes.</p>
+</section>
+<section id="integration-with-reference-dataset" class="level2">
+<h2>Integration with Reference Dataset</h2>
+<p>To annotate cell types within the pars tuberalis (PT), we integrated query dataset<span class="citation" data-cites="kim2020">(<a href="#ref-kim2020" role="doc-biblioref">Kim et al., 2020</a>)</span> with a reference scRNA-seq dataset (https://github.com/EugOT/PRJNA548917), which provides detailed annotations of hypothalamic cell populations<span class="citation" data-cites="romanovMolecularDesignHypothalamus2020">(<a href="#ref-romanovMolecularDesignHypothalamus2020" role="doc-biblioref">Romanov et al., 2020</a>)</span>. The reference dataset was updated to ensure compatibility and included 51,199 cells with expression profiles for 24,340 genes.</p>
+<p>Anchors between the query dataset<span class="citation" data-cites="kim2020">(<a href="#ref-kim2020" role="doc-biblioref">Kim et al., 2020</a>)</span> and the reference dataset<span class="citation" data-cites="romanovMolecularDesignHypothalamus2020">(<a href="#ref-romanovMolecularDesignHypothalamus2020" role="doc-biblioref">Romanov et al., 2020</a>)</span> were identified using the FindTransferAnchors function in Seurat<span class="citation" data-cites="haoDictionaryLearningIntegrative2023 stuartComprehensiveIntegrationSingleCell2019">(<a href="#ref-haoDictionaryLearningIntegrative2023" role="doc-biblioref">Hao et al., 2023</a>; <a href="#ref-stuartComprehensiveIntegrationSingleCell2019" role="doc-biblioref">Stuart et al., 2019</a>)</span>, employing principal component analysis (PCA) for dimensionality reduction over 30 dimensions. Cell type labels were transferred from the reference to the query dataset using the TransferData function, allowing for the prediction of cell identities within the PT<span class="citation" data-cites="haoDictionaryLearningIntegrative2023">(<a href="#ref-haoDictionaryLearningIntegrative2023" role="doc-biblioref">Hao et al., 2023</a>)</span>. The integration facilitated the identification of specific cell clusters corresponding to the PT, marked by the expression of genes such as Tshb, Cck, and Eya3.</p>
+</section>
+<section id="normalization-and-feature-selection" class="level2">
+<h2>Normalization and Feature Selection</h2>
+<p>The integrated Seurat object was normalized using the NormalizeData function, applying global-scaling normalization to account for differences in sequencing depth. Variable features were identified using the FindVariableFeatures function with the ‘vst’ method<span class="citation" data-cites="hafemeister2019">(<a href="#ref-hafemeister2019" role="doc-biblioref">Hafemeister and Satija, 2019</a>)</span>, selecting the top 3,000 genes exhibiting high variability across cells. The data were then scaled using the ScaleData function, regressing out unwanted sources of variation and centering and scaling the data for downstream analyses.</p>
+</section>
+<section id="dimensionality-reduction-and-visualization" class="level2">
+<h2>Dimensionality Reduction and Visualization</h2>
+<p>Principal component analysis was conducted on the scaled data, and the first 30 principal components were used for further analysis. UMAP was performed using the RunUMAP function to visualize the data in two-dimensional space, capturing the global structure and potential trajectories of cellular differentiation.</p>
+<p>Feature plots were generated using the FeaturePlot function to visualize the expression patterns of key genes across developmental stages. Genes of interest included Tshb, Cck, Pitx1, Eya1, Eya2, Eya3, Sox2, Hlf, Tshr, Cckar, Cckbr, and Gpr173. Blended feature plots were employed to examine co-expression patterns, with parameters adjusted for optimal visualization (e.g., blend thresholds, point sizes, alpha levels, and color schemes).</p>
+</section>
+<section id="statistical-analysis" class="level2">
+<h2>Statistical Analysis</h2>
+<p>To assess the association between the expression of specific genes across developmental stages, chi-squared tests of independence were conducted. Binary expression matrices were created by thresholding gene expression counts (e.g., considering a gene as expressed using gene-specific quantile thresholding). Contingency tables were constructed for pairs of genes (<em>Tshb</em>, <em>Cck</em>, <em>Pitx1</em>, <em>Eya1</em>, <em>Eya2</em>, <em>Eya3</em>, <em>Eya4</em>, <em>Sox2</em>, <em>Hlf</em>, <em>Tshr</em>, <em>Cckar</em>, <em>Cckbr</em>, and <em>Gpr173</em>), such as <em>Sox2</em> and <em>Tshr</em>, across different developmental stages.</p>
+<p>The ggpiestats function from the ggstatsplot package<span class="citation" data-cites="patil2021">(<a href="#ref-patil2021" role="doc-biblioref">Patil, 2021</a>)</span> was utilized to generate grouped pie charts, displaying the proportion of cells expressing combinations of genes and the results of chi-squared tests. The analyses provided insights into potential regulatory relationships and developmental dynamics within the PT.</p>
+<p>UpSet plots<span class="citation" data-cites="conwayUpSetRPackageVisualization2017">(<a href="#ref-conwayUpSetRPackageVisualization2017" role="doc-biblioref">Conway et al., 2017</a>)</span> were created to visualize the counts and proportions of cells expressing various combinations of genes across developmental stages. These plots illustrated the temporal changes in gene expression and the prevalence of specific cell populations during development.</p>
+</section>
+<section id="gene-expression-correlation-analysis" class="level2">
+<h2>Gene Expression Correlation Analysis</h2>
+<p>To investigate potential co-regulation and interactions between genes, correlation analyses were performed. Spearman’s rank correlation coefficients were calculated for pairs of genes across cells at each developmental stage. Hexbin plots were generated using the hexbin package to visualize the density and correlation of gene expression in a two-dimensional space, aiding in the identification of spatial expression patterns and clusters.</p>
+<p>Dot plots were generated using the DotPlot function to summarize the expression of genes of interest across developmental stages. The genes included <em>Tshb</em>, <em>Cck</em>, <em>Pitx1</em>, <em>Eya3</em>, <em>Sox2</em>, <em>Hlf</em>, <em>Igfbp5</em>, <em>Tshr</em>, <em>Cckar</em>, <em>Cckbr</em>, and <em>Gpr173</em>. The dot plots represented both the proportion of cells expressing each gene and the average expression levels, providing a comprehensive overview of gene expression dynamics during development.</p>
+</section>
+<section id="data-availability" class="level2">
+<h2>Data Availability</h2>
+<p>The code (<a href="https://github.com/EugOT/pr-PT" class="uri">https://github.com/EugOT/pr-PT</a>) and datasets used in this study are publicly available. The Kim<span class="citation" data-cites="kim2020">(<a href="#ref-kim2020" role="doc-biblioref">Kim et al., 2020</a>)</span> dataset can be accessed under BioProject accession PRJNA547712, and the Romanov<span class="citation" data-cites="romanovMolecularDesignHypothalamus2020">(<a href="#ref-romanovMolecularDesignHypothalamus2020" role="doc-biblioref">Romanov et al., 2020</a>)</span> dataset is available under BioProject accession PRJNA548917 including repository with reprocessing code: <a href="https://github.com/EugOT/PRJNA547712" class="uri">https://github.com/EugOT/PRJNA547712</a> and <a href="https://github.com/EugOT/PRJNA548917" class="uri">https://github.com/EugOT/PRJNA548917</a>.</p>
+</section>
+</section>
+<section id="references" class="level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-conwayUpSetRPackageVisualization2017" class="csl-entry" role="listitem">
+Conway, J.R., Lex, A., Gehlenborg, N., 2017. UpSetR: an R package for the visualization of intersecting sets and their properties. Bioinformatics 33, 2938–2940. <a href="https://doi.org/10.1093/bioinformatics/btx364">https://doi.org/10.1093/bioinformatics/btx364</a>
+</div>
+<div id="ref-dasenReciprocalInteractionsPit11999" class="csl-entry" role="listitem">
+Dasen, J.S., O’Connell, S.M., Flynn, S.E., Treier, M., Gleiberman, A.S., Szeto, D.P., Hooshmand, F., Aggarwal, A.K., Rosenfeld, M.G., 1999. Reciprocal interactions of Pit1 and GATA2 mediate signaling gradient<span></span>induced determination of pituitary cell types. Cell 97, 587–598. <a href="https://doi.org/10.1016/S0092-8674(00)80770-9">https://doi.org/10.1016/S0092-8674(00)80770-9</a>
+</div>
+<div id="ref-hafemeister2019" class="csl-entry" role="listitem">
+Hafemeister, C., Satija, R., 2019. Normalization and variance stabilization of single-cell RNA-seq data using regularized negative binomial regression. Genome Biology 20, 296. <a href="https://doi.org/10.1186/s13059-019-1874-1">https://doi.org/10.1186/s13059-019-1874-1</a>
+</div>
+<div id="ref-haoDictionaryLearningIntegrative2023" class="csl-entry" role="listitem">
+Hao, Y., Stuart, T., Kowalski, M.H., Choudhary, S., Hoffman, P., Hartman, A., Srivastava, A., Molla, G., Madad, S., Fernandez-Granda, C., Satija, R., 2023. Dictionary learning for integrative, multimodal and scalable single-cell analysis. Nature Biotechnology. <a href="https://doi.org/10.1038/s41587-023-01767-y">https://doi.org/10.1038/s41587-023-01767-y</a>
+</div>
+<div id="ref-kim2020" class="csl-entry" role="listitem">
+Kim, D.W., Washington, P.W., Wang, Z.Q., Lin, S.H., Sun, C., Ismail, B.T., Wang, H., Jiang, L., Blackshaw, S., 2020. The cellular and molecular landscape of hypothalamic patterning and differentiation from embryonic to late postnatal development. Nature Communications 11, 4360. <a href="https://doi.org/10/ghdps6">https://doi.org/10/ghdps6</a>
+</div>
+<div id="ref-kobakInitializationCriticalPreserving2021" class="csl-entry" role="listitem">
+Kobak, D., Linderman, G.C., 2021. Initialization is critical for preserving global data structure in both t-SNE and UMAP. Nature biotechnology 39, 156–157. <a href="https://doi.org/10/ghxbbn">https://doi.org/10/ghxbbn</a>
+</div>
+<div id="ref-mcinnes2018" class="csl-entry" role="listitem">
+McInnes, L., Healy, J., Melville, J., 2018. UMAP: Uniform manifold approximation and projection for dimension reduction. <a href="https://doi.org/10.48550/arxiv.1802.03426">https://doi.org/10.48550/arxiv.1802.03426</a>
+</div>
+<div id="ref-patil2021" class="csl-entry" role="listitem">
+Patil, I., 2021. Visualizations with statistical details: The ’ggstatsplot’ approach. Journal of Open Source Software 6, 3167. <a href="https://doi.org/10.21105/joss.03167">https://doi.org/10.21105/joss.03167</a>
+</div>
+<div id="ref-romanovMolecularDesignHypothalamus2020" class="csl-entry" role="listitem">
+Romanov, R.A., Tretiakov, E.O., Kastriti, M.E., Zupancic, M., Häring, M., Korchynska, S., Popadin, K., Benevento, M., Rebernik, P., Lallemend, F., Nishimori, K., Clotman, F., Andrews, W.D., Parnavelas, J.G., Farlik, M., Bock, C., Adameyko, I., Hökfelt, T., Keimpema, E., Harkany, T., 2020. Molecular design of hypothalamus development. Nature 582, 246–252. <a href="https://doi.org/10.1038/s41586-020-2266-0">https://doi.org/10.1038/s41586-020-2266-0</a>
+</div>
+<div id="ref-stuartComprehensiveIntegrationSingleCell2019" class="csl-entry" role="listitem">
+Stuart, T., Butler, A., Hoffman, P., Hafemeister, C., Papalexi, E., Mauck, W.M., Hao, Y., Stoeckius, M., Smibert, P., Satija, R., 2019. Comprehensive Integration of Single-Cell Data. Cell 177, 1888–1902.e21. <a href="https://doi.org/10.1016/j.cell.2019.05.031">https://doi.org/10.1016/j.cell.2019.05.031</a>
+</div>
+<div id="ref-szetoPOTXPIT1interactingHomeodomain1996" class="csl-entry" role="listitem">
+Szeto, D.P., Ryan, A.K., O’Connell, S.M., Rosenfeld, M.G., 1996. P-OTX: a PIT-1-interacting homeodomain factor expressed during anterior pituitary gland development. Proceedings of the National Academy of Sciences of the United States of America 93, 7706–7710. <a href="https://doi.org/10.1073/pnas.93.15.7706">https://doi.org/10.1073/pnas.93.15.7706</a>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id = "quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+</body>
+
+</html>
