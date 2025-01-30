@@ -57,6 +57,9 @@ div.csl-indent {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-62e69af14dbf67f5b14ad139dbf26041.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script async="" src="https://hypothes.is/embed.js"></script>
 <script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
@@ -72,10 +75,10 @@ div.csl-indent {
 <meta name="citation_author" content="Amina Telalovic">
 <meta name="citation_author" content="Evgenii O. Tretiakov, PhD">
 <meta name="citation_author" content="Tibor Harkany, PhD">
-<meta name="citation_publication_date" content="2025-01-28">
-<meta name="citation_cover_date" content="2025-01-28">
+<meta name="citation_publication_date" content="2025-01-30">
+<meta name="citation_cover_date" content="2025-01-30">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-01-28">
+<meta name="citation_online_date" content="2025-01-30">
 <meta name="citation_language" content="en">
 <meta name="citation_reference" content="citation_title=Molecular design of hypothalamus development;,citation_author=Roman A. Romanov;,citation_author=Evgenii O. Tretiakov;,citation_author=Maria Eleni Kastriti;,citation_author=Maja Zupancic;,citation_author=Martin Häring;,citation_author=Solomiia Korchynska;,citation_author=Konstantin Popadin;,citation_author=Marco Benevento;,citation_author=Patrick Rebernik;,citation_author=Francois Lallemend;,citation_author=Katsuhiko Nishimori;,citation_author=Frédéric Clotman;,citation_author=William D. Andrews;,citation_author=John G. Parnavelas;,citation_author=Matthias Farlik;,citation_author=Christoph Bock;,citation_author=Igor Adameyko;,citation_author=Tomas Hökfelt;,citation_author=Erik Keimpema;,citation_author=Tibor Harkany;,citation_publication_date=2020-06;,citation_cover_date=2020-06;,citation_year=2020;,citation_fulltext_html_url=https://www.nature.com/articles/s41586-020-2266-0;,citation_issue=7811;,citation_doi=10.1038/s41586-020-2266-0;,citation_volume=582;,citation_language=en;,citation_journal_title=Nature;">
 <meta name="citation_reference" content="citation_title=The cellular and molecular landscape of hypothalamic patterning and differentiation from embryonic to late postnatal development;,citation_author=Dong Won Kim;,citation_author=Parris Whitney Washington;,citation_author=Zoe Qianyi Wang;,citation_author=Sonia Hao Lin;,citation_author=Changyu Sun;,citation_author=Basma Taleb Ismail;,citation_author=Hong Wang;,citation_author=Lizhi Jiang;,citation_author=Seth Blackshaw;,citation_publication_date=2020-08-31;,citation_cover_date=2020-08-31;,citation_year=2020;,citation_fulltext_html_url=10/ghdps6;,citation_issue=1;,citation_doi=10/ghdps6;,citation_volume=11;,citation_language=eng;,citation_journal_title=Nature Communications;">
@@ -141,7 +144,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">Tuesday, January 28, 2025</p>
+              <p class="date">Thursday, January 30, 2025</p>
             </div>
           </div>
           
@@ -183,7 +186,7 @@ div.csl-indent {
   <li><a href="#group-three-eya2-cells" id="toc-group-three-eya2-cells" class="nav-link" data-scroll-target="#group-three-eya2-cells"><strong>Group Three: Eya2<sup>+</sup> Cells</strong></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <li><a href="#sec-data-methods" id="toc-sec-data-methods" class="nav-link" data-scroll-target="#sec-data-methods">Methods</a>
   <ul class="collapse">
   <li><a href="#data-acquisition-and-preprocessing" id="toc-data-acquisition-and-preprocessing" class="nav-link" data-scroll-target="#data-acquisition-and-preprocessing">Data Acquisition and Preprocessing</a></li>
   <li><a href="#integration-with-reference-dataset" id="toc-integration-with-reference-dataset" class="nav-link" data-scroll-target="#integration-with-reference-dataset">Integration with Reference Dataset</a></li>
@@ -195,7 +198,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01-de_test-focus_pars_tub-preview.html"><i class="bi bi-journal-code"></i>Differential expression analysis of Developmental Hypothalamus datasets from Kim DW et al., 2020 and Romanov et al., 2020 with focus on Pars Tuberalis</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01-de_test-focus_pars_tub.embed-preview.html"><i class="bi bi-journal-code"></i>Differential expression analysis of Developmental Hypothalamus datasets from Kim DW et al., 2020 and Romanov et al., 2020 with focus on Pars Tuberalis</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -211,8 +214,23 @@ div.csl-indent {
 <section id="single-cell-rna-sequencing-reveals-three-distinct-groups-of-pars-tuberalis-cells-with-unique-transcriptional-profiles" class="level2">
 <h2 class="anchored" data-anchor-id="single-cell-rna-sequencing-reveals-three-distinct-groups-of-pars-tuberalis-cells-with-unique-transcriptional-profiles"><strong>Single-cell RNA sequencing reveals three distinct groups of pars tuberalis cells with unique transcriptional profiles</strong></h2>
 <p>To thoroughly investigate the cellular diversity of the pars tuberalis (PT) during embryonic development, we analyzed single-cell RNA sequencing (scRNA-seq) data from two comprehensive studies: Romanov et al.<span class="citation" data-cites="romanovMolecularDesignHypothalamus2020">(<a href="#ref-romanovMolecularDesignHypothalamus2020" role="doc-biblioref">Romanov et al., 2020</a>)</span> and Kim et al.<span class="citation" data-cites="kim2020">(<a href="#ref-kim2020" role="doc-biblioref">Kim et al., 2020</a>)</span>. These datasets encompass a broad range of developmental stages, from embryonic day 10 (E10) to postnatal day 45 (P45), allowing us to capture the dynamic changes in gene expression throughout PT development.</p>
-<p>In the dataset from Romanov et al., we identified a distinct cluster of PT cells within the hypothalamic scRNA-seq data (Fig. 1a). This cluster was characterized by the expression of key developmental genes, including <em>Pitx1</em>, a transcription factor crucial for anterior pituitary gland formation<span class="citation" data-cites="szetoPOTXPIT1interactingHomeodomain1996">(<a href="#ref-szetoPOTXPIT1interactingHomeodomain1996" role="doc-biblioref">Szeto et al., 1996</a>)</span>, and <em>Gata2</em>, which is essential for the early stages of Rathke’s pouch detachment and PT formation<span class="citation" data-cites="dasenReciprocalInteractionsPit11999">(<a href="#ref-dasenReciprocalInteractionsPit11999" role="doc-biblioref">Dasen et al., 1999</a>)</span>.</p>
-<p>To enhance the resolution of our analysis and validate these findings, we integrated scRNA-seq data from Kim et al., which provided a rich temporal landscape of hypothalamic development. By aligning the datasets, we ensured accurate identification and mapping of PT cell populations across different developmental stages (Fig. 1b).</p>
+<p>In the dataset from Romanov et al., we identified a distinct cluster of PT cells within the hypothalamic scRNA-seq data (Fig. 1a).</p>
+<div class="quarto-embed-nb-cell">
+<div id="fig-feature-romanov2020" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-fig-dpi="90" data-fig-height="36" data-fig-width="24">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-feature-romanov2020-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-feature-romanov2020-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+<p>This cluster was characterized by the expression of key developmental genes, including <em>Pitx1</em>, a transcription factor crucial for anterior pituitary gland formation<span class="citation" data-cites="szetoPOTXPIT1interactingHomeodomain1996">(<a href="#ref-szetoPOTXPIT1interactingHomeodomain1996" role="doc-biblioref">Szeto et al., 1996</a>)</span>, and <em>Gata2</em>, which is essential for the early stages of Rathke’s pouch detachment and PT formation<span class="citation" data-cites="dasenReciprocalInteractionsPit11999">(<a href="#ref-dasenReciprocalInteractionsPit11999" role="doc-biblioref">Dasen et al., 1999</a>)</span>.</p>
+<p>To enhance the resolution of our analysis and validate these findings, we integrated scRNA-seq data from Kim et al., which provided a rich temporal landscape of hypothalamic development. By aligning the datasets, we ensured accurate identification and mapping of PT cell populations across different developmental stages (Fig. 1b; see <a href="#sec-data-methods" class="quarto-xref">Section&nbsp;2</a>).</p>
 <p>Clustering of the integrated dataset revealed three distinct groups of PT cells, each defined by unique transcriptional profiles:</p>
 <section id="group-one-eya3hightshbcck-cells" class="level3">
 <h3 class="anchored" data-anchor-id="group-one-eya3hightshbcck-cells"><strong>Group One: Eya3<sup>high</sup>/Tshb<sup>+</sup>/Cck<sup>+</sup> Cells</strong></h3>
@@ -227,6 +245,36 @@ div.csl-indent {
 <h3 class="anchored" data-anchor-id="group-three-eya2-cells"><strong>Group Three: Eya2<sup>+</sup> Cells</strong></h3>
 <p>Group three cells predominantly expressed <em>Eya2</em>. This expression was low during early stages (E10–E12) but significantly increased from E14.5 onward (Fig. 2c). These cells were mainly located at the periphery of the PT, forming distinct clusters separate from groups one and two.</p>
 <p>The temporal increase in <em>Eya2</em> expression and the spatial distribution of group three cells imply they may represent a later phase of PT cell differentiation or a unique lineage with specialized functions yet to be fully understood.</p>
+<div id="fig-fetal-eya-tshb" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fetal-eya-tshb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/Figure2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;2: Localization of Tshb and Eya transcription coactivators in the fetal PT."><img src="images/Figure2.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fetal-eya-tshb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Localization of <strong>Tshb</strong> and <strong>Eya</strong> transcription coactivators in the fetal PT.
+</figcaption>
+</figure>
+</div>
+<div id="fig-fetal-eya-cck" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fetal-eya-cck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/Figure3.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;3: Localization of Cck and Eya transcription coactivators in the fetal PT."><img src="images/Figure3.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fetal-eya-cck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Localization of <strong>Cck</strong> and <strong>Eya</strong> transcription coactivators in the fetal PT.
+</figcaption>
+</figure>
+</div>
+<div id="fig-fetal-tshb-cck" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fetal-tshb-cck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/Figure4.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;4: Tshb and Cck co-localization."><img src="images/Figure4.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fetal-tshb-cck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: <strong>Tshb</strong> and <strong>Cck</strong> co-localization.
+</figcaption>
+</figure>
+</div>
 <p>To further elucidate the characteristics of these groups, we examined additional genes implicated in PT development and function:</p>
 <ul>
 <li><strong>Pitx1 Co-expression</strong>: <em>Pitx1</em>, essential for pituitary development, was co-expressed with <em>Eya3</em> in group one cells (Fig. 3a). This co-localization reinforces the idea that group one cells are actively involved in hormone production and early PT development.</li>
@@ -237,11 +285,47 @@ div.csl-indent {
 <li><strong>Hormone Receptor Expression</strong>: The receptors for <em>Tshb</em> (<em>Tshr</em>) and <em>Cck</em> (<em>Cckbr</em>) were expressed in regions of the developing hypothalamus rich in neural progenitor cells, such as the ventricular zones (Fig. 4a, 4b). Co-expression of <em>Tshr</em> and <em>Cckbr</em> with <em>Sox2</em> indicates that PT-derived hormones could influence neural development by acting on these progenitor cells.</li>
 <li><strong>Gpr173 Expression</strong>: We observed expression of <em>Gpr173</em>, a G protein-coupled receptor involved in neuroendocrine signaling, in neural progenitor zones overlapping with <em>Sox2</em> expression (Fig. 4c). This suggests a potential role for <em>Gpr173</em> in mediating hormonal signals from the PT to the developing brain.</li>
 </ul>
+<div id="fig-fetal-tshr" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fetal-tshr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/Figure5.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;5: TSHR brain-wide mRNA expression."><img src="images/Figure5.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fetal-tshr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: <strong>TSHR</strong> brain-wide mRNA expression.
+</figcaption>
+</figure>
+</div>
+<div id="fig-fetal-cckbr" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fetal-cckbr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/Figure6.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;6: CCKBR brain-wide mRNA expression."><img src="images/Figure6.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fetal-cckbr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: <strong>CCKBR</strong> brain-wide mRNA expression.
+</figcaption>
+</figure>
+</div>
 <p>To visualize gene expression dynamics across developmental stages, we generated DotPlots for key genes (Fig. 5). This analysis highlighted:</p>
 <ul>
 <li><strong>Early Onset and Persistence of Group One Genes</strong>: <em>Eya3</em>, <em>Tshb</em>, and <em>Cck</em> expression began as early as E12 and continued throughout embryonic development, indicating a sustained role in PT function.</li>
 <li><strong>Temporal Emergence of Group Two and Three Genes</strong>: <em>Eya1</em>, <em>Eya2</em>, and <em>Eya4</em> displayed increased expression at later stages, suggesting these genes are involved in the maturation and specialization processes within the PT.</li>
 </ul>
+<div class="quarto-embed-nb-cell">
+<div id="cell-fig-violin-gene-interactions-romanov2020" class="cell" data-fig-width="12" data-fig-height="12">
+<div class="cell-output cell-output-display">
+<div id="fig-violin-gene-interactions-romanov2020" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-violin-gene-interactions-romanov2020-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="index_files/figure-html/notebooks-01-de_test-focus_pars_tub-fig-violin-gene-interactions-romanov2020-output-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;7: Gene expression of projected Pars Tuberalis clusters in hypothalamus across different developmental stages in the Romanov et al.&nbsp;(2020) dataset."><img src="index_files/figure-html/notebooks-01-de_test-focus_pars_tub-fig-violin-gene-interactions-romanov2020-output-2.png" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-violin-gene-interactions-romanov2020-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Gene expression of projected Pars Tuberalis clusters in hypothalamus across different developmental stages in the Romanov et al.&nbsp;(2020) dataset.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 <p>Our integrated analysis, combining data from multiple developmental stages and employing rigorous statistical correlations, provides compelling evidence for the existence of three distinct PT cell groups during embryogenesis. Each group exhibits unique transcriptional signatures, indicating specialized roles:</p>
 <ul>
 <li><strong>Group One</strong> is likely responsible for early hormone production, directly influencing both PT development and possibly exerting effects on the hypothalamus through hormone secretion.</li>
@@ -251,7 +335,7 @@ div.csl-indent {
 </section>
 </section>
 </section>
-<section id="methods" class="level1">
+<section id="sec-data-methods" class="level1">
 <h1>Methods</h1>
 <section id="data-acquisition-and-preprocessing" class="level2">
 <h2 class="anchored" data-anchor-id="data-acquisition-and-preprocessing">Data Acquisition and Preprocessing</h2>
@@ -746,6 +830,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

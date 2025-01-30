@@ -225,10 +225,15 @@ developmental stages, from embryonic day 10 (E10) to postnatal day 45
 throughout PT development.
 
 In the dataset from Romanov et al., we identified a distinct cluster of
-PT cells within the hypothalamic scRNA-seq data (Fig. 1a). This cluster
-was characterized by the expression of key developmental genes,
-including \emph{Pitx1}, a transcription factor crucial for anterior
-pituitary gland
+PT cells within the hypothalamic scRNA-seq data (Fig. 1a).
+
+\textsubscript{Source:
+\href{https://EugOT.github.io/pr-PT/notebooks/01-de_test-focus_pars_tub.qmd.html\#cell-fig-feature-romanov2020}{Differential
+expression analysis of Hypothalamus datasets from Kim DW}}
+
+This cluster was characterized by the expression of key developmental
+genes, including \emph{Pitx1}, a transcription factor crucial for
+anterior pituitary gland
 formation\citep{szetoPOTXPIT1interactingHomeodomain1996}, and
 \emph{Gata2}, which is essential for the early stages of Rathke's pouch
 detachment and PT formation\citep{dasenReciprocalInteractionsPit11999}.
@@ -237,7 +242,8 @@ To enhance the resolution of our analysis and validate these findings,
 we integrated scRNA-seq data from Kim et al., which provided a rich
 temporal landscape of hypothalamic development. By aligning the
 datasets, we ensured accurate identification and mapping of PT cell
-populations across different developmental stages (Fig. 1b).
+populations across different developmental stages (Fig. 1b; see
+Section~\ref{sec-data-methods}).
 
 Clustering of the integrated dataset revealed three distinct groups of
 PT cells, each defined by unique transcriptional profiles:
@@ -286,6 +292,45 @@ distribution of group three cells imply they may represent a later phase
 of PT cell differentiation or a unique lineage with specialized
 functions yet to be fully understood.
 
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/Figure2.jpg}}
+
+}
+
+\caption{\label{fig-fetal-eya-tshb}Localization of \textbf{Tshb} and
+\textbf{Eya} transcription coactivators in the fetal PT.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/Figure3.jpg}}
+
+}
+
+\caption{\label{fig-fetal-eya-cck}Localization of \textbf{Cck} and
+\textbf{Eya} transcription coactivators in the fetal PT.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/Figure4.jpg}}
+
+}
+
+\caption{\label{fig-fetal-tshb-cck}\textbf{Tshb} and \textbf{Cck}
+co-localization.}
+
+\end{figure}%
+
 To further elucidate the characteristics of these groups, we examined
 additional genes implicated in PT development and function:
 
@@ -326,6 +371,32 @@ and the developing brain:
   hormonal signals from the PT to the developing brain.
 \end{itemize}
 
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/Figure5.jpg}}
+
+}
+
+\caption{\label{fig-fetal-tshr}\textbf{TSHR} brain-wide mRNA
+expression.}
+
+\end{figure}%
+
+\begin{figure}
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{images/Figure6.jpg}}
+
+}
+
+\caption{\label{fig-fetal-cckbr}\textbf{CCKBR} brain-wide mRNA
+expression.}
+
+\end{figure}%
+
 To visualize gene expression dynamics across developmental stages, we
 generated DotPlots for key genes (Fig. 5). This analysis highlighted:
 
@@ -342,6 +413,24 @@ generated DotPlots for key genes (Fig. 5). This analysis highlighted:
   stages, suggesting these genes are involved in the maturation and
   specialization processes within the PT.
 \end{itemize}
+
+\begin{figure}[H]
+
+\centering{
+
+\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-01-de_test-focus_pars_tub-fig-violin-gene-interactions-romanov2020-output-2.png}}
+
+}
+
+\caption{\label{fig-violin-gene-interactions-romanov2020}Gene expression
+of projected Pars Tuberalis clusters in hypothalamus across different
+developmental stages in the Romanov et al.~(2020) dataset.}
+
+\end{figure}%
+
+\textsubscript{Source:
+\href{https://EugOT.github.io/pr-PT/notebooks/01-de_test-focus_pars_tub.qmd.html\#cell-fig-violin-gene-interactions-romanov2020}{Differential
+expression analysis of Hypothalamus datasets from Kim DW}}
 
 Our integrated analysis, combining data from multiple developmental
 stages and employing rigorous statistical correlations, provides
@@ -364,7 +453,7 @@ signatures, indicating specialized roles:
   a role in the maturation of the PT or has unique endocrine functions.
 \end{itemize}
 
-\section{Methods}\label{methods}
+\section{Methods}\label{sec-data-methods}
 
 \subsection{Data Acquisition and
 Preprocessing}\label{data-acquisition-and-preprocessing}
