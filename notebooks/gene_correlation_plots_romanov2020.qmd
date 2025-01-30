@@ -1,0 +1,3212 @@
+#### Gene Correlation Plots
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Cck-P2
+#| fig-cap: "Correlation between Tshb and Cck expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Cck"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Cck-P10
+#| fig-cap: "Correlation between Tshb and Cck expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Cck"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Cck-P23
+#| fig-cap: "Correlation between Tshb and Cck expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Cck"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Pitx1-P2
+#| fig-cap: "Correlation between Tshb and Pitx1 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Pitx1"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Pitx1-P10
+#| fig-cap: "Correlation between Tshb and Pitx1 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Pitx1"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Pitx1-P23
+#| fig-cap: "Correlation between Tshb and Pitx1 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Pitx1"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya1-P2
+#| fig-cap: "Correlation between Tshb and Eya1 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya1-P10
+#| fig-cap: "Correlation between Tshb and Eya1 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya1-P23
+#| fig-cap: "Correlation between Tshb and Eya1 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya2-P2
+#| fig-cap: "Correlation between Tshb and Eya2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Eya2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya2-P23
+#| fig-cap: "Correlation between Tshb and Eya2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Eya2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya3-P2
+#| fig-cap: "Correlation between Tshb and Eya3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya3-P23
+#| fig-cap: "Correlation between Tshb and Eya3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya4-P2
+#| fig-cap: "Correlation between Tshb and Eya4 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya4-P10
+#| fig-cap: "Correlation between Tshb and Eya4 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Eya4-P23
+#| fig-cap: "Correlation between Tshb and Eya4 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Sox2-P2
+#| fig-cap: "Correlation between Tshb and Sox2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Sox2-P10
+#| fig-cap: "Correlation between Tshb and Sox2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Sox2-P23
+#| fig-cap: "Correlation between Tshb and Sox2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Hlf-P2
+#| fig-cap: "Correlation between Tshb and Hlf expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Hlf-P10
+#| fig-cap: "Correlation between Tshb and Hlf expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Hlf-P23
+#| fig-cap: "Correlation between Tshb and Hlf expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Tshr-P2
+#| fig-cap: "Correlation between Tshb and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Tshr-P10
+#| fig-cap: "Correlation between Tshb and Tshr expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Tshr-P23
+#| fig-cap: "Correlation between Tshb and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Gpr173-P2
+#| fig-cap: "Correlation between Tshb and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Gpr173-P10
+#| fig-cap: "Correlation between Tshb and Gpr173 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Gpr173-P23
+#| fig-cap: "Correlation between Tshb and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Lhx3-P2
+#| fig-cap: "Correlation between Tshb and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Lhx3-P10
+#| fig-cap: "Correlation between Tshb and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Lhx3-P23
+#| fig-cap: "Correlation between Tshb and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Gata2-P2
+#| fig-cap: "Correlation between Tshb and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshb", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Gata2-P10
+#| fig-cap: "Correlation between Tshb and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshb", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshb-Gata2-P23
+#| fig-cap: "Correlation between Tshb and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshb", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Pitx1-P2
+#| fig-cap: "Correlation between Cck and Pitx1 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Pitx1"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Pitx1-P10
+#| fig-cap: "Correlation between Cck and Pitx1 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Pitx1"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Pitx1-P23
+#| fig-cap: "Correlation between Cck and Pitx1 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Pitx1"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya1-P2
+#| fig-cap: "Correlation between Cck and Eya1 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya1-P10
+#| fig-cap: "Correlation between Cck and Eya1 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya1-P23
+#| fig-cap: "Correlation between Cck and Eya1 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya2-P2
+#| fig-cap: "Correlation between Cck and Eya2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Eya2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya2-P23
+#| fig-cap: "Correlation between Cck and Eya2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Eya2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya3-P2
+#| fig-cap: "Correlation between Cck and Eya3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya3-P23
+#| fig-cap: "Correlation between Cck and Eya3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya4-P2
+#| fig-cap: "Correlation between Cck and Eya4 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya4-P10
+#| fig-cap: "Correlation between Cck and Eya4 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Eya4-P23
+#| fig-cap: "Correlation between Cck and Eya4 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Sox2-P2
+#| fig-cap: "Correlation between Cck and Sox2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Sox2-P10
+#| fig-cap: "Correlation between Cck and Sox2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Sox2-P23
+#| fig-cap: "Correlation between Cck and Sox2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Hlf-P2
+#| fig-cap: "Correlation between Cck and Hlf expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Hlf-P10
+#| fig-cap: "Correlation between Cck and Hlf expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Hlf-P23
+#| fig-cap: "Correlation between Cck and Hlf expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Tshr-P2
+#| fig-cap: "Correlation between Cck and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Tshr-P10
+#| fig-cap: "Correlation between Cck and Tshr expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Tshr-P23
+#| fig-cap: "Correlation between Cck and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Gpr173-P2
+#| fig-cap: "Correlation between Cck and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Gpr173-P10
+#| fig-cap: "Correlation between Cck and Gpr173 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Gpr173-P23
+#| fig-cap: "Correlation between Cck and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Lhx3-P2
+#| fig-cap: "Correlation between Cck and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Lhx3-P10
+#| fig-cap: "Correlation between Cck and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Lhx3-P23
+#| fig-cap: "Correlation between Cck and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Gata2-P2
+#| fig-cap: "Correlation between Cck and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Gata2-P10
+#| fig-cap: "Correlation between Cck and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Cck-Gata2-P23
+#| fig-cap: "Correlation between Cck and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya1-P2
+#| fig-cap: "Correlation between Pitx1 and Eya1 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya1-P10
+#| fig-cap: "Correlation between Pitx1 and Eya1 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Pitx1", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya1-P23
+#| fig-cap: "Correlation between Pitx1 and Eya1 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Eya1"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya2-P2
+#| fig-cap: "Correlation between Pitx1 and Eya2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Eya2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya2-P23
+#| fig-cap: "Correlation between Pitx1 and Eya2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Eya2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya3-P2
+#| fig-cap: "Correlation between Pitx1 and Eya3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya3-P23
+#| fig-cap: "Correlation between Pitx1 and Eya3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya4-P2
+#| fig-cap: "Correlation between Pitx1 and Eya4 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya4-P10
+#| fig-cap: "Correlation between Pitx1 and Eya4 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Pitx1", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Eya4-P23
+#| fig-cap: "Correlation between Pitx1 and Eya4 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Sox2-P2
+#| fig-cap: "Correlation between Pitx1 and Sox2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Sox2-P10
+#| fig-cap: "Correlation between Pitx1 and Sox2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Pitx1", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Sox2-P23
+#| fig-cap: "Correlation between Pitx1 and Sox2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Hlf-P2
+#| fig-cap: "Correlation between Pitx1 and Hlf expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Hlf-P10
+#| fig-cap: "Correlation between Pitx1 and Hlf expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Pitx1", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Hlf-P23
+#| fig-cap: "Correlation between Pitx1 and Hlf expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Tshr-P2
+#| fig-cap: "Correlation between Pitx1 and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Tshr-P10
+#| fig-cap: "Correlation between Pitx1 and Tshr expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Pitx1", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Tshr-P23
+#| fig-cap: "Correlation between Pitx1 and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Gpr173-P2
+#| fig-cap: "Correlation between Pitx1 and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Gpr173-P10
+#| fig-cap: "Correlation between Pitx1 and Gpr173 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Pitx1", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Gpr173-P23
+#| fig-cap: "Correlation between Pitx1 and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Lhx3-P2
+#| fig-cap: "Correlation between Pitx1 and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Lhx3-P10
+#| fig-cap: "Correlation between Pitx1 and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Pitx1", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Lhx3-P23
+#| fig-cap: "Correlation between Pitx1 and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Gata2-P2
+#| fig-cap: "Correlation between Pitx1 and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Pitx1", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Gata2-P10
+#| fig-cap: "Correlation between Pitx1 and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Pitx1", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Pitx1-Gata2-P23
+#| fig-cap: "Correlation between Pitx1 and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Pitx1", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Eya2-P2
+#| fig-cap: "Correlation between Eya1 and Eya2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Eya2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Eya2-P23
+#| fig-cap: "Correlation between Eya1 and Eya2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Eya2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Eya3-P2
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Eya3-P23
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Eya4-P2
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Eya4-P10
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Eya4-P23
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Sox2-P2
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Sox2-P10
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Sox2-P23
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Hlf-P2
+#| fig-cap: "Correlation between Eya1 and Hlf expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Hlf-P10
+#| fig-cap: "Correlation between Eya1 and Hlf expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Hlf-P23
+#| fig-cap: "Correlation between Eya1 and Hlf expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Tshr-P2
+#| fig-cap: "Correlation between Eya1 and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Tshr-P10
+#| fig-cap: "Correlation between Eya1 and Tshr expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Tshr-P23
+#| fig-cap: "Correlation between Eya1 and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Gpr173-P2
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Gpr173-P10
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Gpr173-P23
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Lhx3-P2
+#| fig-cap: "Correlation between Eya1 and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Lhx3-P10
+#| fig-cap: "Correlation between Eya1 and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya1", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Lhx3-P23
+#| fig-cap: "Correlation between Eya1 and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Gata2-P2
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Gata2-P10
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya1-Gata2-P23
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Eya3-P2
+#| fig-cap: "Correlation between Eya2 and Eya3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya2", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Eya3-P23
+#| fig-cap: "Correlation between Eya2 and Eya3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya2", "Eya3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Eya4-E15
+#| fig-cap: "Correlation between Eya2 and Eya4 expression at E15 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya2", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Eya4-P2
+#| fig-cap: "Correlation between Eya2 and Eya4 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya2", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Eya4-P23
+#| fig-cap: "Correlation between Eya2 and Eya4 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya2", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Sox2-E15
+#| fig-cap: "Correlation between Eya2 and Sox2 expression at E15 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya2", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Sox2-P2
+#| fig-cap: "Correlation between Eya2 and Sox2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya2", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Sox2-P23
+#| fig-cap: "Correlation between Eya2 and Sox2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya2", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Hlf-P2
+#| fig-cap: "Correlation between Eya2 and Hlf expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya2", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Hlf-P23
+#| fig-cap: "Correlation between Eya2 and Hlf expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya2", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Tshr-P2
+#| fig-cap: "Correlation between Eya2 and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya2", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Tshr-P23
+#| fig-cap: "Correlation between Eya2 and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya2", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Gpr173-P2
+#| fig-cap: "Correlation between Eya2 and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya2", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Gpr173-P23
+#| fig-cap: "Correlation between Eya2 and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya2", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Lhx3-P2
+#| fig-cap: "Correlation between Eya2 and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya2", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Lhx3-P23
+#| fig-cap: "Correlation between Eya2 and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya2", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Gata2-P2
+#| fig-cap: "Correlation between Eya2 and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya2", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya2-Gata2-P23
+#| fig-cap: "Correlation between Eya2 and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya2", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Eya4-P2
+#| fig-cap: "Correlation between Eya3 and Eya4 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya3", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Eya4-P23
+#| fig-cap: "Correlation between Eya3 and Eya4 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya3", "Eya4"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Sox2-P2
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Sox2-P23
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Hlf-P2
+#| fig-cap: "Correlation between Eya3 and Hlf expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Hlf-P23
+#| fig-cap: "Correlation between Eya3 and Hlf expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Tshr-P2
+#| fig-cap: "Correlation between Eya3 and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya3", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Tshr-P23
+#| fig-cap: "Correlation between Eya3 and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya3", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Gpr173-P2
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Gpr173-P23
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Lhx3-P2
+#| fig-cap: "Correlation between Eya3 and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya3", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Lhx3-P23
+#| fig-cap: "Correlation between Eya3 and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya3", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Gata2-P2
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya3-Gata2-P23
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Sox2-E15
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at E15 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Sox2-P2
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Sox2-P10
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Sox2-P23
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Hlf-P2
+#| fig-cap: "Correlation between Eya4 and Hlf expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Hlf-P10
+#| fig-cap: "Correlation between Eya4 and Hlf expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Hlf-P23
+#| fig-cap: "Correlation between Eya4 and Hlf expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Tshr-P2
+#| fig-cap: "Correlation between Eya4 and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya4", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Tshr-P10
+#| fig-cap: "Correlation between Eya4 and Tshr expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya4", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Tshr-P23
+#| fig-cap: "Correlation between Eya4 and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya4", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Gpr173-P2
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Gpr173-P10
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Gpr173-P23
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Lhx3-P2
+#| fig-cap: "Correlation between Eya4 and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya4", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Lhx3-P10
+#| fig-cap: "Correlation between Eya4 and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya4", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Lhx3-P23
+#| fig-cap: "Correlation between Eya4 and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya4", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Gata2-P2
+#| fig-cap: "Correlation between Eya4 and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Eya4", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Gata2-P10
+#| fig-cap: "Correlation between Eya4 and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Eya4", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Eya4-Gata2-P23
+#| fig-cap: "Correlation between Eya4 and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Eya4", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Hlf-P2
+#| fig-cap: "Correlation between Sox2 and Hlf expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Hlf-P10
+#| fig-cap: "Correlation between Sox2 and Hlf expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Hlf-P23
+#| fig-cap: "Correlation between Sox2 and Hlf expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Tshr-P2
+#| fig-cap: "Correlation between Sox2 and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Tshr-P10
+#| fig-cap: "Correlation between Sox2 and Tshr expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Tshr-P23
+#| fig-cap: "Correlation between Sox2 and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Gpr173-P2
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Gpr173-P10
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Gpr173-P23
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Lhx3-P2
+#| fig-cap: "Correlation between Sox2 and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Sox2", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Lhx3-P10
+#| fig-cap: "Correlation between Sox2 and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Sox2", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Lhx3-P23
+#| fig-cap: "Correlation between Sox2 and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Sox2", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Gata2-P2
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Gata2-P10
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Sox2-Gata2-P23
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Tshr-P2
+#| fig-cap: "Correlation between Hlf and Tshr expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Tshr-P10
+#| fig-cap: "Correlation between Hlf and Tshr expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Tshr-P23
+#| fig-cap: "Correlation between Hlf and Tshr expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Gpr173-P2
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Gpr173-P10
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Gpr173-P23
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Lhx3-P2
+#| fig-cap: "Correlation between Hlf and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Hlf", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Lhx3-P10
+#| fig-cap: "Correlation between Hlf and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Hlf", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Lhx3-P23
+#| fig-cap: "Correlation between Hlf and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Hlf", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Gata2-P2
+#| fig-cap: "Correlation between Hlf and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Gata2-P10
+#| fig-cap: "Correlation between Hlf and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Hlf-Gata2-P23
+#| fig-cap: "Correlation between Hlf and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Gpr173-P2
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Gpr173-P10
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Gpr173-P23
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Lhx3-P2
+#| fig-cap: "Correlation between Tshr and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshr", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Lhx3-P10
+#| fig-cap: "Correlation between Tshr and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshr", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Lhx3-P23
+#| fig-cap: "Correlation between Tshr and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshr", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Gata2-P2
+#| fig-cap: "Correlation between Tshr and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Tshr", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Gata2-P10
+#| fig-cap: "Correlation between Tshr and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Tshr", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Tshr-Gata2-P23
+#| fig-cap: "Correlation between Tshr and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Tshr", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Gpr173-Lhx3-P2
+#| fig-cap: "Correlation between Gpr173 and Lhx3 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Gpr173", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Gpr173-Lhx3-P10
+#| fig-cap: "Correlation between Gpr173 and Lhx3 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Gpr173", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Gpr173-Lhx3-P23
+#| fig-cap: "Correlation between Gpr173 and Lhx3 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Gpr173", "Lhx3"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Gpr173-Gata2-P2
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Gpr173-Gata2-P10
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Gpr173-Gata2-P23
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Lhx3-Gata2-P2
+#| fig-cap: "Correlation between Lhx3 and Gata2 expression at P2 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P2", cells = cells_to_check),
+    c("Lhx3", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P2"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Lhx3-Gata2-P10
+#| fig-cap: "Correlation between Lhx3 and Gata2 expression at P10 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P10", cells = cells_to_check),
+    c("Lhx3", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P10"
+)
+```
+
+```{r}
+#| label: fig-romanov2020-correlation-Lhx3-Gata2-P23
+#| fig-cap: "Correlation between Lhx3 and Gata2 expression at P23 in Romanov et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.romanov.pub |> subset(Age == "P23", cells = cells_to_check),
+    c("Lhx3", "Gata2"),
+    "wtree",
+    cells_to_check,
+    age = "P23"
+)
+```
+

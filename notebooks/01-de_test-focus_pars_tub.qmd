@@ -586,7 +586,9 @@ p38kim | p45kim
 #| fig-cap: Gene expression of projected Pars Tuberalis clusters in hypothalamus across different developmental stages in the Kim DW et al. (2020) dataset.
 #| fig-width: 12
 #| fig-height: 12
+#| warning: false
 cells_to_check <- WhichCells(srt.kim, idents = c("38", "42", "45") %>% .[. %in% levels(srt.kim)])
+dat_kim <- srt.kim@assays$RNA@counts[, cells_to_check]
 genes_to_check <- c(
   "Tshb",
   "Cck",
@@ -609,6 +611,9 @@ genes_to_check <- c(
 ) %>%
   .[. %in% (srt.kim@assays$RNA@counts[, cells_to_check] |> rowSums() %>% .[. > 3] %>% names())]
 
+dat_kim <- dat_kim[genes_to_check, cells_to_check] %>% as.data.frame() %>% t()
+
+dat_kim <- dat_kim |> as.data.frame() |> mutate(Age = srt.kim[["Age"]][rownames(dat_kim), ])
 
 # 1. Complete gene pairs - Ensure all combinations are present
 gene_pairs <- combn(
@@ -672,23 +677,17 @@ generate_correlation_plots <- function(seurat_obj, genes, group_var, cells, age 
     GetAssayData(layer = "data") |>
     t() |>
     as.data.frame() |>
-    mutate(group = seurat_obj[[group_var]][cells, 1])
-
-  if (!is.null(age)) {
-    title <- paste("Gene correlation at", age)
-  } else {
-    title <- "Gene correlation"
-  }
+    dplyr::select(genes) |>
+    mutate(group = as_factor(seurat_obj[[group_var]][colnames(seurat_obj), 1]))
 
   grouped_ggscatterstats(
     data = plot_data,
-    x = genes[1],
-    y = genes[2],
+    x = !!genes[1],  # Force evaluation of gene names as symbols
+    y = !!genes[2],  # Force evaluation of gene names as symbols
     grouping.var = group,
     type = "nonparametric",
     xlab = genes[1],
-    ylab = genes[2],
-    title = title
+    ylab = genes[2]
   )
 }
 ```
@@ -703,27 +702,41 @@ import pandas as pd
 # Access R variables in Python using py$
 gene_pairs = r.gene_pairs
 ages = r.ages
+dat_kim = r.dat_kim
 
-# Convert gene_pairs to a Pandas DataFrame
+# Convert gene_pairs and data to a Pandas DataFrame
 gene_pairs = pd.DataFrame(gene_pairs).T
+dat_kim = pd.DataFrame(dat_kim)
 
 
 def generate_plot_chunk(genes, age):
-    chunk_text = f"""```{{r}}
+    # Filter the data for the current age
+    age_data = dat_kim[dat_kim["Age"] == age]
+
+    # Check if both genes have at least two unique values in the age subset
+    gene1_values = age_data[genes[0]].unique()
+    gene2_values = age_data[genes[1]].unique()
+
+    if len(gene1_values) >= 2 and len(gene2_values) >= 2:
+        # Generate the plot chunk
+        chunk_text = f"""```{{r}}
 #| label: fig-kim2020-correlation-{genes[0]}-{genes[1]}-{age}
 #| fig-cap: "Correlation between {genes[0]} and {genes[1]} expression at {age} in Kim et al. 2020 dataset"
 #| fig-width: 12
 #| fig-height: 8
 
 generate_correlation_plots(
-    srt.kim |> subset(Age == "{age}"),
+    srt.kim |> subset(Age == "{age}", cells = cells_to_check),
     c("{genes[0]}", "{genes[1]}"),
     "predicted.id",
     cells_to_check,
     age = "{age}"
 )
 ```"""
-    return chunk_text
+        return chunk_text
+    else:
+        # Skip this gene pair for this age if one or both genes don't have enough values
+        return ""
 
 
 # Generate the Quarto markdown content
@@ -731,7 +744,7 @@ qmd_content = "#### Gene Correlation Plots\n\n"
 
 for _, row in gene_pairs.iterrows():
     for age in ages:
-        qmd_content += generate_plot_chunk([row[0], row[1]], age) + "\n"
+        qmd_content += generate_plot_chunk([row[0], row[1]], age) + "\n\n"
 
 # Write the content to a .qmd file
 with open("gene_correlation_plots_kim2020.qmd", "w") as f:
@@ -765,6 +778,7 @@ DotPlot_scCustom(seurat_object = subset(srt.kim, cells = cells_to_check), colors
 # Violin plots for srt.romanov.pub (split by its original clusters, 'wtree')
 Idents(srt.romanov.pub) <- "wtree"
 cells_to_check <- WhichCells(srt.romanov.pub, idents = c("38", "42", "45") %>% .[. %in% levels(srt.romanov.pub)])
+dat_romanov <- srt.romanov.pub@assays$RNA@counts[, cells_to_check]
 genes_to_check <- c(
   "Tshb",
   "Cck",
@@ -787,6 +801,10 @@ genes_to_check <- c(
 ) %>%
   .[. %in% (srt.romanov.pub@assays$RNA@counts[, cells_to_check] |> rowSums() %>% .[. > 3] %>% names())]
 
+
+dat_romanov <- dat_romanov[genes_to_check, cells_to_check] %>% as.data.frame() %>% t()
+
+dat_romanov <- dat_romanov |> as.data.frame() |> mutate(Age = srt.romanov.pub[["Age"]][rownames(dat_romanov), ])
 
 # Complete gene pairs
 gene_pairs <- combn(
@@ -816,27 +834,41 @@ import pandas as pd
 # Access R variables in Python using py$
 gene_pairs = r.gene_pairs
 ages = r.ages
+dat_romanov = r.dat_romanov  # Assuming you have dat_romanov in R
 
-# Convert gene_pairs to a Pandas DataFrame
+# Convert gene_pairs and data to a Pandas DataFrame
 gene_pairs = pd.DataFrame(gene_pairs).T
+dat_romanov = pd.DataFrame(dat_romanov)
 
 
 def generate_plot_chunk(genes, age):
-    chunk_text = f"""```{{r}}
+    # Filter the data for the current age
+    age_data = dat_romanov[dat_romanov["Age"] == age]
+
+    # Check if both genes have at least two unique values in the age subset
+    gene1_values = age_data[genes[0]].unique()
+    gene2_values = age_data[genes[1]].unique()
+
+    if len(gene1_values) >= 2 and len(gene2_values) >= 2:
+        # Generate the plot chunk
+        chunk_text = f"""```{{r}}
 #| label: fig-romanov2020-correlation-{genes[0]}-{genes[1]}-{age}
 #| fig-cap: "Correlation between {genes[0]} and {genes[1]} expression at {age} in Romanov et al. 2020 dataset"
 #| fig-width: 12
 #| fig-height: 8
 
 generate_correlation_plots(
-    srt.romanov.pub |> subset(Age == "{age}"),
+    srt.romanov.pub |> subset(Age == "{age}", cells = cells_to_check),
     c("{genes[0]}", "{genes[1]}"),
-    "predicted.id",
+    "wtree",
     cells_to_check,
     age = "{age}"
 )
 ```"""
-    return chunk_text
+        return chunk_text
+    else:
+        # Skip this gene pair for this age if one or both genes don't have enough values
+        return ""
 
 
 # Generate the Quarto markdown content
@@ -844,7 +876,9 @@ qmd_content = "#### Gene Correlation Plots\n\n"
 
 for _, row in gene_pairs.iterrows():
     for age in ages:
-        qmd_content += generate_plot_chunk([row[0], row[1]], age) + "\n"
+        chunk = generate_plot_chunk([row[0], row[1]], age)
+        if chunk:
+            qmd_content += chunk + "\n\n"
 
 # Write the content to a .qmd file
 with open("gene_correlation_plots_romanov2020.qmd", "w") as f:

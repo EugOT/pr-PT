@@ -1,0 +1,8382 @@
+#### Gene Correlation Plots
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Cck-P8
+#| fig-cap: "Correlation between Tshb and Cck expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Cck"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Pitx1-P8
+#| fig-cap: "Correlation between Tshb and Pitx1 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Pitx1"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Eya1-P8
+#| fig-cap: "Correlation between Tshb and Eya1 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Eya2-P8
+#| fig-cap: "Correlation between Tshb and Eya2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Eya3-P8
+#| fig-cap: "Correlation between Tshb and Eya3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Eya4-P8
+#| fig-cap: "Correlation between Tshb and Eya4 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Sox2-P8
+#| fig-cap: "Correlation between Tshb and Sox2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Hlf-P8
+#| fig-cap: "Correlation between Tshb and Hlf expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Tshr-P8
+#| fig-cap: "Correlation between Tshb and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Cckbr-P8
+#| fig-cap: "Correlation between Tshb and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Gpr173-P8
+#| fig-cap: "Correlation between Tshb and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Lhx3-P8
+#| fig-cap: "Correlation between Tshb and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshb-Gata2-P8
+#| fig-cap: "Correlation between Tshb and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshb", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Pitx1-E11
+#| fig-cap: "Correlation between Cck and Pitx1 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Pitx1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Pitx1-P8
+#| fig-cap: "Correlation between Cck and Pitx1 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Pitx1"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Pitx1-P45
+#| fig-cap: "Correlation between Cck and Pitx1 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Pitx1"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-E11
+#| fig-cap: "Correlation between Cck and Eya1 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-E12
+#| fig-cap: "Correlation between Cck and Eya1 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-E13
+#| fig-cap: "Correlation between Cck and Eya1 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-E14
+#| fig-cap: "Correlation between Cck and Eya1 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-E15
+#| fig-cap: "Correlation between Cck and Eya1 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-E16
+#| fig-cap: "Correlation between Cck and Eya1 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-E18
+#| fig-cap: "Correlation between Cck and Eya1 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-P8
+#| fig-cap: "Correlation between Cck and Eya1 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya1-P45
+#| fig-cap: "Correlation between Cck and Eya1 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya2-E11
+#| fig-cap: "Correlation between Cck and Eya2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya2-E13
+#| fig-cap: "Correlation between Cck and Eya2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Cck", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya2-P8
+#| fig-cap: "Correlation between Cck and Eya2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya2-P45
+#| fig-cap: "Correlation between Cck and Eya2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-E11
+#| fig-cap: "Correlation between Cck and Eya3 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-E12
+#| fig-cap: "Correlation between Cck and Eya3 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-E13
+#| fig-cap: "Correlation between Cck and Eya3 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-E14
+#| fig-cap: "Correlation between Cck and Eya3 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-E15
+#| fig-cap: "Correlation between Cck and Eya3 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-E16
+#| fig-cap: "Correlation between Cck and Eya3 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-E18
+#| fig-cap: "Correlation between Cck and Eya3 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-P8
+#| fig-cap: "Correlation between Cck and Eya3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya3-P45
+#| fig-cap: "Correlation between Cck and Eya3 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya4-E11
+#| fig-cap: "Correlation between Cck and Eya4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya4-E12
+#| fig-cap: "Correlation between Cck and Eya4 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya4-E15
+#| fig-cap: "Correlation between Cck and Eya4 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya4-E16
+#| fig-cap: "Correlation between Cck and Eya4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya4-P8
+#| fig-cap: "Correlation between Cck and Eya4 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Eya4-P45
+#| fig-cap: "Correlation between Cck and Eya4 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-E11
+#| fig-cap: "Correlation between Cck and Sox2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-E12
+#| fig-cap: "Correlation between Cck and Sox2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-E13
+#| fig-cap: "Correlation between Cck and Sox2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-E14
+#| fig-cap: "Correlation between Cck and Sox2 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-E15
+#| fig-cap: "Correlation between Cck and Sox2 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-E16
+#| fig-cap: "Correlation between Cck and Sox2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-E18
+#| fig-cap: "Correlation between Cck and Sox2 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-P8
+#| fig-cap: "Correlation between Cck and Sox2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Sox2-P45
+#| fig-cap: "Correlation between Cck and Sox2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-E11
+#| fig-cap: "Correlation between Cck and Hlf expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-E12
+#| fig-cap: "Correlation between Cck and Hlf expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-E13
+#| fig-cap: "Correlation between Cck and Hlf expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-E14
+#| fig-cap: "Correlation between Cck and Hlf expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-E15
+#| fig-cap: "Correlation between Cck and Hlf expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-E16
+#| fig-cap: "Correlation between Cck and Hlf expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-E18
+#| fig-cap: "Correlation between Cck and Hlf expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-P8
+#| fig-cap: "Correlation between Cck and Hlf expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Hlf-P45
+#| fig-cap: "Correlation between Cck and Hlf expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Tshr-E11
+#| fig-cap: "Correlation between Cck and Tshr expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Tshr-E15
+#| fig-cap: "Correlation between Cck and Tshr expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Tshr-E16
+#| fig-cap: "Correlation between Cck and Tshr expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Tshr-E18
+#| fig-cap: "Correlation between Cck and Tshr expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Tshr-P8
+#| fig-cap: "Correlation between Cck and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Tshr-P45
+#| fig-cap: "Correlation between Cck and Tshr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Cckar-E15
+#| fig-cap: "Correlation between Cck and Cckar expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cck", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Cckar-E18
+#| fig-cap: "Correlation between Cck and Cckar expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Cck", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Cckar-P45
+#| fig-cap: "Correlation between Cck and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Cckbr-P8
+#| fig-cap: "Correlation between Cck and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Cckbr-P45
+#| fig-cap: "Correlation between Cck and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-E11
+#| fig-cap: "Correlation between Cck and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-E12
+#| fig-cap: "Correlation between Cck and Gpr173 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-E13
+#| fig-cap: "Correlation between Cck and Gpr173 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-E14
+#| fig-cap: "Correlation between Cck and Gpr173 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-E15
+#| fig-cap: "Correlation between Cck and Gpr173 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-E16
+#| fig-cap: "Correlation between Cck and Gpr173 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-E18
+#| fig-cap: "Correlation between Cck and Gpr173 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-P8
+#| fig-cap: "Correlation between Cck and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gpr173-P45
+#| fig-cap: "Correlation between Cck and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Lhx3-P8
+#| fig-cap: "Correlation between Cck and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Lhx4-E11
+#| fig-cap: "Correlation between Cck and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Lhx4-E16
+#| fig-cap: "Correlation between Cck and Lhx4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gata2-E11
+#| fig-cap: "Correlation between Cck and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gata2-E12
+#| fig-cap: "Correlation between Cck and Gata2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gata2-E13
+#| fig-cap: "Correlation between Cck and Gata2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gata2-E16
+#| fig-cap: "Correlation between Cck and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gata2-P8
+#| fig-cap: "Correlation between Cck and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cck-Gata2-P45
+#| fig-cap: "Correlation between Cck and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cck", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya1-E10
+#| fig-cap: "Correlation between Pitx1 and Eya1 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya1-E11
+#| fig-cap: "Correlation between Pitx1 and Eya1 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya1-P8
+#| fig-cap: "Correlation between Pitx1 and Eya1 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya1-P45
+#| fig-cap: "Correlation between Pitx1 and Eya1 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Eya1"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya2-E10
+#| fig-cap: "Correlation between Pitx1 and Eya2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya2-E11
+#| fig-cap: "Correlation between Pitx1 and Eya2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya2-P8
+#| fig-cap: "Correlation between Pitx1 and Eya2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya2-P45
+#| fig-cap: "Correlation between Pitx1 and Eya2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya3-E10
+#| fig-cap: "Correlation between Pitx1 and Eya3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya3-E11
+#| fig-cap: "Correlation between Pitx1 and Eya3 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya3-P8
+#| fig-cap: "Correlation between Pitx1 and Eya3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya3-P45
+#| fig-cap: "Correlation between Pitx1 and Eya3 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya4-E11
+#| fig-cap: "Correlation between Pitx1 and Eya4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya4-P8
+#| fig-cap: "Correlation between Pitx1 and Eya4 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Eya4-P45
+#| fig-cap: "Correlation between Pitx1 and Eya4 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Sox2-E10
+#| fig-cap: "Correlation between Pitx1 and Sox2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Sox2-E11
+#| fig-cap: "Correlation between Pitx1 and Sox2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Sox2-P8
+#| fig-cap: "Correlation between Pitx1 and Sox2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Sox2-P45
+#| fig-cap: "Correlation between Pitx1 and Sox2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Hlf-E10
+#| fig-cap: "Correlation between Pitx1 and Hlf expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Hlf-E11
+#| fig-cap: "Correlation between Pitx1 and Hlf expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Hlf-P8
+#| fig-cap: "Correlation between Pitx1 and Hlf expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Hlf-P45
+#| fig-cap: "Correlation between Pitx1 and Hlf expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Tshr-E11
+#| fig-cap: "Correlation between Pitx1 and Tshr expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Tshr-P8
+#| fig-cap: "Correlation between Pitx1 and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Tshr-P45
+#| fig-cap: "Correlation between Pitx1 and Tshr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Cckar-P45
+#| fig-cap: "Correlation between Pitx1 and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Cckbr-P8
+#| fig-cap: "Correlation between Pitx1 and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Cckbr-P45
+#| fig-cap: "Correlation between Pitx1 and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Gpr173-E10
+#| fig-cap: "Correlation between Pitx1 and Gpr173 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Gpr173-E11
+#| fig-cap: "Correlation between Pitx1 and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Gpr173-P8
+#| fig-cap: "Correlation between Pitx1 and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Gpr173-P45
+#| fig-cap: "Correlation between Pitx1 and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Lhx3-E10
+#| fig-cap: "Correlation between Pitx1 and Lhx3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Lhx3-P8
+#| fig-cap: "Correlation between Pitx1 and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Lhx4-E10
+#| fig-cap: "Correlation between Pitx1 and Lhx4 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Lhx4-E11
+#| fig-cap: "Correlation between Pitx1 and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Gata2-E10
+#| fig-cap: "Correlation between Pitx1 and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Pitx1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Gata2-E11
+#| fig-cap: "Correlation between Pitx1 and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Pitx1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Gata2-P8
+#| fig-cap: "Correlation between Pitx1 and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Pitx1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Pitx1-Gata2-P45
+#| fig-cap: "Correlation between Pitx1 and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Pitx1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya2-E10
+#| fig-cap: "Correlation between Eya1 and Eya2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya2-E11
+#| fig-cap: "Correlation between Eya1 and Eya2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya2-E13
+#| fig-cap: "Correlation between Eya1 and Eya2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya2-P8
+#| fig-cap: "Correlation between Eya1 and Eya2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya2-P45
+#| fig-cap: "Correlation between Eya1 and Eya2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Eya2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-E10
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-E11
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-E12
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-E13
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-E14
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-E15
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-E16
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-E18
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-P8
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya3-P45
+#| fig-cap: "Correlation between Eya1 and Eya3 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya4-E11
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya4-E12
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya4-E15
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya4-E16
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya4-P8
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Eya4-P45
+#| fig-cap: "Correlation between Eya1 and Eya4 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-E10
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-E11
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-E12
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-E13
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-E14
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-E15
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-E16
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-E18
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-P8
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Sox2-P45
+#| fig-cap: "Correlation between Eya1 and Sox2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-E10
+#| fig-cap: "Correlation between Eya1 and Hlf expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-E11
+#| fig-cap: "Correlation between Eya1 and Hlf expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-E12
+#| fig-cap: "Correlation between Eya1 and Hlf expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-E13
+#| fig-cap: "Correlation between Eya1 and Hlf expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-E14
+#| fig-cap: "Correlation between Eya1 and Hlf expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-E15
+#| fig-cap: "Correlation between Eya1 and Hlf expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-E16
+#| fig-cap: "Correlation between Eya1 and Hlf expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-E18
+#| fig-cap: "Correlation between Eya1 and Hlf expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-P8
+#| fig-cap: "Correlation between Eya1 and Hlf expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Hlf-P45
+#| fig-cap: "Correlation between Eya1 and Hlf expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Tshr-E11
+#| fig-cap: "Correlation between Eya1 and Tshr expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Tshr-E15
+#| fig-cap: "Correlation between Eya1 and Tshr expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Tshr-E16
+#| fig-cap: "Correlation between Eya1 and Tshr expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Tshr-E18
+#| fig-cap: "Correlation between Eya1 and Tshr expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Tshr-P8
+#| fig-cap: "Correlation between Eya1 and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Tshr-P45
+#| fig-cap: "Correlation between Eya1 and Tshr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Cckar-E15
+#| fig-cap: "Correlation between Eya1 and Cckar expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya1", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Cckar-E18
+#| fig-cap: "Correlation between Eya1 and Cckar expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya1", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Cckar-P45
+#| fig-cap: "Correlation between Eya1 and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Cckbr-P8
+#| fig-cap: "Correlation between Eya1 and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Cckbr-P45
+#| fig-cap: "Correlation between Eya1 and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-E10
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-E11
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-E12
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-E13
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-E14
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-E15
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-E16
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-E18
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-P8
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gpr173-P45
+#| fig-cap: "Correlation between Eya1 and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Lhx3-E10
+#| fig-cap: "Correlation between Eya1 and Lhx3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya1", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Lhx3-P8
+#| fig-cap: "Correlation between Eya1 and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Lhx4-E10
+#| fig-cap: "Correlation between Eya1 and Lhx4 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya1", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Lhx4-E11
+#| fig-cap: "Correlation between Eya1 and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Lhx4-E16
+#| fig-cap: "Correlation between Eya1 and Lhx4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya1", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gata2-E10
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gata2-E11
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gata2-E12
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gata2-E13
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gata2-E16
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gata2-P8
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya1-Gata2-P45
+#| fig-cap: "Correlation between Eya1 and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya1", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Eya3-E10
+#| fig-cap: "Correlation between Eya2 and Eya3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya2", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Eya3-E11
+#| fig-cap: "Correlation between Eya2 and Eya3 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya2", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Eya3-E13
+#| fig-cap: "Correlation between Eya2 and Eya3 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya2", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Eya3-P8
+#| fig-cap: "Correlation between Eya2 and Eya3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Eya3-P45
+#| fig-cap: "Correlation between Eya2 and Eya3 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Eya3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Eya4-E11
+#| fig-cap: "Correlation between Eya2 and Eya4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya2", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Eya4-P8
+#| fig-cap: "Correlation between Eya2 and Eya4 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Eya4-P45
+#| fig-cap: "Correlation between Eya2 and Eya4 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Sox2-E10
+#| fig-cap: "Correlation between Eya2 and Sox2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya2", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Sox2-E11
+#| fig-cap: "Correlation between Eya2 and Sox2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya2", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Sox2-E13
+#| fig-cap: "Correlation between Eya2 and Sox2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya2", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Sox2-P8
+#| fig-cap: "Correlation between Eya2 and Sox2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Sox2-P45
+#| fig-cap: "Correlation between Eya2 and Sox2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Hlf-E10
+#| fig-cap: "Correlation between Eya2 and Hlf expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Hlf-E11
+#| fig-cap: "Correlation between Eya2 and Hlf expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Hlf-E13
+#| fig-cap: "Correlation between Eya2 and Hlf expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Hlf-P8
+#| fig-cap: "Correlation between Eya2 and Hlf expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Hlf-P45
+#| fig-cap: "Correlation between Eya2 and Hlf expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Tshr-E11
+#| fig-cap: "Correlation between Eya2 and Tshr expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Tshr-P8
+#| fig-cap: "Correlation between Eya2 and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Tshr-P45
+#| fig-cap: "Correlation between Eya2 and Tshr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Cckar-P45
+#| fig-cap: "Correlation between Eya2 and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Cckbr-P8
+#| fig-cap: "Correlation between Eya2 and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Cckbr-P45
+#| fig-cap: "Correlation between Eya2 and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gpr173-E10
+#| fig-cap: "Correlation between Eya2 and Gpr173 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gpr173-E11
+#| fig-cap: "Correlation between Eya2 and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gpr173-E13
+#| fig-cap: "Correlation between Eya2 and Gpr173 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gpr173-P8
+#| fig-cap: "Correlation between Eya2 and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gpr173-P45
+#| fig-cap: "Correlation between Eya2 and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Lhx3-E10
+#| fig-cap: "Correlation between Eya2 and Lhx3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya2", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Lhx3-P8
+#| fig-cap: "Correlation between Eya2 and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Lhx4-E10
+#| fig-cap: "Correlation between Eya2 and Lhx4 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya2", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Lhx4-E11
+#| fig-cap: "Correlation between Eya2 and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya2", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gata2-E10
+#| fig-cap: "Correlation between Eya2 and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gata2-E11
+#| fig-cap: "Correlation between Eya2 and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gata2-E13
+#| fig-cap: "Correlation between Eya2 and Gata2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gata2-P8
+#| fig-cap: "Correlation between Eya2 and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya2-Gata2-P45
+#| fig-cap: "Correlation between Eya2 and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Eya4-E11
+#| fig-cap: "Correlation between Eya3 and Eya4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya3", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Eya4-E12
+#| fig-cap: "Correlation between Eya3 and Eya4 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya3", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Eya4-E15
+#| fig-cap: "Correlation between Eya3 and Eya4 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya3", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Eya4-E16
+#| fig-cap: "Correlation between Eya3 and Eya4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya3", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Eya4-P8
+#| fig-cap: "Correlation between Eya3 and Eya4 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya3", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Eya4-P45
+#| fig-cap: "Correlation between Eya3 and Eya4 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya3", "Eya4"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-E10
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-E11
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-E12
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-E13
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-E14
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-E15
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-E16
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-E18
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-P8
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Sox2-P45
+#| fig-cap: "Correlation between Eya3 and Sox2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya3", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-E10
+#| fig-cap: "Correlation between Eya3 and Hlf expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-E11
+#| fig-cap: "Correlation between Eya3 and Hlf expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-E12
+#| fig-cap: "Correlation between Eya3 and Hlf expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-E13
+#| fig-cap: "Correlation between Eya3 and Hlf expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-E14
+#| fig-cap: "Correlation between Eya3 and Hlf expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-E15
+#| fig-cap: "Correlation between Eya3 and Hlf expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-E16
+#| fig-cap: "Correlation between Eya3 and Hlf expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-E18
+#| fig-cap: "Correlation between Eya3 and Hlf expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-P8
+#| fig-cap: "Correlation between Eya3 and Hlf expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Hlf-P45
+#| fig-cap: "Correlation between Eya3 and Hlf expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya3", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Tshr-E11
+#| fig-cap: "Correlation between Eya3 and Tshr expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya3", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Tshr-E15
+#| fig-cap: "Correlation between Eya3 and Tshr expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya3", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Tshr-E16
+#| fig-cap: "Correlation between Eya3 and Tshr expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya3", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Tshr-E18
+#| fig-cap: "Correlation between Eya3 and Tshr expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya3", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Tshr-P8
+#| fig-cap: "Correlation between Eya3 and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya3", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Tshr-P45
+#| fig-cap: "Correlation between Eya3 and Tshr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya3", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Cckar-E15
+#| fig-cap: "Correlation between Eya3 and Cckar expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya3", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Cckar-E18
+#| fig-cap: "Correlation between Eya3 and Cckar expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya3", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Cckar-P45
+#| fig-cap: "Correlation between Eya3 and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya3", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Cckbr-P8
+#| fig-cap: "Correlation between Eya3 and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya3", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Cckbr-P45
+#| fig-cap: "Correlation between Eya3 and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya3", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-E10
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-E11
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-E12
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-E13
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-E14
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-E15
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-E16
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-E18
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-P8
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gpr173-P45
+#| fig-cap: "Correlation between Eya3 and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya3", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Lhx3-E10
+#| fig-cap: "Correlation between Eya3 and Lhx3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya3", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Lhx3-P8
+#| fig-cap: "Correlation between Eya3 and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya3", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Lhx4-E10
+#| fig-cap: "Correlation between Eya3 and Lhx4 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya3", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Lhx4-E11
+#| fig-cap: "Correlation between Eya3 and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya3", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Lhx4-E16
+#| fig-cap: "Correlation between Eya3 and Lhx4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya3", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gata2-E10
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gata2-E11
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gata2-E12
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gata2-E13
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gata2-E16
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gata2-P8
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya3-Gata2-P45
+#| fig-cap: "Correlation between Eya3 and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Sox2-E11
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Sox2-E12
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Sox2-E15
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Sox2-E16
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Sox2-P8
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Sox2-P45
+#| fig-cap: "Correlation between Eya4 and Sox2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya4", "Sox2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Hlf-E11
+#| fig-cap: "Correlation between Eya4 and Hlf expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Hlf-E12
+#| fig-cap: "Correlation between Eya4 and Hlf expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Hlf-E15
+#| fig-cap: "Correlation between Eya4 and Hlf expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Hlf-E16
+#| fig-cap: "Correlation between Eya4 and Hlf expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Hlf-P8
+#| fig-cap: "Correlation between Eya4 and Hlf expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Hlf-P45
+#| fig-cap: "Correlation between Eya4 and Hlf expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya4", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Tshr-E11
+#| fig-cap: "Correlation between Eya4 and Tshr expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya4", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Tshr-E15
+#| fig-cap: "Correlation between Eya4 and Tshr expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya4", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Tshr-E16
+#| fig-cap: "Correlation between Eya4 and Tshr expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya4", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Tshr-P8
+#| fig-cap: "Correlation between Eya4 and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya4", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Tshr-P45
+#| fig-cap: "Correlation between Eya4 and Tshr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya4", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Cckar-E15
+#| fig-cap: "Correlation between Eya4 and Cckar expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya4", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Cckar-P45
+#| fig-cap: "Correlation between Eya4 and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya4", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Cckbr-P8
+#| fig-cap: "Correlation between Eya4 and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya4", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Cckbr-P45
+#| fig-cap: "Correlation between Eya4 and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya4", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gpr173-E11
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gpr173-E12
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gpr173-E15
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gpr173-E16
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gpr173-P8
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gpr173-P45
+#| fig-cap: "Correlation between Eya4 and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya4", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Lhx3-P8
+#| fig-cap: "Correlation between Eya4 and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya4", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Lhx4-E11
+#| fig-cap: "Correlation between Eya4 and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya4", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Lhx4-E16
+#| fig-cap: "Correlation between Eya4 and Lhx4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya4", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gata2-E11
+#| fig-cap: "Correlation between Eya4 and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Eya4", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gata2-E12
+#| fig-cap: "Correlation between Eya4 and Gata2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Eya4", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gata2-E16
+#| fig-cap: "Correlation between Eya4 and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Eya4", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gata2-P8
+#| fig-cap: "Correlation between Eya4 and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Eya4", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Eya4-Gata2-P45
+#| fig-cap: "Correlation between Eya4 and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Eya4", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-E10
+#| fig-cap: "Correlation between Sox2 and Hlf expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-E11
+#| fig-cap: "Correlation between Sox2 and Hlf expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-E12
+#| fig-cap: "Correlation between Sox2 and Hlf expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-E13
+#| fig-cap: "Correlation between Sox2 and Hlf expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-E14
+#| fig-cap: "Correlation between Sox2 and Hlf expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-E15
+#| fig-cap: "Correlation between Sox2 and Hlf expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-E16
+#| fig-cap: "Correlation between Sox2 and Hlf expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-E18
+#| fig-cap: "Correlation between Sox2 and Hlf expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-P8
+#| fig-cap: "Correlation between Sox2 and Hlf expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Hlf-P45
+#| fig-cap: "Correlation between Sox2 and Hlf expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Sox2", "Hlf"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Tshr-E11
+#| fig-cap: "Correlation between Sox2 and Tshr expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Tshr-E15
+#| fig-cap: "Correlation between Sox2 and Tshr expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Tshr-E16
+#| fig-cap: "Correlation between Sox2 and Tshr expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Tshr-E18
+#| fig-cap: "Correlation between Sox2 and Tshr expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Tshr-P8
+#| fig-cap: "Correlation between Sox2 and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Tshr-P45
+#| fig-cap: "Correlation between Sox2 and Tshr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Sox2", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Cckar-E15
+#| fig-cap: "Correlation between Sox2 and Cckar expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Sox2", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Cckar-E18
+#| fig-cap: "Correlation between Sox2 and Cckar expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Sox2", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Cckar-P45
+#| fig-cap: "Correlation between Sox2 and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Sox2", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Cckbr-P8
+#| fig-cap: "Correlation between Sox2 and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Sox2", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Cckbr-P45
+#| fig-cap: "Correlation between Sox2 and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Sox2", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-E10
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-E11
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-E12
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-E13
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-E14
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-E15
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-E16
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-E18
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-P8
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gpr173-P45
+#| fig-cap: "Correlation between Sox2 and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Sox2", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Lhx3-E10
+#| fig-cap: "Correlation between Sox2 and Lhx3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Sox2", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Lhx3-P8
+#| fig-cap: "Correlation between Sox2 and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Sox2", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Lhx4-E10
+#| fig-cap: "Correlation between Sox2 and Lhx4 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Sox2", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Lhx4-E11
+#| fig-cap: "Correlation between Sox2 and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Sox2", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Lhx4-E16
+#| fig-cap: "Correlation between Sox2 and Lhx4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Sox2", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gata2-E10
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gata2-E11
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gata2-E12
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gata2-E13
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gata2-E16
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gata2-P8
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Sox2-Gata2-P45
+#| fig-cap: "Correlation between Sox2 and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Sox2", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Tshr-E11
+#| fig-cap: "Correlation between Hlf and Tshr expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Tshr-E15
+#| fig-cap: "Correlation between Hlf and Tshr expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Tshr-E16
+#| fig-cap: "Correlation between Hlf and Tshr expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Tshr-E18
+#| fig-cap: "Correlation between Hlf and Tshr expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Tshr-P8
+#| fig-cap: "Correlation between Hlf and Tshr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Tshr-P45
+#| fig-cap: "Correlation between Hlf and Tshr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Hlf", "Tshr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Cckar-E15
+#| fig-cap: "Correlation between Hlf and Cckar expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Hlf", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Cckar-E18
+#| fig-cap: "Correlation between Hlf and Cckar expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Hlf", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Cckar-P45
+#| fig-cap: "Correlation between Hlf and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Hlf", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Cckbr-P8
+#| fig-cap: "Correlation between Hlf and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Hlf", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Cckbr-P45
+#| fig-cap: "Correlation between Hlf and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Hlf", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-E10
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-E11
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-E12
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-E13
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-E14
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at E14 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E14", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E14"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-E15
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-E16
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-E18
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-P8
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gpr173-P45
+#| fig-cap: "Correlation between Hlf and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Hlf", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Lhx3-E10
+#| fig-cap: "Correlation between Hlf and Lhx3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Hlf", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Lhx3-P8
+#| fig-cap: "Correlation between Hlf and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Hlf", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Lhx4-E10
+#| fig-cap: "Correlation between Hlf and Lhx4 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Hlf", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Lhx4-E11
+#| fig-cap: "Correlation between Hlf and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Hlf", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Lhx4-E16
+#| fig-cap: "Correlation between Hlf and Lhx4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Hlf", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gata2-E10
+#| fig-cap: "Correlation between Hlf and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gata2-E11
+#| fig-cap: "Correlation between Hlf and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gata2-E12
+#| fig-cap: "Correlation between Hlf and Gata2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gata2-E13
+#| fig-cap: "Correlation between Hlf and Gata2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gata2-E16
+#| fig-cap: "Correlation between Hlf and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gata2-P8
+#| fig-cap: "Correlation between Hlf and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Hlf-Gata2-P45
+#| fig-cap: "Correlation between Hlf and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Hlf", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Cckar-E15
+#| fig-cap: "Correlation between Tshr and Cckar expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Tshr", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Cckar-E18
+#| fig-cap: "Correlation between Tshr and Cckar expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Tshr", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Cckar-P45
+#| fig-cap: "Correlation between Tshr and Cckar expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Tshr", "Cckar"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Cckbr-P8
+#| fig-cap: "Correlation between Tshr and Cckbr expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshr", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Cckbr-P45
+#| fig-cap: "Correlation between Tshr and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Tshr", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gpr173-E11
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gpr173-E15
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gpr173-E16
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gpr173-E18
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gpr173-P8
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gpr173-P45
+#| fig-cap: "Correlation between Tshr and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Tshr", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Lhx3-P8
+#| fig-cap: "Correlation between Tshr and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshr", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Lhx4-E11
+#| fig-cap: "Correlation between Tshr and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Tshr", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Lhx4-E16
+#| fig-cap: "Correlation between Tshr and Lhx4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Tshr", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gata2-E11
+#| fig-cap: "Correlation between Tshr and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Tshr", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gata2-E16
+#| fig-cap: "Correlation between Tshr and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Tshr", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gata2-P8
+#| fig-cap: "Correlation between Tshr and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Tshr", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Tshr-Gata2-P45
+#| fig-cap: "Correlation between Tshr and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Tshr", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cckar-Cckbr-P45
+#| fig-cap: "Correlation between Cckar and Cckbr expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cckar", "Cckbr"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cckar-Gpr173-E15
+#| fig-cap: "Correlation between Cckar and Gpr173 expression at E15 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E15", cells = cells_to_check),
+    c("Cckar", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E15"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cckar-Gpr173-E18
+#| fig-cap: "Correlation between Cckar and Gpr173 expression at E18 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E18", cells = cells_to_check),
+    c("Cckar", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "E18"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cckar-Gpr173-P45
+#| fig-cap: "Correlation between Cckar and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cckar", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cckar-Gata2-P45
+#| fig-cap: "Correlation between Cckar and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cckar", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cckbr-Gpr173-P8
+#| fig-cap: "Correlation between Cckbr and Gpr173 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cckbr", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cckbr-Gpr173-P45
+#| fig-cap: "Correlation between Cckbr and Gpr173 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cckbr", "Gpr173"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cckbr-Lhx3-P8
+#| fig-cap: "Correlation between Cckbr and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cckbr", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Cckbr-Gata2-P8
+#| fig-cap: "Correlation between Cckbr and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Cckbr", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Cckbr-Gata2-P45
+#| fig-cap: "Correlation between Cckbr and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Cckbr", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Lhx3-E10
+#| fig-cap: "Correlation between Gpr173 and Lhx3 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Gpr173", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Lhx3-P8
+#| fig-cap: "Correlation between Gpr173 and Lhx3 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Gpr173", "Lhx3"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Lhx4-E10
+#| fig-cap: "Correlation between Gpr173 and Lhx4 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Gpr173", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Lhx4-E11
+#| fig-cap: "Correlation between Gpr173 and Lhx4 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Gpr173", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Lhx4-E16
+#| fig-cap: "Correlation between Gpr173 and Lhx4 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Gpr173", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Gata2-E10
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Gata2-E11
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Gata2-E12
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at E12 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E12", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E12"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Gata2-E13
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at E13 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E13", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E13"
+)
+```
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Gata2-E16
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Gata2-P8
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Gpr173-Gata2-P45
+#| fig-cap: "Correlation between Gpr173 and Gata2 expression at P45 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P45", cells = cells_to_check),
+    c("Gpr173", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P45"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Lhx3-Lhx4-E10
+#| fig-cap: "Correlation between Lhx3 and Lhx4 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Lhx3", "Lhx4"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Lhx3-Gata2-E10
+#| fig-cap: "Correlation between Lhx3 and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Lhx3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Lhx3-Gata2-P8
+#| fig-cap: "Correlation between Lhx3 and Gata2 expression at P8 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "P8", cells = cells_to_check),
+    c("Lhx3", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "P8"
+)
+```
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Lhx4-Gata2-E10
+#| fig-cap: "Correlation between Lhx4 and Gata2 expression at E10 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E10", cells = cells_to_check),
+    c("Lhx4", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E10"
+)
+```
+
+```{r}
+#| label: fig-kim2020-correlation-Lhx4-Gata2-E11
+#| fig-cap: "Correlation between Lhx4 and Gata2 expression at E11 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E11", cells = cells_to_check),
+    c("Lhx4", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E11"
+)
+```
+
+
+
+
+
+
+
+
+
+```{r}
+#| label: fig-kim2020-correlation-Lhx4-Gata2-E16
+#| fig-cap: "Correlation between Lhx4 and Gata2 expression at E16 in Kim et al. 2020 dataset"
+#| fig-width: 12
+#| fig-height: 8
+
+generate_correlation_plots(
+    srt.kim |> subset(Age == "E16", cells = cells_to_check),
+    c("Lhx4", "Gata2"),
+    "predicted.id",
+    cells_to_check,
+    age = "E16"
+)
+```
+
+
+
+
+
+
+
