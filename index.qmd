@@ -99,10 +99,13 @@ To thoroughly investigate the cellular diversity of the pars tuberalis (PT) duri
 These datasets encompass a broad range of developmental stages, from embryonic day 10 (E10) to postnatal day 45 (P45), allowing us to capture the dynamic changes in gene expression throughout PT development.
 
 In the dataset from Romanov et al., we identified a distinct cluster of PT cells within the hypothalamic scRNA-seq data (Fig. 1a).
+
+{{< embed notebooks/01-de_test-focus_pars_tub.qmd#fig-feature-romanov2020 >}}
+
 This cluster was characterized by the expression of key developmental genes, including *Pitx1*, a transcription factor crucial for anterior pituitary gland formation[@szetoPOTXPIT1interactingHomeodomain1996], and *Gata2*, which is essential for the early stages of Rathke's pouch detachment and PT formation[@dasenReciprocalInteractionsPit11999].
 
 To enhance the resolution of our analysis and validate these findings, we integrated scRNA-seq data from Kim et al., which provided a rich temporal landscape of hypothalamic development.
-By aligning the datasets, we ensured accurate identification and mapping of PT cell populations across different developmental stages (Fig. 1b).
+By aligning the datasets, we ensured accurate identification and mapping of PT cell populations across different developmental stages (Fig. 1b; see @sec-data-methods).
 
 Clustering of the integrated dataset revealed three distinct groups of PT cells, each defined by unique transcriptional profiles:
 
@@ -129,6 +132,12 @@ These cells were mainly located at the periphery of the PT, forming distinct clu
 
 The temporal increase in *Eya2* expression and the spatial distribution of group three cells imply they may represent a later phase of PT cell differentiation or a unique lineage with specialized functions yet to be fully understood.
 
+![Localization of **Tshb** and **Eya** transcription coactivators in the fetal PT.](images/Figure2.jpg){#fig-fetal-eya-tshb}
+
+![Localization of **Cck** and **Eya** transcription coactivators in the fetal PT.](images/Figure3.jpg){#fig-fetal-eya-cck}
+
+![**Tshb** and **Cck** co-localization.](images/Figure4.jpg){#fig-fetal-tshb-cck}
+
 To further elucidate the characteristics of these groups, we examined additional genes implicated in PT development and function:
 
 -   **Pitx1 Co-expression**: *Pitx1*, essential for pituitary development, was co-expressed with *Eya3* in group one cells (Fig. 3a). This co-localization reinforces the idea that group one cells are actively involved in hormone production and early PT development.
@@ -139,11 +148,17 @@ We also explored the potential interactions between PT-derived hormones and the 
 -   **Hormone Receptor Expression**: The receptors for *Tshb* (*Tshr*) and *Cck* (*Cckbr*) were expressed in regions of the developing hypothalamus rich in neural progenitor cells, such as the ventricular zones (Fig. 4a, 4b). Co-expression of *Tshr* and *Cckbr* with *Sox2* indicates that PT-derived hormones could influence neural development by acting on these progenitor cells.
 -   **Gpr173 Expression**: We observed expression of *Gpr173*, a G protein-coupled receptor involved in neuroendocrine signaling, in neural progenitor zones overlapping with *Sox2* expression (Fig. 4c). This suggests a potential role for *Gpr173* in mediating hormonal signals from the PT to the developing brain.
 
+![**TSHR** brain-wide mRNA expression.](images/Figure5.jpg){#fig-fetal-tshr}
+
+![**CCKBR** brain-wide mRNA expression.](images/Figure6.jpg){#fig-fetal-cckbr}
+
 To visualize gene expression dynamics across developmental stages, we generated DotPlots for key genes (Fig. 5).
 This analysis highlighted:
 
 -   **Early Onset and Persistence of Group One Genes**: *Eya3*, *Tshb*, and *Cck* expression began as early as E12 and continued throughout embryonic development, indicating a sustained role in PT function.
 -   **Temporal Emergence of Group Two and Three Genes**: *Eya1*, *Eya2*, and *Eya4* displayed increased expression at later stages, suggesting these genes are involved in the maturation and specialization processes within the PT.
+
+{{< embed notebooks/01-de_test-focus_pars_tub.qmd#fig-violin-gene-interactions-romanov2020 >}}
 
 Our integrated analysis, combining data from multiple developmental stages and employing rigorous statistical correlations, provides compelling evidence for the existence of three distinct PT cell groups during embryogenesis.
 Each group exhibits unique transcriptional signatures, indicating specialized roles:
@@ -152,7 +167,7 @@ Each group exhibits unique transcriptional signatures, indicating specialized ro
 -   **Group Two** may be involved in structural formation or regulation within the PT, given their distinct gene expression profile and later emergence.
 -   **Group Three** could represent a specialized lineage that plays a role in the maturation of the PT or has unique endocrine functions.
 
-# Methods
+# Methods {#sec-data-methods}
 
 ## Data Acquisition and Preprocessing
 
@@ -216,4 +231,3 @@ The code (<https://github.com/EugOT/pr-PT>) and datasets used in this study are 
 The Kim[@kim2020] dataset can be accessed under BioProject accession PRJNA547712, and the Romanov[@romanovMolecularDesignHypothalamus2020] dataset is available under BioProject accession PRJNA548917 including repository with reprocessing code: <https://github.com/EugOT/PRJNA547712> and <https://github.com/EugOT/PRJNA548917>.
 
 # References {.unnumbered}
-

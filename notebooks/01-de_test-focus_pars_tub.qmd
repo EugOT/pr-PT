@@ -25,6 +25,8 @@ execute:
 knitr:
   opts_chunk:
     autodep: true
+    error: false
+    warning: false
 ---
 
 ```{r}
@@ -220,6 +222,7 @@ print(srt.romanov.pt)
 #| fig-width: 24
 #| fig-height: 36
 #| fig-dpi: 90
+#| column: screen-inset
 FeaturePlot(
   srt.romanov.pub,
   features = c(
@@ -268,7 +271,7 @@ FeaturePlot(
 # Using gene name patterns
 srt.kim <- Add_Mito_Ribo(object = srt.kim, species = "Mouse", ensembl_ids = FALSE)
 srt.kim$umi_per_gene <-
-  (srt.kim$nCount_RNA/srt.kim$nFeature_RNA)
+  (srt.kim$nCount_RNA / srt.kim$nFeature_RNA)
 srt.kim$log_umi_per_gene <-
   log10(srt.kim$umi_per_gene)
 srt.kim <- NormalizeData(srt.kim)
@@ -611,9 +614,13 @@ genes_to_check <- c(
 ) %>%
   .[. %in% (srt.kim@assays$RNA@counts[, cells_to_check] |> rowSums() %>% .[. > 3] %>% names())]
 
-dat_kim <- dat_kim[genes_to_check, cells_to_check] %>% as.data.frame() %>% t()
+dat_kim <- dat_kim[genes_to_check, cells_to_check] %>%
+  as.data.frame() %>%
+  t()
 
-dat_kim <- dat_kim |> as.data.frame() |> mutate(Age = srt.kim[["Age"]][rownames(dat_kim), ])
+dat_kim <- dat_kim |>
+  as.data.frame() |>
+  mutate(Age = srt.kim[["Age"]][rownames(dat_kim), ])
 
 # 1. Complete gene pairs - Ensure all combinations are present
 gene_pairs <- combn(
@@ -682,8 +689,8 @@ generate_correlation_plots <- function(seurat_obj, genes, group_var, cells, age 
 
   grouped_ggscatterstats(
     data = plot_data,
-    x = !!genes[1],  # Force evaluation of gene names as symbols
-    y = !!genes[2],  # Force evaluation of gene names as symbols
+    x = !!genes[1], # Force evaluation of gene names as symbols
+    y = !!genes[2], # Force evaluation of gene names as symbols
     grouping.var = group,
     type = "nonparametric",
     xlab = genes[1],
@@ -802,9 +809,13 @@ genes_to_check <- c(
   .[. %in% (srt.romanov.pub@assays$RNA@counts[, cells_to_check] |> rowSums() %>% .[. > 3] %>% names())]
 
 
-dat_romanov <- dat_romanov[genes_to_check, cells_to_check] %>% as.data.frame() %>% t()
+dat_romanov <- dat_romanov[genes_to_check, cells_to_check] %>%
+  as.data.frame() %>%
+  t()
 
-dat_romanov <- dat_romanov |> as.data.frame() |> mutate(Age = srt.romanov.pub[["Age"]][rownames(dat_romanov), ])
+dat_romanov <- dat_romanov |>
+  as.data.frame() |>
+  mutate(Age = srt.romanov.pub[["Age"]][rownames(dat_romanov), ])
 
 # Complete gene pairs
 gene_pairs <- combn(
